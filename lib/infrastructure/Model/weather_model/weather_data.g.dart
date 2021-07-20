@@ -15,6 +15,7 @@ _$_WeatherData _$_$_WeatherDataFromJson(Map<String, dynamic> json) {
     base: json['base'] as String,
     main: Main.fromJson(json['main'] as Map<String, dynamic>),
     name: json['name'] as String,
+    dt: json['dt'] as int?,
   );
 }
 
@@ -24,6 +25,7 @@ Map<String, dynamic> _$_$_WeatherDataToJson(_$_WeatherData instance) =>
       'base': instance.base,
       'main': instance.main,
       'name': instance.name,
+      'dt': instance.dt,
     };
 
 _$_Main _$_$_MainFromJson(Map<String, dynamic> json) {

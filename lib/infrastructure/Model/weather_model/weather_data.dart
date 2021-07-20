@@ -17,6 +17,7 @@ abstract class WeatherData with _$WeatherData {
     required String base,
     required Main main,
     required String name,
+      int? dt,
   }) = _WeatherData;
 
   factory WeatherData.fromJson(Map<String, dynamic> json) =>
