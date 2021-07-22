@@ -14,14 +14,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void getInitLocation(BuildContext context) {
-    context.read(locationStateNotifierProvider.notifier).getMyLocation();
+  void getInitLocation(BuildContext context) async {
+    await context.read(locationStateNotifierProvider.notifier).getMyLocation();
   }
 
+  // void initState() {
+  //   Future.delayed(Duration.zero, () => getInitLocation(context));
+  //   super.initState();
+  // }
+
   @override
-  void didChangeDependencies() {
-    getInitLocation(context);
-    super.didChangeDependencies();
+  void initState() {
+    Future.delayed(Duration.zero, () => getInitLocation(context));
+    super.initState();
   }
 
   @override
@@ -137,7 +142,9 @@ Widget buildSuccessLocation(String data, BuildContext context) {
           style: TextStyle(color: Colors.white54),
         ),
         onPressed: () {
-          Navigator.pushNamed(context, DetailsPage.pathId, arguments: data);
+          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+            Navigator.pushNamed(context, DetailsPage.pathId, arguments: data);
+          });
         },
         style: ElevatedButton.styleFrom(
             primary: Colors.white10, padding: EdgeInsets.all(15)),

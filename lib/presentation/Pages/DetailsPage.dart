@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/api/credentials.dart';
 import 'package:weather_app/presentation/constants.dart';
 import 'package:weather_app/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,9 +19,10 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   @override
-  void didChangeDependencies() {
-    submitCityName(context, widget.cityName.toString());
-    super.didChangeDependencies();
+  void initState() {
+    Future.delayed(Duration.zero,
+        () => submitCityName(context, widget.cityName.toString()));
+    super.initState();
   }
 
   void submitCityName(BuildContext context, String cityName) async {
@@ -37,110 +39,123 @@ class _DetailsPageState extends State<DetailsPage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        body: Stack(
-          children: [
-            Container(
-              height: height / 2,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage(
-                    'assets/images/ClearDay.png',
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              height: height,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  gradient: LinearGradient(
-                      begin: FractionalOffset.topCenter,
-                      end: FractionalOffset.bottomCenter,
-                      colors: [
-                        Colors.black54.withOpacity(0.0),
-                        Colors.black45,
-                      ],
-                      stops: [
-                        0.0,
-                        0.5
-                      ])),
-            ),
-            Positioned(
-              top: 10,
-              left: 10,
-              child: Container(
-                height: 40,
-                width: 40,
-                padding: EdgeInsets.only(left: 4),
-                decoration: BoxDecoration(
-                  color: Color(0xffe0e0e0),
-                  boxShadow: backBtnBoxShadow,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back_ios),
-                ),
-              ),
-            ),
-            Positioned(
-              child: Consumer(
-                builder: (context, watch, child) {
-                  final weatherState = watch(weatherStateNotifierProvider);
-                  return weatherState.maybeWhen(
-                    loading: () => CircularProgressIndicator(),
-                    success: (data) => Container(
-                      width: width,
-                      height: height / 2.0,
-                      child: buildSuccessInformation(
-                        cityName: widget.cityName,
-                        temp: data.main.temp!.toStringAsFixed(1),
-                        condition: data.weather.single!.main.toString(),
-                        dateTime: data.dt,
+        body: RefreshIndicator(
+          onRefresh: () async {
+            return await context
+                .read(weatherStateNotifierProvider.notifier)
+                .getWeather(widget.cityName.toString());
+          },
+          child: SingleChildScrollView(
+            child: Stack(
+              children: [
+                Container(
+                  height: height / 2,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage(
+                        'assets/images/ClearDay.png',
                       ),
                     ),
-                    error: (e) => Text(
-                      e.toString(),
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    orElse: () => CircularProgressIndicator(),
-                  );
-                },
-              ),
-            ),
-            Positioned(
-              top: height / 2,
-              child: Container(
-                height: height / 2,
-                width: width,
-                padding: const EdgeInsets.only(left: 45),
-                //   margin: const EdgeInsets.only(top: 50),
-                decoration: BoxDecoration(
-                  color: Color(0xff8A8A8A),
+                  ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      radius: 10,
-                      backgroundColor: Colors.white,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Weather Details",
-                      style: bigTitleStyle.copyWith(fontSize: 16),
-                    )
-                  ],
+                Container(
+                  height: height,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      gradient: LinearGradient(
+                          begin: FractionalOffset.topCenter,
+                          end: FractionalOffset.bottomCenter,
+                          colors: [
+                            Colors.black54.withOpacity(0.0),
+                            Colors.black45,
+                          ],
+                          stops: [
+                            0.0,
+                            0.5
+                          ])),
                 ),
-              ),
+                Positioned(
+                  top: 10,
+                  left: 10,
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    padding: EdgeInsets.only(left: 4),
+                    decoration: BoxDecoration(
+                      color: Color(0xffe0e0e0),
+                      boxShadow: backBtnBoxShadow,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        WidgetsBinding.instance
+                            ?.addPostFrameCallback((timeStamp) {
+                          Navigator.pop(context);
+                        });
+                      },
+                      icon: Icon(Icons.arrow_back_ios),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  child: Consumer(
+                    builder: (context, watch, child) {
+                      final weatherState = watch(weatherStateNotifierProvider);
+                      return weatherState.maybeWhen(
+                        loading: () => Container(),
+                        success: (data) => Container(
+                          width: width,
+                          height: height / 2.0,
+                          child: buildSuccessInformation(
+                              cityName: widget.cityName,
+                              temp: data.main.temp!.toStringAsFixed(1),
+                              condition: data.weather.single!.main.toString(),
+                              dateTime: data.dt,
+                              imgUrl:
+                                  '$imgBaseUrl${data.weather.single!.icon}@2x.png'),
+                        ),
+                        error: (e) => Text(
+                          e.toString(),
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        orElse: () => CircularProgressIndicator(),
+                      );
+                    },
+                  ),
+                ),
+                Positioned(
+                  top: height / 2,
+                  child: Container(
+                    height: height / 2,
+                    width: width,
+                    padding: const EdgeInsets.only(left: 45),
+                    //   margin: const EdgeInsets.only(top: 50),
+                    decoration: BoxDecoration(
+                      color: Color(0xff8A8A8A),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Colors.white,
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          "Weather Details",
+                          style: bigTitleStyle.copyWith(fontSize: 16),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -166,12 +181,19 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   Column buildSuccessInformation(
-      {String? cityName, String? temp, String? condition, int? dateTime}) {
+      {String? cityName,
+      String? temp,
+      String? condition,
+      int? dateTime,
+      String? imgUrl}) {
     return Column(
       children: [
         const SizedBox(height: 10),
         CircleAvatar(
           radius: 40,
+          backgroundColor: Colors.transparent,
+          backgroundImage:
+              NetworkImage(imgUrl ?? "http://via.placeholder.com/200x150"),
         ),
         Text(
           cityName.toString(),
