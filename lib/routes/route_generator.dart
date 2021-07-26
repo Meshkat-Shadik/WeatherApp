@@ -9,7 +9,7 @@ class RouteGenerator {
       case MyHomePage.pathId:
         return MaterialPageRoute(builder: (_) => MyHomePage());
       case DetailsPage.pathId:
-        return MaterialPageRoute(builder: (_) => DetailsPage(cityName:args));
+        return MaterialPageRoute(builder: (_) => DetailsPage(cityName: args));
       //  builder: (_) => DetailsPage(weatherData: args));
       // case CityScreen.pathId:
       //   return MaterialPageRoute(builder: (_) => CityScreen());

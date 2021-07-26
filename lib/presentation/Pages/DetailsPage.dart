@@ -1,10 +1,12 @@
 import 'dart:ui';
 
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/api/credentials.dart';
 import 'package:weather_app/presentation/constants.dart';
+import 'package:weather_app/presentation/widgets/my_snackbar.dart';
 import 'package:weather_app/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,6 +33,22 @@ class _DetailsPageState extends State<DetailsPage> {
         .getWeather(cityName);
   }
 
+  void showInSnackBar(String title, String description, VoidCallback onTap) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      showFlash(
+        context: context,
+        duration: const Duration(seconds: 1),
+        builder: (context, controller) {
+          return MySnackbar(
+              controller: controller,
+              title: title,
+              description: description,
+              onTap: onTap);
+        },
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -55,7 +73,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: AssetImage(
-                        'assets/images/ClearDay.png',
+                        'assets/images/ClearNight.png',
                       ),
                     ),
                   ),
@@ -110,18 +128,24 @@ class _DetailsPageState extends State<DetailsPage> {
                         success: (data) => Container(
                           width: width,
                           height: height / 2.0,
-                          child: buildSuccessInformation(
-                              cityName: widget.cityName,
-                              temp: data.main.temp!.toStringAsFixed(1),
-                              condition: data.weather.single!.main.toString(),
-                              dateTime: data.dt,
-                              imgUrl:
-                                  '$imgBaseUrl${data.weather.single!.icon}@2x.png'),
+                          child: BuildSuccessInformation(
+                            key: GlobalObjectKey(widget.cityName.toString()),
+                            success: data.cod,
+                            cityName: widget.cityName ?? "Null",
+                            temp: data.main.temp?.toStringAsFixed(1) ?? "0",
+                            condition:
+                                data.weather.last?.main.toString() ?? "Null",
+                            dateTime: data.dt ?? 1,
+                            imgUrl:
+                                '$imgBaseUrl${data.weather.last?.icon}@2x.png',
+                          ),
                         ),
-                        error: (e) => Text(
-                          e.toString(),
-                          style: TextStyle(color: Colors.white),
-                        ),
+                        error: (e) {
+                          showInSnackBar(e.toString(), "", () {
+                            Navigator.pop(context);
+                          });
+                          return Text("");
+                        },
                         orElse: () => CircularProgressIndicator(),
                       );
                     },
@@ -179,49 +203,63 @@ class _DetailsPageState extends State<DetailsPage> {
     //   ],
     // );
   }
+}
 
-  Column buildSuccessInformation(
-      {String? cityName,
-      String? temp,
-      String? condition,
-      int? dateTime,
-      String? imgUrl}) {
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        CircleAvatar(
-          radius: 40,
-          backgroundColor: Colors.transparent,
-          backgroundImage:
-              NetworkImage(imgUrl ?? "http://via.placeholder.com/200x150"),
-        ),
-        Text(
-          cityName.toString(),
-          style: bigTitleStyle.copyWith(fontSize: 36),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              '$condition, ',
-              style: bigTitleStyle.copyWith(fontSize: 16),
-            ),
-            Text(
-              DateFormat('hh:mm a')
-                  .format(DateTime.fromMillisecondsSinceEpoch(dateTime! * 1000))
-                  .toString(),
-              //dateTime.toString(),
-              style: bigTitleStyle.copyWith(fontSize: 16),
-            )
-          ],
-        ),
-        Text(
-          temp.toString() + "°",
-          style: bigTitleStyle.copyWith(fontSize: 100),
-        ),
+class BuildSuccessInformation extends StatelessWidget {
+  const BuildSuccessInformation({
+    Key? key,
+    required this.cityName,
+    this.temp,
+    this.condition,
+    this.imgUrl,
+    required this.dateTime,
+    required this.success,
+  }) : super(key: key);
+  final String? cityName, temp, condition, imgUrl;
+  final int dateTime, success;
 
-        //
-      ],
-    );
+  @override
+  Widget build(BuildContext context) {
+    print(success);
+    return success == 200
+        ? Column(
+            children: [
+              const SizedBox(height: 10),
+              CircleAvatar(
+                radius: 40,
+                backgroundColor: Colors.transparent,
+                backgroundImage: NetworkImage(
+                    imgUrl ?? "http://via.placeholder.com/200x150"),
+              ),
+              Text(
+                cityName.toString(),
+                style: bigTitleStyle.copyWith(fontSize: 36),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '$condition, ',
+                    style: bigTitleStyle.copyWith(fontSize: 16),
+                  ),
+                  Text(
+                    DateFormat('hh:mm a')
+                        .format(DateTime.fromMillisecondsSinceEpoch(
+                            dateTime * 1000))
+                        .toString(),
+                    //dateTime.toString(),
+                    style: bigTitleStyle.copyWith(fontSize: 16),
+                  )
+                ],
+              ),
+              Text(
+                temp.toString() + "°",
+                style: bigTitleStyle.copyWith(fontSize: 100),
+              ),
+
+              //
+            ],
+          )
+        : Container();
   }
 }

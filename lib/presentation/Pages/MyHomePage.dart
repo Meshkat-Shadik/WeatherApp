@@ -18,15 +18,17 @@ class _MyHomePageState extends State<MyHomePage> {
     await context.read(locationStateNotifierProvider.notifier).getMyLocation();
   }
 
-  // void initState() {
-  //   Future.delayed(Duration.zero, () => getInitLocation(context));
-  //   super.initState();
-  // }
+  final TextEditingController cityNameController = TextEditingController();
 
   @override
   void initState() {
     Future.delayed(Duration.zero, () => getInitLocation(context));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -39,7 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Container(
             width: double.infinity,
             height: height / 2,
-            color: Colors.yellow,
             child: Image.asset(
               'assets/images/day.jpg',
               fit: BoxFit.cover,
@@ -75,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 const SizedBox(height: 20),
                 TextField(
+                  controller: cityNameController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     border: outlineInputBorder,
@@ -83,7 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: "Enter the city name",
                     hintStyle: hintTextStyle,
                     suffixIcon: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, DetailsPage.pathId,
+                            arguments: cityNameController.text);
+                      },
                       icon: Icon(
                         Icons.search,
                         color: Colors.white,

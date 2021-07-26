@@ -17,11 +17,23 @@ abstract class WeatherData with _$WeatherData {
     required String base,
     required Main main,
     required String name,
-      int? dt,
+    int? dt,
+    required int cod,
   }) = _WeatherData;
 
   factory WeatherData.fromJson(Map<String, dynamic> json) =>
       _$WeatherDataFromJson(json);
+}
+
+@freezed
+abstract class WeatherErrorData with _$WeatherErrorData {
+  const factory WeatherErrorData({
+    required String message,
+    required int cod,
+  }) = _WeatherErrorData;
+
+  factory WeatherErrorData.fromJson(Map<String, dynamic> json) =>
+      _$WeatherErrorDataFromJson(json);
 }
 
 @freezed
