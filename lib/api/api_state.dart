@@ -1,7 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:weather_app/infrastructure/Model/location_model/location_data.dart';
 import 'package:weather_app/infrastructure/Model/weather_model/weather_data.dart';
 
 part 'api_state.freezed.dart';

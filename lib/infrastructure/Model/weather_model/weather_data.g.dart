@@ -8,58 +8,61 @@ part of 'weather_data.dart';
 
 _$_WeatherData _$_$_WeatherDataFromJson(Map<String, dynamic> json) {
   return _$_WeatherData(
-    weather: (json['weather'] as List<dynamic>)
-        .map((e) =>
-            e == null ? null : Weather.fromJson(e as Map<String, dynamic>))
+    weather: (json['weather'] as List<dynamic>?)
+        ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
         .toList(),
-    base: json['base'] as String,
-    main: Main.fromJson(json['main'] as Map<String, dynamic>),
-    name: json['name'] as String,
+    main: json['main'] == null
+        ? null
+        : Main.fromJson(json['main'] as Map<String, dynamic>),
+    wind: json['wind'] == null
+        ? null
+        : Wind.fromJson(json['wind'] as Map<String, dynamic>),
     dt: json['dt'] as int?,
-    cod: json['cod'] as int,
+    sys: json['sys'] == null
+        ? null
+        : Sys.fromJson(json['sys'] as Map<String, dynamic>),
+    name: json['name'] as String?,
+    cod: json['cod'] as int?,
   );
 }
 
 Map<String, dynamic> _$_$_WeatherDataToJson(_$_WeatherData instance) =>
     <String, dynamic>{
       'weather': instance.weather,
-      'base': instance.base,
       'main': instance.main,
-      'name': instance.name,
+      'wind': instance.wind,
       'dt': instance.dt,
-      'cod': instance.cod,
-    };
-
-_$_WeatherErrorData _$_$_WeatherErrorDataFromJson(Map<String, dynamic> json) {
-  return _$_WeatherErrorData(
-    message: json['message'] as String,
-    cod: json['cod'] as int,
-  );
-}
-
-Map<String, dynamic> _$_$_WeatherErrorDataToJson(
-        _$_WeatherErrorData instance) =>
-    <String, dynamic>{
-      'message': instance.message,
+      'sys': instance.sys,
+      'name': instance.name,
       'cod': instance.cod,
     };
 
 _$_Main _$_$_MainFromJson(Map<String, dynamic> json) {
   return _$_Main(
     temp: (json['temp'] as num?)?.toDouble(),
+    feelsLike: (json['feels_like'] as num?)?.toDouble(),
     pressure: json['pressure'] as int?,
     humidity: json['humidity'] as int?,
-    tempMin: (json['tempMin'] as num?)?.toDouble(),
-    tempMax: (json['tempMax'] as num?)?.toDouble(),
   );
 }
 
 Map<String, dynamic> _$_$_MainToJson(_$_Main instance) => <String, dynamic>{
       'temp': instance.temp,
+      'feels_like': instance.feelsLike,
       'pressure': instance.pressure,
       'humidity': instance.humidity,
-      'tempMin': instance.tempMin,
-      'tempMax': instance.tempMax,
+    };
+
+_$_Sys _$_$_SysFromJson(Map<String, dynamic> json) {
+  return _$_Sys(
+    sunrise: json['sunrise'] as int?,
+    sunset: json['sunset'] as int?,
+  );
+}
+
+Map<String, dynamic> _$_$_SysToJson(_$_Sys instance) => <String, dynamic>{
+      'sunrise': instance.sunrise,
+      'sunset': instance.sunset,
     };
 
 _$_Weather _$_$_WeatherFromJson(Map<String, dynamic> json) {
@@ -75,4 +78,16 @@ Map<String, dynamic> _$_$_WeatherToJson(_$_Weather instance) =>
       'main': instance.main,
       'description': instance.description,
       'icon': instance.icon,
+    };
+
+_$_Wind _$_$_WindFromJson(Map<String, dynamic> json) {
+  return _$_Wind(
+    speed: (json['speed'] as num?)?.toDouble(),
+    gust: (json['gust'] as num?)?.toDouble(),
+  );
+}
+
+Map<String, dynamic> _$_$_WindToJson(_$_Wind instance) => <String, dynamic>{
+      'speed': instance.speed,
+      'gust': instance.gust,
     };

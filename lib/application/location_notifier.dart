@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/api/api_state.dart';
-import 'package:weather_app/infrastructure/Model/location_model/location_data.dart';
 import 'package:weather_app/infrastructure/location_repository.dart';
 
 class LocationStateNotifer extends StateNotifier<LocationDataState> {
