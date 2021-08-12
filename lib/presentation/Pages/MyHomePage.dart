@@ -1,14 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/presentation/Pages/DetailsPage.dart';
 import 'package:weather_app/presentation/constants.dart';
 import 'package:weather_app/providers.dart';
+import 'package:weather_app/routes/router.gr.dart';
 
 class MyHomePage extends StatefulWidget {
-  static const String pathId = '/';
   const MyHomePage({Key? key}) : super(key: key);
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -87,8 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintStyle: hintTextStyle,
                     suffixIcon: IconButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, DetailsPage.pathId,
-                            arguments: cityNameController.text);
+                        context.router.push(DetailsPageRoute(
+                            cityName: cityNameController.text));
                       },
                       icon: Icon(
                         Icons.search,
@@ -115,8 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               watch(locationStateNotifierProvider);
                           return locationState.maybeWhen(
                             loading: () => CircularProgressIndicator(),
-                            success: (data) =>
-                                buildSuccessLocation(data, context),
+                            success: (cityName) =>
+                                buildSuccessLocation(cityName, context),
                             error: (e) => Text(
                               e.toString(),
                               style: TextStyle(color: Colors.white),
@@ -137,10 +137,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-Widget buildSuccessLocation(String data, BuildContext context) {
+Widget buildSuccessLocation(String cityName, BuildContext context) {
   return Column(
     children: [
-      Text(data, style: bigTitleStyle.copyWith(fontSize: 25)),
+      Text(cityName, style: bigTitleStyle.copyWith(fontSize: 25)),
       const SizedBox(height: 20),
       ElevatedButton(
         child: Text(
@@ -149,7 +149,7 @@ Widget buildSuccessLocation(String data, BuildContext context) {
         ),
         onPressed: () {
           WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-            Navigator.pushNamed(context, DetailsPage.pathId, arguments: data);
+            context.router.push(DetailsPageRoute(cityName: cityName));
           });
         },
         style: ElevatedButton.styleFrom(

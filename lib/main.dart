@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_app/api/credentials.dart';
-import 'package:weather_app/presentation/Pages/MyHomePage.dart';
-import 'package:weather_app/providers.dart';
-import 'package:weather_app/routes/route_generator.dart';
+import 'package:weather_app/routes/router.gr.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
+  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         // primaryColor: Color(0xff262431),
       ),
-      initialRoute: MyHomePage.pathId,
-      onGenerateRoute: RouteGenerator.generateRoute,
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

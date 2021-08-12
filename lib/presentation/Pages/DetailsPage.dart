@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/api/credentials.dart';
 import 'package:weather_app/presentation/constants.dart';
@@ -8,7 +7,6 @@ import 'package:weather_app/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DetailsPage extends StatefulWidget {
-  static const String pathId = '/detailsPage';
   final String? cityName;
   const DetailsPage({Key? key, this.cityName}) : super(key: key);
 
@@ -124,10 +122,6 @@ class _DetailsPageState extends State<DetailsPage> {
                           ),
                         ),
                         error: (e) {
-                          // showInSnackBar(e.toString(), "", () {
-                          //   Navigator.pop(context);
-                          // });
-
                           return Container(
                             margin: EdgeInsets.only(top: 140),
                             alignment: Alignment.center,
