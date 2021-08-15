@@ -49,73 +49,88 @@ class MyHomePage extends ConsumerWidget {
         Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.black54,
-          body: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          body: RefreshIndicator(
+            onRefresh: () async {
+              return await context
+                  .refresh(locationStateNotifierProvider.notifier)
+                  .getMyLocation();
+            },
+            child: ListView(
+              physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
               children: [
-                SizedBox(height: height * 0.10),
-                Text(
-                  "Hello there!",
-                  style: GoogleFonts.raleway(fontSize: 32, color: Colors.white),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  "Check the weather by the city",
-                  style: GoogleFonts.raleway(fontSize: 16, color: Colors.white),
-                ),
-                const SizedBox(height: 20),
-                TextField(
-                  onChanged: (value) => updateCityName(context, value),
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    border: outlineInputBorder,
-                    enabledBorder: outlineInputBorder,
-                    focusedBorder: outlineInputBorder,
-                    hintText: "Enter the city name",
-                    hintStyle: hintTextStyle,
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        context.router
-                            .push(DetailsPageRoute(cityName: cityName));
-                      },
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: height * 0.2),
-                Container(
-                  width: double.infinity,
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: height * 0.10),
                       Text(
-                        "You are in ",
+                        "Hello there!",
+                        style: GoogleFonts.raleway(
+                            fontSize: 32, color: Colors.white),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Check the weather by the city",
                         style: GoogleFonts.raleway(
                             fontSize: 16, color: Colors.white),
                       ),
-                      locationState.maybeWhen(
-                        initial: () {
-                          Future.delayed(
-                              Duration.zero, () => getInitLocation(context));
-                          return CircularProgressIndicator();
-                        },
-                        loading: () => CircularProgressIndicator(),
-                        success: (cityName) =>
-                            buildSuccessLocation(cityName, context),
-                        error: (e) => Text(
-                          e.toString(),
-                          style: TextStyle(color: Colors.white),
+                      const SizedBox(height: 20),
+                      TextField(
+                        onChanged: (value) => updateCityName(context, value),
+                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          border: outlineInputBorder,
+                          enabledBorder: outlineInputBorder,
+                          focusedBorder: outlineInputBorder,
+                          hintText: "Enter the city name",
+                          hintStyle: hintTextStyle,
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              context.router
+                                  .push(DetailsPageRoute(cityName: cityName));
+                            },
+                            icon: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                        orElse: () => CircularProgressIndicator(),
+                      ),
+                      SizedBox(height: height * 0.2),
+                      Container(
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "You are in ",
+                              style: GoogleFonts.raleway(
+                                  fontSize: 16, color: Colors.white),
+                            ),
+                            locationState.maybeWhen(
+                              initial: () {
+                                Future.delayed(Duration.zero,
+                                    () => getInitLocation(context));
+                                return CircularProgressIndicator();
+                              },
+                              loading: () => CircularProgressIndicator(),
+                              success: (cityName) =>
+                                  buildSuccessLocation(cityName, context),
+                              error: (e) => Text(
+                                e.toString(),
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              orElse: () => CircularProgressIndicator(),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

@@ -27,7 +27,7 @@ class DetailsPage extends StatelessWidget {
         body: RefreshIndicator(
           onRefresh: () async {
             return await context
-                .read(weatherStateNotifierProvider.notifier)
+                .refresh(weatherStateNotifierProvider.notifier)
                 .getWeather(cityName.toString());
           },
           child: SingleChildScrollView(
