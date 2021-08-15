@@ -40,7 +40,7 @@ Map<String, dynamic> _$_$_WeatherDataToJson(_$_WeatherData instance) =>
 _$_Main _$_$_MainFromJson(Map<String, dynamic> json) {
   return _$_Main(
     temp: (json['temp'] as num?)?.toDouble(),
-    feelsLike: (json['feelsLike'] as num?)?.toDouble(),
+    feelsLike: (json['feels_like'] as num?)?.toDouble(),
     pressure: json['pressure'] as int?,
     humidity: json['humidity'] as int?,
   );
@@ -48,7 +48,7 @@ _$_Main _$_$_MainFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_MainToJson(_$_Main instance) => <String, dynamic>{
       'temp': instance.temp,
-      'feelsLike': instance.feelsLike,
+      'feels_like': instance.feelsLike,
       'pressure': instance.pressure,
       'humidity': instance.humidity,
     };

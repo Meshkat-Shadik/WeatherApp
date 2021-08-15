@@ -6,21 +6,9 @@ import 'package:weather_app/presentation/constants.dart';
 import 'package:weather_app/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DetailsPage extends StatefulWidget {
+class DetailsPage extends StatelessWidget {
   final String? cityName;
   const DetailsPage({Key? key, this.cityName}) : super(key: key);
-
-  @override
-  _DetailsPageState createState() => _DetailsPageState();
-}
-
-class _DetailsPageState extends State<DetailsPage> {
-  @override
-  void initState() {
-    Future.delayed(Duration.zero,
-        () => submitCityName(context, widget.cityName.toString()));
-    super.initState();
-  }
 
   void submitCityName(BuildContext context, String cityName) async {
     await context
@@ -40,7 +28,7 @@ class _DetailsPageState extends State<DetailsPage> {
           onRefresh: () async {
             return await context
                 .read(weatherStateNotifierProvider.notifier)
-                .getWeather(widget.cityName.toString());
+                .getWeather(cityName.toString());
           },
           child: SingleChildScrollView(
             child: Stack(
@@ -103,13 +91,23 @@ class _DetailsPageState extends State<DetailsPage> {
                     builder: (context, watch, child) {
                       final weatherState = watch(weatherStateNotifierProvider);
                       return weatherState.maybeWhen(
+                        initial: () {
+                          Future.delayed(
+                            Duration.zero,
+                            () => submitCityName(
+                              context,
+                              cityName.toString(),
+                            ),
+                          );
+                          return Container();
+                        },
                         loading: () => Container(),
                         success: (data) => Container(
                           width: width,
                           height: height / 2.0,
                           child: BuildSuccessInformation(
-                            key: GlobalObjectKey(widget.cityName.toString()),
-                            cityName: widget.cityName ?? "Null",
+                            key: GlobalObjectKey(cityName.toString()),
+                            cityName: cityName ?? "Null",
                             temp: data.main?.temp?.toStringAsFixed(1) ?? "0",
                             condition:
                                 data.weather?.last.main.toString() ?? "Null",
@@ -168,6 +166,16 @@ class _DetailsPageState extends State<DetailsPage> {
                             final weatherState =
                                 watch(weatherStateNotifierProvider);
                             return weatherState.maybeWhen(
+                              initial: () {
+                                Future.delayed(
+                                  Duration.zero,
+                                  () => submitCityName(
+                                    context,
+                                    cityName.toString(),
+                                  ),
+                                );
+                                return Container();
+                              },
                               loading: () => Container(),
                               success: (weatherData) =>
                                   BuildSuccessDetailInformation(
@@ -196,25 +204,6 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
       ),
     );
-    // return Column(
-    //   children: [
-    //     Container(
-    //       height: height / 1.5,
-    //       width: double.infinity,
-    //       child: Image.asset(
-    //         'assets/images/night.jpg',
-    //         fit: BoxFit.fill,
-    //       ),
-    //     ),
-    //     Container(
-    //       height: height / 0.1,
-    //       child: Image.asset(
-    //         'assets/images/night.jpg',
-    //         fit: BoxFit.fill,
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }
 

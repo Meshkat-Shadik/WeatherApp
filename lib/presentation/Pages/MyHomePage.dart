@@ -2,40 +2,29 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather_app/presentation/Pages/DetailsPage.dart';
 import 'package:weather_app/presentation/constants.dart';
 import 'package:weather_app/providers.dart';
 import 'package:weather_app/routes/router.gr.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends ConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
   void getInitLocation(BuildContext context) async {
     await context.read(locationStateNotifierProvider.notifier).getMyLocation();
   }
 
-  final TextEditingController cityNameController = TextEditingController();
-
-  @override
-  void initState() {
-    Future.delayed(Duration.zero, () => getInitLocation(context));
-    super.initState();
+  void updateCityName(BuildContext context, String email) {
+    context.read(cityNameProvider).state = email;
   }
 
   @override
-  void dispose() {
-    cityNameController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    final locationState = watch(locationStateNotifierProvider);
+    final cityName = watch(cityNameProvider).state;
+
     return Stack(
       children: [
         Positioned(
@@ -77,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 const SizedBox(height: 20),
                 TextField(
-                  controller: cityNameController,
+                  onChanged: (value) => updateCityName(context, value),
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     border: outlineInputBorder,
@@ -87,8 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintStyle: hintTextStyle,
                     suffixIcon: IconButton(
                       onPressed: () {
-                        context.router.push(DetailsPageRoute(
-                            cityName: cityNameController.text));
+                        context.router
+                            .push(DetailsPageRoute(cityName: cityName));
                       },
                       icon: Icon(
                         Icons.search,
@@ -109,21 +98,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: GoogleFonts.raleway(
                             fontSize: 16, color: Colors.white),
                       ),
-                      Consumer(
-                        builder: (context, watch, child) {
-                          final locationState =
-                              watch(locationStateNotifierProvider);
-                          return locationState.maybeWhen(
-                            loading: () => CircularProgressIndicator(),
-                            success: (cityName) =>
-                                buildSuccessLocation(cityName, context),
-                            error: (e) => Text(
-                              e.toString(),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            orElse: () => CircularProgressIndicator(),
-                          );
+                      locationState.maybeWhen(
+                        initial: () {
+                          Future.delayed(
+                              Duration.zero, () => getInitLocation(context));
+                          return CircularProgressIndicator();
                         },
+                        loading: () => CircularProgressIndicator(),
+                        success: (cityName) =>
+                            buildSuccessLocation(cityName, context),
+                        error: (e) => Text(
+                          e.toString(),
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        orElse: () => CircularProgressIndicator(),
                       ),
                     ],
                   ),
