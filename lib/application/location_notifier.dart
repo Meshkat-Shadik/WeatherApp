@@ -1,24 +1,27 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weather_app/api/api_state.dart';
-import 'package:weather_app/infrastructure/location_repository.dart';
+import 'package:weather_app/application/states/api_state.dart';
+import 'package:weather_app/domain/repository/base_location_repository.dart';
 
-class LocationStateNotifer extends StateNotifier<LocationDataState> {
+class LocationStateNotifer extends StateNotifier<ApiRequestState> {
   final LocationRepository locationRepository;
   LocationStateNotifer(this.locationRepository)
-      : super(const LocationDataState.initial());
+      : super(const ApiRequestState.idle());
 
   Future<void> getMyLocation() async {
     try {
-      state = LocationDataState.initial();
+      state = ApiRequestState.loading();
       Position data = await locationRepository.getCoordinates();
       Placemark place = await locationRepository.getLocationName(
           data.latitude, data.longitude);
       String address = "${place.locality}, ${place.country}";
-      state = LocationDataState.success(address);
+      print("#####################");
+      print(address);
+      print("#####################");
+      state = ApiRequestState<String>.data(data: address);
     } catch (e) {
-      state = LocationDataState.error("$e");
+      state = ApiRequestState.failed(reason: "$e");
     }
   }
 }

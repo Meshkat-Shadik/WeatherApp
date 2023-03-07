@@ -1,10 +1,6 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-
-abstract class LocationRepository {
-  Future<Position> getCoordinates();
-  Future<Placemark> getLocationName(double longitude, double latitude);
-}
+import 'package:weather_app/domain/repository/base_location_repository.dart';
 
 class LocationRepositoryImpl implements LocationRepository {
   @override

@@ -1,33 +1,31 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/api/credentials.dart';
+import 'package:weather_app/application/states/credentials.dart';
 import 'package:weather_app/presentation/constants.dart';
 import 'package:weather_app/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DetailsPage extends StatelessWidget {
+class DetailsPage extends ConsumerWidget {
   final String? cityName;
   const DetailsPage({Key? key, this.cityName}) : super(key: key);
 
-  void submitCityName(BuildContext context, String cityName) async {
-    await context
-        .read(weatherStateNotifierProvider.notifier)
-        .getWeather(cityName);
+  void submitCityName(WidgetRef ref, String cityName) async {
+    await ref.read(weatherProvider.notifier).getWeather(cityName);
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    final weatherState = ref.watch(weatherProvider);
 
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
         body: RefreshIndicator(
           onRefresh: () async {
-            return await context
-                .refresh(weatherStateNotifierProvider.notifier)
+            return await ref
+                .refresh(weatherProvider.notifier)
                 .getWeather(cityName.toString());
           },
           child: SingleChildScrollView(
@@ -78,7 +76,7 @@ class DetailsPage extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {
                         WidgetsBinding.instance
-                            ?.addPostFrameCallback((timeStamp) {
+                            .addPostFrameCallback((timeStamp) {
                           Navigator.pop(context);
                         });
                       },
@@ -87,51 +85,46 @@ class DetailsPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  child: Consumer(
-                    builder: (context, watch, child) {
-                      final weatherState = watch(weatherStateNotifierProvider);
-                      return weatherState.maybeWhen(
-                        initial: () {
-                          Future.delayed(
-                            Duration.zero,
-                            () => submitCityName(
-                              context,
-                              cityName.toString(),
-                            ),
-                          );
-                          return Container();
-                        },
-                        loading: () => Container(),
-                        success: (data) => Container(
-                          width: width,
-                          height: height / 2.0,
-                          child: BuildSuccessInformation(
-                            key: GlobalObjectKey(cityName.toString()),
-                            cityName: cityName ?? "Null",
-                            temp: data.main?.temp?.toStringAsFixed(1) ?? "0",
-                            condition:
-                                data.weather?.last.main.toString() ?? "Null",
-                            dateTime: data.dt ?? 1,
-                            imgUrl:
-                                '$imgBaseUrl${data.weather?.last.icon}@2x.png',
-                            feelsLike:
-                                data.main?.feelsLike?.toStringAsFixed(1) ?? "",
-                            description: data.weather?.last.description ?? "0",
-                          ),
+                  child: weatherState.maybeWhen(
+                    idle: () {
+                      Future.delayed(
+                        Duration.zero,
+                        () => submitCityName(
+                          ref,
+                          cityName.toString(),
                         ),
-                        error: (e) {
-                          return Container(
-                            margin: EdgeInsets.only(top: 140),
-                            alignment: Alignment.center,
-                            child: Text(
-                              e.toString(),
-                              style: bigTitleStyle,
-                            ),
-                          );
-                        },
-                        orElse: () => CircularProgressIndicator(),
+                      );
+                      return Container();
+                    },
+                    loading: () => Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    data: (data) => Container(
+                      width: width,
+                      height: height / 2.0,
+                      child: BuildSuccessInformation(
+                        key: GlobalObjectKey(cityName.toString()),
+                        cityName: cityName ?? "Null",
+                        temp: data.main?.temp?.toStringAsFixed(1) ?? "0",
+                        condition: data.weather?.last.main.toString() ?? "Null",
+                        dateTime: data.dt ?? 1,
+                        imgUrl: '$imgBaseUrl${data.weather?.last.icon}@2x.png',
+                        feelsLike:
+                            data.main?.feelsLike?.toStringAsFixed(1) ?? "",
+                        description: data.weather?.last.description ?? "0",
+                      ),
+                    ),
+                    failed: (e) {
+                      return Container(
+                        margin: EdgeInsets.only(top: 140),
+                        alignment: Alignment.center,
+                        child: Text(
+                          e.toString(),
+                          style: bigTitleStyle,
+                        ),
                       );
                     },
+                    orElse: () => CircularProgressIndicator(),
                   ),
                 ),
                 Positioned(
@@ -161,38 +154,31 @@ class DetailsPage extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 10),
-                        Consumer(
-                          builder: (context, watch, child) {
-                            final weatherState =
-                                watch(weatherStateNotifierProvider);
-                            return weatherState.maybeWhen(
-                              initial: () {
-                                Future.delayed(
-                                  Duration.zero,
-                                  () => submitCityName(
-                                    context,
-                                    cityName.toString(),
-                                  ),
-                                );
-                                return Container();
-                              },
-                              loading: () => Container(),
-                              success: (weatherData) =>
-                                  BuildSuccessDetailInformation(
-                                gustValue: weatherData.wind?.gust.toString() ??
-                                    weatherData.wind?.speed.toString(),
-                                humidityValue:
-                                    weatherData.main?.humidity.toString(),
-                                pressureValue:
-                                    weatherData.main?.pressure.toString(),
-                                windValue: weatherData.wind?.speed.toString(),
-                                sunriseValue: weatherData.sys?.sunrise,
-                                sunsetValue: weatherData.sys?.sunset,
+                        weatherState.maybeWhen(
+                          idle: () {
+                            Future.delayed(
+                              Duration.zero,
+                              () => submitCityName(
+                                ref,
+                                cityName.toString(),
                               ),
-                              error: (e) => Text(e.toString()),
-                              orElse: () => Container(),
                             );
+                            return Container();
                           },
+                          loading: () => Container(),
+                          data: (weatherData) => BuildSuccessDetailInformation(
+                            gustValue: weatherData.wind?.gust.toString() ??
+                                weatherData.wind?.speed.toString(),
+                            humidityValue:
+                                weatherData.main?.humidity.toString(),
+                            pressureValue:
+                                weatherData.main?.pressure.toString(),
+                            windValue: weatherData.wind?.speed.toString(),
+                            sunriseValue: weatherData.sys?.sunrise,
+                            sunsetValue: weatherData.sys?.sunset,
+                          ),
+                          failed: (e) => Text(e.toString()),
+                          orElse: () => Container(),
                         ),
                       ],
                     ),
