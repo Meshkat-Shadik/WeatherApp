@@ -1,17 +1,18 @@
 //independent sources
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_app/application/location_notifier.dart';
+import 'package:weather_app/application/notifiers/location_notifier.dart';
+import 'package:weather_app/application/notifiers/weather_notifier.dart';
 import 'package:weather_app/application/states/api_state.dart';
-import 'package:weather_app/application/weather_notifier.dart';
+import 'package:weather_app/domain/networking/api_endpoint.dart';
+import 'package:weather_app/domain/networking/api_service.dart';
+import 'package:weather_app/domain/networking/dio_service.dart';
+import 'package:weather_app/domain/networking/interceptors/api_interceptor.dart';
 import 'package:weather_app/domain/repository/base_location_repository.dart';
 import 'package:weather_app/domain/repository/base_weather_repository.dart';
-import 'package:weather_app/domain/repository/networking/api_endpoint.dart';
-import 'package:weather_app/domain/repository/networking/api_service.dart';
-import 'package:weather_app/domain/repository/networking/dio_service.dart';
-import 'package:weather_app/domain/repository/networking/interceptors/api_interceptor.dart';
-import 'package:weather_app/infrastructure/location_repository.dart';
-import 'package:weather_app/infrastructure/weather_repository.dart';
+import 'package:weather_app/infrastructure/Model/weather_model/weather_data.dart';
+import 'package:weather_app/infrastructure/repository/location_repository.dart';
+import 'package:weather_app/infrastructure/repository/weather_repository.dart';
 
 final locationClientProvider =
     Provider.autoDispose<LocationRepository>((ref) => LocationRepositoryImpl());
@@ -51,8 +52,8 @@ final _weatherRepositoryProvider = Provider<WeatherRepository>((ref) {
 });
 
 //notifier providers
-final weatherProvider =
-    StateNotifierProvider.autoDispose<WeatherStateNotifer, ApiRequestState>(
+final weatherProvider = StateNotifierProvider.autoDispose<WeatherStateNotifer,
+    ApiRequestState<WeatherData>>(
   (ref) => WeatherStateNotifer(
     ref.watch(_weatherRepositoryProvider),
   ),

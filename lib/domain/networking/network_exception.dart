@@ -2,8 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/domain/repository/networking/exception_constants.dart';
-
+import 'package:weather_app/domain/networking/exception_constants.dart';
 part 'network_exception.freezed.dart';
 
 @freezed

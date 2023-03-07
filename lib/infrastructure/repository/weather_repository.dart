@@ -1,6 +1,6 @@
+import 'package:weather_app/domain/networking/api_endpoint.dart';
+import 'package:weather_app/domain/networking/api_service.dart';
 import 'package:weather_app/domain/repository/base_weather_repository.dart';
-import 'package:weather_app/domain/repository/networking/api_endpoint.dart';
-import 'package:weather_app/domain/repository/networking/api_service.dart';
 import 'package:weather_app/infrastructure/Model/weather_model/weather_data.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
