@@ -18,7 +18,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await ref.read(locationStateNotifierProvider.notifier).getMyLocation();
+      await ref.read(locationProvider.notifier).getMyLocation();
     });
   }
 
@@ -29,7 +29,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    final locationState = ref.watch(locationStateNotifierProvider);
+    final locationState = ref.watch(locationProvider);
 
     return Stack(
       children: [
@@ -58,12 +58,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           body: RefreshIndicator(
             onRefresh: () async {
               return await ref
-                  .refresh(locationStateNotifierProvider.notifier)
+                  .refresh(locationProvider.notifier)
                   .getMyLocation();
             },
             child: ListView(
               physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
               children: [
                 Padding(
                   padding: const EdgeInsets.all(18.0),
@@ -155,7 +156,7 @@ Widget buildSuccessLocation(String cityName, BuildContext context) {
           style: TextStyle(color: Colors.white54),
         ),
         onPressed: () {
-          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             context.router.push(DetailsPageRoute(cityName: cityName));
           });
         },

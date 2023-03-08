@@ -4,7 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/application/states/api_state.dart';
 import 'package:weather_app/domain/repository/base_location_repository.dart';
 
-class LocationStateNotifer extends StateNotifier<ApiRequestState> {
+class LocationStateNotifer extends StateNotifier<ApiRequestState<String>> {
   final LocationRepository locationRepository;
   LocationStateNotifer(this.locationRepository)
       : super(const ApiRequestState.idle());

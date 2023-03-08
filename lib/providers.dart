@@ -14,16 +14,6 @@ import 'package:weather_app/infrastructure/Model/weather_model/weather_data.dart
 import 'package:weather_app/infrastructure/repository/location_repository.dart';
 import 'package:weather_app/infrastructure/repository/weather_repository.dart';
 
-final locationClientProvider =
-    Provider.autoDispose<LocationRepository>((ref) => LocationRepositoryImpl());
-
-final locationStateNotifierProvider =
-    StateNotifierProvider.autoDispose<LocationStateNotifer, ApiRequestState>(
-        (ref) => LocationStateNotifer(ref.watch(locationClientProvider)));
-
-//backup use for textEditingController
-final cityNameProvider = StateProvider.autoDispose<String>((ref) => '');
-
 //dio providers
 final _dioProvider = Provider<Dio>((ref) {
   final baseOptions = BaseOptions(
@@ -50,6 +40,8 @@ final _weatherRepositoryProvider = Provider<WeatherRepository>((ref) {
   final apiService = ref.watch(_apiServiceProvider);
   return WeatherRepositoryImpl(apiService: apiService);
 });
+final _locationRepositoryProvider =
+    Provider.autoDispose<LocationRepository>((ref) => LocationRepositoryImpl());
 
 //notifier providers
 final weatherProvider = StateNotifierProvider.autoDispose<WeatherStateNotifer,
@@ -58,3 +50,7 @@ final weatherProvider = StateNotifierProvider.autoDispose<WeatherStateNotifer,
     ref.watch(_weatherRepositoryProvider),
   ),
 );
+
+final locationProvider = StateNotifierProvider.autoDispose<LocationStateNotifer,
+        ApiRequestState<String>>(
+    (ref) => LocationStateNotifer(ref.watch(_locationRepositoryProvider)));
