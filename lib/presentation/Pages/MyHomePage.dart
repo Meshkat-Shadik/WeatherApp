@@ -1,42 +1,28 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather_app/presentation/constants.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:weather_app/domain/helper/extensions.dart';
+import 'package:weather_app/presentation/styles.dart';
+import 'package:weather_app/presentation/widgets/success_location_widget.dart';
 import 'package:weather_app/providers.dart';
 import 'package:weather_app/presentation/routes/router.gr.dart';
 
-class MyHomePage extends ConsumerStatefulWidget {
+class MyHomePage extends HookConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends ConsumerState<MyHomePage> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await ref.read(locationProvider.notifier).getMyLocation();
-    });
-  }
-
-  final cityTextController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
+  Widget build(BuildContext context, WidgetRef ref) {
     final locationState = ref.watch(locationProvider);
+    final cityNameController = useTextEditingController();
 
     return Stack(
       children: [
         Positioned(
           child: Container(
             width: double.infinity,
-            height: height / 2,
+            height: context.height / 2,
             child: Image.asset(
               'assets/images/day.jpg',
               fit: BoxFit.cover,
@@ -47,8 +33,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           bottom: 0,
           right: 0,
           child: Container(
-            height: height / 2,
-            width: width,
+            height: context.height / 2,
+            width: context.width,
             color: dayShadowColor,
           ),
         ),
@@ -71,7 +57,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: height * 0.10),
+                      SizedBox(height: context.height * 0.10),
                       Text(
                         "Hello there!",
                         style: GoogleFonts.raleway(
@@ -85,21 +71,19 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                       ),
                       const SizedBox(height: 20),
                       TextField(
-                        controller: cityTextController,
+                        controller: cityNameController,
                         style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          border: outlineInputBorder,
-                          enabledBorder: outlineInputBorder,
-                          focusedBorder: outlineInputBorder,
-                          hintText: "Enter the city name",
-                          hintStyle: hintTextStyle,
+                        decoration: inputDecoration.copyWith(
                           suffixIcon: IconButton(
                             onPressed: () {
-                              context.router.push(
-                                DetailsPageRoute(
-                                  cityName: cityTextController.text.trim(),
-                                ),
-                              );
+                              if (cityNameController.text.isEmpty) return;
+                              ref.watch(cityNameProvider.notifier).state =
+                                  cityNameController.text;
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                context.router.push(
+                                  DetailsPageRoute(),
+                                );
+                              });
                             },
                             icon: Icon(
                               Icons.search,
@@ -108,7 +92,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: height * 0.2),
+                      SizedBox(height: context.height * 0.2),
                       Container(
                         width: double.infinity,
                         child: Column(
@@ -122,8 +106,9 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                             ),
                             locationState.maybeWhen(
                               loading: () => CircularProgressIndicator(),
-                              data: (cityName) =>
-                                  buildSuccessLocation(cityName, context),
+                              data: (cityName) {
+                                return BuildSucessLocation(cityName: cityName);
+                              },
                               failed: (e) => Text(
                                 e.toString(),
                                 style: TextStyle(color: Colors.white),
@@ -143,26 +128,4 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
       ],
     );
   }
-}
-
-Widget buildSuccessLocation(String cityName, BuildContext context) {
-  return Column(
-    children: [
-      Text(cityName, style: bigTitleStyle.copyWith(fontSize: 25)),
-      const SizedBox(height: 20),
-      ElevatedButton(
-        child: Text(
-          'Tap to see more!',
-          style: TextStyle(color: Colors.white54),
-        ),
-        onPressed: () {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.router.push(DetailsPageRoute(cityName: cityName));
-          });
-        },
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white10, padding: EdgeInsets.all(15)),
-      ),
-    ],
-  );
 }

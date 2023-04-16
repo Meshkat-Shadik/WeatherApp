@@ -17,52 +17,88 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NetworkException {
   String get name => throw _privateConstructorUsedError;
+  String get uriPath => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +119,9 @@ mixin _$NetworkException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +136,8 @@ mixin _$NetworkException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +152,8 @@ mixin _$NetworkException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +169,7 @@ abstract class $NetworkExceptionCopyWith<$Res> {
           NetworkException value, $Res Function(NetworkException) then) =
       _$NetworkExceptionCopyWithImpl<$Res, NetworkException>;
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -143,12 +186,17 @@ class _$NetworkExceptionCopyWithImpl<$Res, $Val extends NetworkException>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -166,7 +214,7 @@ abstract class _$$_FormatExceptionCopyWith<$Res>
       __$$_FormatExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -181,12 +229,17 @@ class __$$_FormatExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_FormatException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -199,16 +252,19 @@ class __$$_FormatExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FormatException implements _FormatException {
-  const _$_FormatException({required this.name, required this.message});
+  const _$_FormatException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.FormatException(name: $name, message: $message)';
+    return 'NetworkException.FormatException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -217,11 +273,12 @@ class _$_FormatException implements _FormatException {
         (other.runtimeType == runtimeType &&
             other is _$_FormatException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -232,59 +289,94 @@ class _$_FormatException implements _FormatException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return FormatException(name, message);
+    return FormatException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return FormatException?.call(name, message);
+    return FormatException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (FormatException != null) {
-      return FormatException(name, message);
+      return FormatException(name, uriPath, message);
     }
     return orElse();
   }
@@ -307,6 +399,9 @@ class _$_FormatException implements _FormatException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return FormatException(this);
   }
@@ -324,6 +419,8 @@ class _$_FormatException implements _FormatException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return FormatException?.call(this);
   }
@@ -341,6 +438,8 @@ class _$_FormatException implements _FormatException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (FormatException != null) {
@@ -353,10 +452,13 @@ class _$_FormatException implements _FormatException {
 abstract class _FormatException implements NetworkException {
   const factory _FormatException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_FormatException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -373,7 +475,7 @@ abstract class _$$_FetchDataExceptionCopyWith<$Res>
       __$$_FetchDataExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -388,12 +490,17 @@ class __$$_FetchDataExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_FetchDataException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -406,16 +513,19 @@ class __$$_FetchDataExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FetchDataException implements _FetchDataException {
-  const _$_FetchDataException({required this.name, required this.message});
+  const _$_FetchDataException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.FetchDataException(name: $name, message: $message)';
+    return 'NetworkException.FetchDataException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -424,11 +534,12 @@ class _$_FetchDataException implements _FetchDataException {
         (other.runtimeType == runtimeType &&
             other is _$_FetchDataException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -440,59 +551,94 @@ class _$_FetchDataException implements _FetchDataException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return FetchDataException(name, message);
+    return FetchDataException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return FetchDataException?.call(name, message);
+    return FetchDataException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (FetchDataException != null) {
-      return FetchDataException(name, message);
+      return FetchDataException(name, uriPath, message);
     }
     return orElse();
   }
@@ -515,6 +661,9 @@ class _$_FetchDataException implements _FetchDataException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return FetchDataException(this);
   }
@@ -532,6 +681,8 @@ class _$_FetchDataException implements _FetchDataException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return FetchDataException?.call(this);
   }
@@ -549,6 +700,8 @@ class _$_FetchDataException implements _FetchDataException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (FetchDataException != null) {
@@ -561,10 +714,13 @@ class _$_FetchDataException implements _FetchDataException {
 abstract class _FetchDataException implements NetworkException {
   const factory _FetchDataException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_FetchDataException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -581,7 +737,7 @@ abstract class _$$_ApiExceptionCopyWith<$Res>
       __$$_ApiExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -596,12 +752,17 @@ class __$$_ApiExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_ApiException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -614,16 +775,19 @@ class __$$_ApiExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ApiException implements _ApiException {
-  const _$_ApiException({required this.name, required this.message});
+  const _$_ApiException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.ApiException(name: $name, message: $message)';
+    return 'NetworkException.ApiException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -632,11 +796,12 @@ class _$_ApiException implements _ApiException {
         (other.runtimeType == runtimeType &&
             other is _$_ApiException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -647,59 +812,94 @@ class _$_ApiException implements _ApiException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return ApiException(name, message);
+    return ApiException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return ApiException?.call(name, message);
+    return ApiException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (ApiException != null) {
-      return ApiException(name, message);
+      return ApiException(name, uriPath, message);
     }
     return orElse();
   }
@@ -722,6 +922,9 @@ class _$_ApiException implements _ApiException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return ApiException(this);
   }
@@ -739,6 +942,8 @@ class _$_ApiException implements _ApiException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return ApiException?.call(this);
   }
@@ -756,6 +961,8 @@ class _$_ApiException implements _ApiException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (ApiException != null) {
@@ -768,10 +975,13 @@ class _$_ApiException implements _ApiException {
 abstract class _ApiException implements NetworkException {
   const factory _ApiException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_ApiException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -788,7 +998,7 @@ abstract class _$$_TokenExpiredExceptionCopyWith<$Res>
       __$$_TokenExpiredExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -803,12 +1013,17 @@ class __$$_TokenExpiredExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_TokenExpiredException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -821,16 +1036,19 @@ class __$$_TokenExpiredExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TokenExpiredException implements _TokenExpiredException {
-  const _$_TokenExpiredException({required this.name, required this.message});
+  const _$_TokenExpiredException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.TokenExpiredException(name: $name, message: $message)';
+    return 'NetworkException.TokenExpiredException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -839,11 +1057,12 @@ class _$_TokenExpiredException implements _TokenExpiredException {
         (other.runtimeType == runtimeType &&
             other is _$_TokenExpiredException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -855,59 +1074,94 @@ class _$_TokenExpiredException implements _TokenExpiredException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return TokenExpiredException(name, message);
+    return TokenExpiredException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return TokenExpiredException?.call(name, message);
+    return TokenExpiredException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (TokenExpiredException != null) {
-      return TokenExpiredException(name, message);
+      return TokenExpiredException(name, uriPath, message);
     }
     return orElse();
   }
@@ -930,6 +1184,9 @@ class _$_TokenExpiredException implements _TokenExpiredException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return TokenExpiredException(this);
   }
@@ -947,6 +1204,8 @@ class _$_TokenExpiredException implements _TokenExpiredException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return TokenExpiredException?.call(this);
   }
@@ -964,6 +1223,8 @@ class _$_TokenExpiredException implements _TokenExpiredException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (TokenExpiredException != null) {
@@ -976,10 +1237,13 @@ class _$_TokenExpiredException implements _TokenExpiredException {
 abstract class _TokenExpiredException implements NetworkException {
   const factory _TokenExpiredException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_TokenExpiredException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -996,7 +1260,7 @@ abstract class _$$_UnrecognizedExceptionCopyWith<$Res>
       __$$_UnrecognizedExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -1011,12 +1275,17 @@ class __$$_UnrecognizedExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_UnrecognizedException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -1029,16 +1298,19 @@ class __$$_UnrecognizedExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UnrecognizedException implements _UnrecognizedException {
-  const _$_UnrecognizedException({required this.name, required this.message});
+  const _$_UnrecognizedException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.UnrecognizedException(name: $name, message: $message)';
+    return 'NetworkException.UnrecognizedException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -1047,11 +1319,12 @@ class _$_UnrecognizedException implements _UnrecognizedException {
         (other.runtimeType == runtimeType &&
             other is _$_UnrecognizedException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1063,59 +1336,94 @@ class _$_UnrecognizedException implements _UnrecognizedException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return UnrecognizedException(name, message);
+    return UnrecognizedException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return UnrecognizedException?.call(name, message);
+    return UnrecognizedException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (UnrecognizedException != null) {
-      return UnrecognizedException(name, message);
+      return UnrecognizedException(name, uriPath, message);
     }
     return orElse();
   }
@@ -1138,6 +1446,9 @@ class _$_UnrecognizedException implements _UnrecognizedException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return UnrecognizedException(this);
   }
@@ -1155,6 +1466,8 @@ class _$_UnrecognizedException implements _UnrecognizedException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return UnrecognizedException?.call(this);
   }
@@ -1172,6 +1485,8 @@ class _$_UnrecognizedException implements _UnrecognizedException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (UnrecognizedException != null) {
@@ -1184,10 +1499,13 @@ class _$_UnrecognizedException implements _UnrecognizedException {
 abstract class _UnrecognizedException implements NetworkException {
   const factory _UnrecognizedException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_UnrecognizedException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -1204,7 +1522,7 @@ abstract class _$$_CancelExceptionCopyWith<$Res>
       __$$_CancelExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -1219,12 +1537,17 @@ class __$$_CancelExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_CancelException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -1237,16 +1560,19 @@ class __$$_CancelExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CancelException implements _CancelException {
-  const _$_CancelException({required this.name, required this.message});
+  const _$_CancelException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.CancelException(name: $name, message: $message)';
+    return 'NetworkException.CancelException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -1255,11 +1581,12 @@ class _$_CancelException implements _CancelException {
         (other.runtimeType == runtimeType &&
             other is _$_CancelException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1270,59 +1597,94 @@ class _$_CancelException implements _CancelException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return CancelException(name, message);
+    return CancelException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return CancelException?.call(name, message);
+    return CancelException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (CancelException != null) {
-      return CancelException(name, message);
+      return CancelException(name, uriPath, message);
     }
     return orElse();
   }
@@ -1345,6 +1707,9 @@ class _$_CancelException implements _CancelException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return CancelException(this);
   }
@@ -1362,6 +1727,8 @@ class _$_CancelException implements _CancelException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return CancelException?.call(this);
   }
@@ -1379,6 +1746,8 @@ class _$_CancelException implements _CancelException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (CancelException != null) {
@@ -1391,10 +1760,13 @@ class _$_CancelException implements _CancelException {
 abstract class _CancelException implements NetworkException {
   const factory _CancelException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_CancelException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -1411,7 +1783,7 @@ abstract class _$$_ConnectTimeoutExceptionCopyWith<$Res>
       __$$_ConnectTimeoutExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -1426,12 +1798,17 @@ class __$$_ConnectTimeoutExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_ConnectTimeoutException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -1444,16 +1821,19 @@ class __$$_ConnectTimeoutExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ConnectTimeoutException implements _ConnectTimeoutException {
-  const _$_ConnectTimeoutException({required this.name, required this.message});
+  const _$_ConnectTimeoutException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.ConnectTimeoutException(name: $name, message: $message)';
+    return 'NetworkException.ConnectTimeoutException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -1462,11 +1842,12 @@ class _$_ConnectTimeoutException implements _ConnectTimeoutException {
         (other.runtimeType == runtimeType &&
             other is _$_ConnectTimeoutException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1479,59 +1860,94 @@ class _$_ConnectTimeoutException implements _ConnectTimeoutException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return ConnectTimeoutException(name, message);
+    return ConnectTimeoutException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return ConnectTimeoutException?.call(name, message);
+    return ConnectTimeoutException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (ConnectTimeoutException != null) {
-      return ConnectTimeoutException(name, message);
+      return ConnectTimeoutException(name, uriPath, message);
     }
     return orElse();
   }
@@ -1554,6 +1970,9 @@ class _$_ConnectTimeoutException implements _ConnectTimeoutException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return ConnectTimeoutException(this);
   }
@@ -1571,6 +1990,8 @@ class _$_ConnectTimeoutException implements _ConnectTimeoutException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return ConnectTimeoutException?.call(this);
   }
@@ -1588,6 +2009,8 @@ class _$_ConnectTimeoutException implements _ConnectTimeoutException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (ConnectTimeoutException != null) {
@@ -1600,10 +2023,13 @@ class _$_ConnectTimeoutException implements _ConnectTimeoutException {
 abstract class _ConnectTimeoutException implements NetworkException {
   const factory _ConnectTimeoutException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_ConnectTimeoutException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -1620,7 +2046,7 @@ abstract class _$$_ReceiveTimeoutExceptionCopyWith<$Res>
       __$$_ReceiveTimeoutExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -1635,12 +2061,17 @@ class __$$_ReceiveTimeoutExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_ReceiveTimeoutException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -1653,16 +2084,19 @@ class __$$_ReceiveTimeoutExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ReceiveTimeoutException implements _ReceiveTimeoutException {
-  const _$_ReceiveTimeoutException({required this.name, required this.message});
+  const _$_ReceiveTimeoutException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.ReceiveTimeoutException(name: $name, message: $message)';
+    return 'NetworkException.ReceiveTimeoutException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -1671,11 +2105,12 @@ class _$_ReceiveTimeoutException implements _ReceiveTimeoutException {
         (other.runtimeType == runtimeType &&
             other is _$_ReceiveTimeoutException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1688,59 +2123,94 @@ class _$_ReceiveTimeoutException implements _ReceiveTimeoutException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return ReceiveTimeoutException(name, message);
+    return ReceiveTimeoutException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return ReceiveTimeoutException?.call(name, message);
+    return ReceiveTimeoutException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (ReceiveTimeoutException != null) {
-      return ReceiveTimeoutException(name, message);
+      return ReceiveTimeoutException(name, uriPath, message);
     }
     return orElse();
   }
@@ -1763,6 +2233,9 @@ class _$_ReceiveTimeoutException implements _ReceiveTimeoutException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return ReceiveTimeoutException(this);
   }
@@ -1780,6 +2253,8 @@ class _$_ReceiveTimeoutException implements _ReceiveTimeoutException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return ReceiveTimeoutException?.call(this);
   }
@@ -1797,6 +2272,8 @@ class _$_ReceiveTimeoutException implements _ReceiveTimeoutException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (ReceiveTimeoutException != null) {
@@ -1809,10 +2286,13 @@ class _$_ReceiveTimeoutException implements _ReceiveTimeoutException {
 abstract class _ReceiveTimeoutException implements NetworkException {
   const factory _ReceiveTimeoutException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_ReceiveTimeoutException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -1829,7 +2309,7 @@ abstract class _$$_SendTimeoutExceptionCopyWith<$Res>
       __$$_SendTimeoutExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -1844,12 +2324,17 @@ class __$$_SendTimeoutExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_SendTimeoutException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -1862,16 +2347,19 @@ class __$$_SendTimeoutExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SendTimeoutException implements _SendTimeoutException {
-  const _$_SendTimeoutException({required this.name, required this.message});
+  const _$_SendTimeoutException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.SendTimeoutException(name: $name, message: $message)';
+    return 'NetworkException.SendTimeoutException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -1880,11 +2368,12 @@ class _$_SendTimeoutException implements _SendTimeoutException {
         (other.runtimeType == runtimeType &&
             other is _$_SendTimeoutException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -1896,59 +2385,94 @@ class _$_SendTimeoutException implements _SendTimeoutException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return SendTimeoutException(name, message);
+    return SendTimeoutException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return SendTimeoutException?.call(name, message);
+    return SendTimeoutException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (SendTimeoutException != null) {
-      return SendTimeoutException(name, message);
+      return SendTimeoutException(name, uriPath, message);
     }
     return orElse();
   }
@@ -1971,6 +2495,9 @@ class _$_SendTimeoutException implements _SendTimeoutException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return SendTimeoutException(this);
   }
@@ -1988,6 +2515,8 @@ class _$_SendTimeoutException implements _SendTimeoutException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return SendTimeoutException?.call(this);
   }
@@ -2005,6 +2534,8 @@ class _$_SendTimeoutException implements _SendTimeoutException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (SendTimeoutException != null) {
@@ -2017,10 +2548,13 @@ class _$_SendTimeoutException implements _SendTimeoutException {
 abstract class _SendTimeoutException implements NetworkException {
   const factory _SendTimeoutException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_SendTimeoutException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
@@ -2037,7 +2571,7 @@ abstract class _$$_BadCertificateExceptionCopyWith<$Res>
       __$$_BadCertificateExceptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String message});
+  $Res call({String name, String uriPath, String message});
 }
 
 /// @nodoc
@@ -2052,12 +2586,17 @@ class __$$_BadCertificateExceptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? uriPath = null,
     Object? message = null,
   }) {
     return _then(_$_BadCertificateException(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
@@ -2070,16 +2609,19 @@ class __$$_BadCertificateExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_BadCertificateException implements _BadCertificateException {
-  const _$_BadCertificateException({required this.name, required this.message});
+  const _$_BadCertificateException(
+      {required this.name, required this.uriPath, required this.message});
 
   @override
   final String name;
+  @override
+  final String uriPath;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'NetworkException.badCertificateException(name: $name, message: $message)';
+    return 'NetworkException.badCertificateException(name: $name, uriPath: $uriPath, message: $message)';
   }
 
   @override
@@ -2088,11 +2630,12 @@ class _$_BadCertificateException implements _BadCertificateException {
         (other.runtimeType == runtimeType &&
             other is _$_BadCertificateException &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message);
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
 
   @JsonKey(ignore: true)
   @override
@@ -2105,59 +2648,94 @@ class _$_BadCertificateException implements _BadCertificateException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, String message) FormatException,
-    required TResult Function(String name, String message) FetchDataException,
-    required TResult Function(String name, String message) ApiException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
         TokenExpiredException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         UnrecognizedException,
-    required TResult Function(String name, String message) CancelException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
         ConnectTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
         ReceiveTimeoutException,
-    required TResult Function(String name, String message) SendTimeoutException,
-    required TResult Function(String name, String message)
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
         badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
   }) {
-    return badCertificateException(name, message);
+    return badCertificateException(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, String message)? FormatException,
-    TResult? Function(String name, String message)? FetchDataException,
-    TResult? Function(String name, String message)? ApiException,
-    TResult? Function(String name, String message)? TokenExpiredException,
-    TResult? Function(String name, String message)? UnrecognizedException,
-    TResult? Function(String name, String message)? CancelException,
-    TResult? Function(String name, String message)? ConnectTimeoutException,
-    TResult? Function(String name, String message)? ReceiveTimeoutException,
-    TResult? Function(String name, String message)? SendTimeoutException,
-    TResult? Function(String name, String message)? badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
   }) {
-    return badCertificateException?.call(name, message);
+    return badCertificateException?.call(name, uriPath, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String message)? FormatException,
-    TResult Function(String name, String message)? FetchDataException,
-    TResult Function(String name, String message)? ApiException,
-    TResult Function(String name, String message)? TokenExpiredException,
-    TResult Function(String name, String message)? UnrecognizedException,
-    TResult Function(String name, String message)? CancelException,
-    TResult Function(String name, String message)? ConnectTimeoutException,
-    TResult Function(String name, String message)? ReceiveTimeoutException,
-    TResult Function(String name, String message)? SendTimeoutException,
-    TResult Function(String name, String message)? badCertificateException,
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
     required TResult orElse(),
   }) {
     if (badCertificateException != null) {
-      return badCertificateException(name, message);
+      return badCertificateException(name, uriPath, message);
     }
     return orElse();
   }
@@ -2180,6 +2758,9 @@ class _$_BadCertificateException implements _BadCertificateException {
     required TResult Function(_SendTimeoutException value) SendTimeoutException,
     required TResult Function(_BadCertificateException value)
         badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
   }) {
     return badCertificateException(this);
   }
@@ -2197,6 +2778,8 @@ class _$_BadCertificateException implements _BadCertificateException {
     TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult? Function(_SendTimeoutException value)? SendTimeoutException,
     TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
   }) {
     return badCertificateException?.call(this);
   }
@@ -2214,6 +2797,8 @@ class _$_BadCertificateException implements _BadCertificateException {
     TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
     TResult Function(_SendTimeoutException value)? SendTimeoutException,
     TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
     required TResult orElse(),
   }) {
     if (badCertificateException != null) {
@@ -2226,14 +2811,540 @@ class _$_BadCertificateException implements _BadCertificateException {
 abstract class _BadCertificateException implements NetworkException {
   const factory _BadCertificateException(
       {required final String name,
+      required final String uriPath,
       required final String message}) = _$_BadCertificateException;
 
   @override
   String get name;
+  @override
+  String get uriPath;
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
   _$$_BadCertificateExceptionCopyWith<_$_BadCertificateException>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UnAuthorizedCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$_UnAuthorizedCopyWith(
+          _$_UnAuthorized value, $Res Function(_$_UnAuthorized) then) =
+      __$$_UnAuthorizedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, String uriPath, String message});
+}
+
+/// @nodoc
+class __$$_UnAuthorizedCopyWithImpl<$Res>
+    extends _$NetworkExceptionCopyWithImpl<$Res, _$_UnAuthorized>
+    implements _$$_UnAuthorizedCopyWith<$Res> {
+  __$$_UnAuthorizedCopyWithImpl(
+      _$_UnAuthorized _value, $Res Function(_$_UnAuthorized) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? uriPath = null,
+    Object? message = null,
+  }) {
+    return _then(_$_UnAuthorized(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UnAuthorized implements _UnAuthorized {
+  const _$_UnAuthorized(
+      {required this.name, required this.uriPath, required this.message});
+
+  @override
+  final String name;
+  @override
+  final String uriPath;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'NetworkException.unAuthorized(name: $name, uriPath: $uriPath, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UnAuthorized &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UnAuthorizedCopyWith<_$_UnAuthorized> get copyWith =>
+      __$$_UnAuthorizedCopyWithImpl<_$_UnAuthorized>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
+        TokenExpiredException,
+    required TResult Function(String name, String uriPath, String message)
+        UnrecognizedException,
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
+        ConnectTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
+        ReceiveTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
+        badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
+  }) {
+    return unAuthorized(name, uriPath, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
+  }) {
+    return unAuthorized?.call(name, uriPath, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
+    required TResult orElse(),
+  }) {
+    if (unAuthorized != null) {
+      return unAuthorized(name, uriPath, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FormatException value) FormatException,
+    required TResult Function(_FetchDataException value) FetchDataException,
+    required TResult Function(_ApiException value) ApiException,
+    required TResult Function(_TokenExpiredException value)
+        TokenExpiredException,
+    required TResult Function(_UnrecognizedException value)
+        UnrecognizedException,
+    required TResult Function(_CancelException value) CancelException,
+    required TResult Function(_ConnectTimeoutException value)
+        ConnectTimeoutException,
+    required TResult Function(_ReceiveTimeoutException value)
+        ReceiveTimeoutException,
+    required TResult Function(_SendTimeoutException value) SendTimeoutException,
+    required TResult Function(_BadCertificateException value)
+        badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
+  }) {
+    return unAuthorized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FormatException value)? FormatException,
+    TResult? Function(_FetchDataException value)? FetchDataException,
+    TResult? Function(_ApiException value)? ApiException,
+    TResult? Function(_TokenExpiredException value)? TokenExpiredException,
+    TResult? Function(_UnrecognizedException value)? UnrecognizedException,
+    TResult? Function(_CancelException value)? CancelException,
+    TResult? Function(_ConnectTimeoutException value)? ConnectTimeoutException,
+    TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
+    TResult? Function(_SendTimeoutException value)? SendTimeoutException,
+    TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
+  }) {
+    return unAuthorized?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FormatException value)? FormatException,
+    TResult Function(_FetchDataException value)? FetchDataException,
+    TResult Function(_ApiException value)? ApiException,
+    TResult Function(_TokenExpiredException value)? TokenExpiredException,
+    TResult Function(_UnrecognizedException value)? UnrecognizedException,
+    TResult Function(_CancelException value)? CancelException,
+    TResult Function(_ConnectTimeoutException value)? ConnectTimeoutException,
+    TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
+    TResult Function(_SendTimeoutException value)? SendTimeoutException,
+    TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
+    required TResult orElse(),
+  }) {
+    if (unAuthorized != null) {
+      return unAuthorized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnAuthorized implements NetworkException {
+  const factory _UnAuthorized(
+      {required final String name,
+      required final String uriPath,
+      required final String message}) = _$_UnAuthorized;
+
+  @override
+  String get name;
+  @override
+  String get uriPath;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UnAuthorizedCopyWith<_$_UnAuthorized> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_NotFoundRouteExceptionCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$_NotFoundRouteExceptionCopyWith(_$_NotFoundRouteException value,
+          $Res Function(_$_NotFoundRouteException) then) =
+      __$$_NotFoundRouteExceptionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, String uriPath, String message});
+}
+
+/// @nodoc
+class __$$_NotFoundRouteExceptionCopyWithImpl<$Res>
+    extends _$NetworkExceptionCopyWithImpl<$Res, _$_NotFoundRouteException>
+    implements _$$_NotFoundRouteExceptionCopyWith<$Res> {
+  __$$_NotFoundRouteExceptionCopyWithImpl(_$_NotFoundRouteException _value,
+      $Res Function(_$_NotFoundRouteException) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? uriPath = null,
+    Object? message = null,
+  }) {
+    return _then(_$_NotFoundRouteException(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uriPath: null == uriPath
+          ? _value.uriPath
+          : uriPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_NotFoundRouteException implements _NotFoundRouteException {
+  const _$_NotFoundRouteException(
+      {required this.name, required this.uriPath, required this.message});
+
+  @override
+  final String name;
+  @override
+  final String uriPath;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'NetworkException.notFoundRouteException(name: $name, uriPath: $uriPath, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_NotFoundRouteException &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, uriPath, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_NotFoundRouteExceptionCopyWith<_$_NotFoundRouteException> get copyWith =>
+      __$$_NotFoundRouteExceptionCopyWithImpl<_$_NotFoundRouteException>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String uriPath, String message)
+        FormatException,
+    required TResult Function(String name, String uriPath, String message)
+        FetchDataException,
+    required TResult Function(String name, String uriPath, String message)
+        ApiException,
+    required TResult Function(String name, String uriPath, String message)
+        TokenExpiredException,
+    required TResult Function(String name, String uriPath, String message)
+        UnrecognizedException,
+    required TResult Function(String name, String uriPath, String message)
+        CancelException,
+    required TResult Function(String name, String uriPath, String message)
+        ConnectTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
+        ReceiveTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
+        SendTimeoutException,
+    required TResult Function(String name, String uriPath, String message)
+        badCertificateException,
+    required TResult Function(String name, String uriPath, String message)
+        unAuthorized,
+    required TResult Function(String name, String uriPath, String message)
+        notFoundRouteException,
+  }) {
+    return notFoundRouteException(name, uriPath, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult? Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult? Function(String name, String uriPath, String message)?
+        ApiException,
+    TResult? Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult? Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult? Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult? Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult? Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult? Function(String name, String uriPath, String message)?
+        unAuthorized,
+    TResult? Function(String name, String uriPath, String message)?
+        notFoundRouteException,
+  }) {
+    return notFoundRouteException?.call(name, uriPath, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String uriPath, String message)?
+        FormatException,
+    TResult Function(String name, String uriPath, String message)?
+        FetchDataException,
+    TResult Function(String name, String uriPath, String message)? ApiException,
+    TResult Function(String name, String uriPath, String message)?
+        TokenExpiredException,
+    TResult Function(String name, String uriPath, String message)?
+        UnrecognizedException,
+    TResult Function(String name, String uriPath, String message)?
+        CancelException,
+    TResult Function(String name, String uriPath, String message)?
+        ConnectTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        ReceiveTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        SendTimeoutException,
+    TResult Function(String name, String uriPath, String message)?
+        badCertificateException,
+    TResult Function(String name, String uriPath, String message)? unAuthorized,
+    TResult Function(String name, String uriPath, String message)?
+        notFoundRouteException,
+    required TResult orElse(),
+  }) {
+    if (notFoundRouteException != null) {
+      return notFoundRouteException(name, uriPath, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FormatException value) FormatException,
+    required TResult Function(_FetchDataException value) FetchDataException,
+    required TResult Function(_ApiException value) ApiException,
+    required TResult Function(_TokenExpiredException value)
+        TokenExpiredException,
+    required TResult Function(_UnrecognizedException value)
+        UnrecognizedException,
+    required TResult Function(_CancelException value) CancelException,
+    required TResult Function(_ConnectTimeoutException value)
+        ConnectTimeoutException,
+    required TResult Function(_ReceiveTimeoutException value)
+        ReceiveTimeoutException,
+    required TResult Function(_SendTimeoutException value) SendTimeoutException,
+    required TResult Function(_BadCertificateException value)
+        badCertificateException,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_NotFoundRouteException value)
+        notFoundRouteException,
+  }) {
+    return notFoundRouteException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FormatException value)? FormatException,
+    TResult? Function(_FetchDataException value)? FetchDataException,
+    TResult? Function(_ApiException value)? ApiException,
+    TResult? Function(_TokenExpiredException value)? TokenExpiredException,
+    TResult? Function(_UnrecognizedException value)? UnrecognizedException,
+    TResult? Function(_CancelException value)? CancelException,
+    TResult? Function(_ConnectTimeoutException value)? ConnectTimeoutException,
+    TResult? Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
+    TResult? Function(_SendTimeoutException value)? SendTimeoutException,
+    TResult? Function(_BadCertificateException value)? badCertificateException,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_NotFoundRouteException value)? notFoundRouteException,
+  }) {
+    return notFoundRouteException?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FormatException value)? FormatException,
+    TResult Function(_FetchDataException value)? FetchDataException,
+    TResult Function(_ApiException value)? ApiException,
+    TResult Function(_TokenExpiredException value)? TokenExpiredException,
+    TResult Function(_UnrecognizedException value)? UnrecognizedException,
+    TResult Function(_CancelException value)? CancelException,
+    TResult Function(_ConnectTimeoutException value)? ConnectTimeoutException,
+    TResult Function(_ReceiveTimeoutException value)? ReceiveTimeoutException,
+    TResult Function(_SendTimeoutException value)? SendTimeoutException,
+    TResult Function(_BadCertificateException value)? badCertificateException,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_NotFoundRouteException value)? notFoundRouteException,
+    required TResult orElse(),
+  }) {
+    if (notFoundRouteException != null) {
+      return notFoundRouteException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotFoundRouteException implements NetworkException {
+  const factory _NotFoundRouteException(
+      {required final String name,
+      required final String uriPath,
+      required final String message}) = _$_NotFoundRouteException;
+
+  @override
+  String get name;
+  @override
+  String get uriPath;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_NotFoundRouteExceptionCopyWith<_$_NotFoundRouteException> get copyWith =>
+      throw _privateConstructorUsedError;
 }

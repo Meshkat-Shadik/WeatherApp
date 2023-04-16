@@ -48,9 +48,6 @@ class ApiService implements ApiInterface {
       }),
       cancelToken: cancelToken,
     );
-    print('******* GET SINGLE DATA *****+36***');
-    print(data.toString());
-    print('####### GET SINGLE DATA ########');
     return converter(data);
   }
 

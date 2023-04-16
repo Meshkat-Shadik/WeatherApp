@@ -8,6 +8,7 @@ import 'package:weather_app/domain/networking/api_endpoint.dart';
 import 'package:weather_app/domain/networking/api_service.dart';
 import 'package:weather_app/domain/networking/dio_service.dart';
 import 'package:weather_app/domain/networking/interceptors/api_interceptor.dart';
+import 'package:weather_app/domain/networking/interceptors/logging_interceptor.dart';
 import 'package:weather_app/domain/repository/base_location_repository.dart';
 import 'package:weather_app/domain/repository/base_weather_repository.dart';
 import 'package:weather_app/infrastructure/Model/weather_model/weather_data.dart';
@@ -26,7 +27,10 @@ final _dioServiceProvider = Provider<DioService>((ref) {
   final dio = ref.watch(_dioProvider);
   return DioService(
     dioClient: dio,
-    interceptors: [ApiInterceptor()],
+    interceptors: [
+      ApiInterceptor(),
+      LoggingInterceptor(),
+    ],
   );
 });
 
@@ -41,16 +45,25 @@ final _weatherRepositoryProvider = Provider<WeatherRepository>((ref) {
   return WeatherRepositoryImpl(apiService: apiService);
 });
 final _locationRepositoryProvider =
-    Provider.autoDispose<LocationRepository>((ref) => LocationRepositoryImpl());
+    Provider<LocationRepository>((ref) => LocationRepositoryImpl());
 
 //notifier providers
-final weatherProvider = StateNotifierProvider.autoDispose<WeatherStateNotifer,
-    ApiRequestState<WeatherData>>(
-  (ref) => WeatherStateNotifer(
+final weatherProvider = StateNotifierProvider.autoDispose
+    .family<WeatherStateNotifer, ApiRequestState<WeatherData, String>, String>(
+  (ref, cityName) => WeatherStateNotifer(
     ref.watch(_weatherRepositoryProvider),
+    cityName,
   ),
 );
 
 final locationProvider = StateNotifierProvider.autoDispose<LocationStateNotifer,
-        ApiRequestState<String>>(
+        ApiRequestState<String, String>>(
     (ref) => LocationStateNotifer(ref.watch(_locationRepositoryProvider)));
+
+final cityNameProvider = StateProvider.autoDispose<String>((ref) {
+  final locationState = ref.watch(locationProvider);
+  return locationState.maybeWhen(
+    data: (cityName) => cityName,
+    orElse: () => '',
+  );
+});

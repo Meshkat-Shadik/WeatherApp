@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/domain/entity/success_information.dart';
-import 'package:weather_app/presentation/constants.dart';
+import 'package:weather_app/presentation/styles.dart';
 
 class BuildSuccessInformation extends StatelessWidget {
   const BuildSuccessInformation({

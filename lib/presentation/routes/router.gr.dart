@@ -30,14 +30,9 @@ class AppRouter extends _i3.RootStackRouter {
       );
     },
     DetailsPageRoute.name: (routeData) {
-      final args = routeData.argsAs<DetailsPageRouteArgs>(
-          orElse: () => const DetailsPageRouteArgs());
       return _i3.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i2.DetailsPage(
-          key: args.key,
-          cityName: args.cityName,
-        ),
+        child: const _i2.DetailsPage(),
       );
     },
   };
@@ -69,34 +64,12 @@ class MyHomePageRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.DetailsPage]
-class DetailsPageRoute extends _i3.PageRouteInfo<DetailsPageRouteArgs> {
-  DetailsPageRoute({
-    _i4.Key? key,
-    String? cityName,
-  }) : super(
+class DetailsPageRoute extends _i3.PageRouteInfo<void> {
+  const DetailsPageRoute()
+      : super(
           DetailsPageRoute.name,
           path: '/details-page',
-          args: DetailsPageRouteArgs(
-            key: key,
-            cityName: cityName,
-          ),
         );
 
   static const String name = 'DetailsPageRoute';
-}
-
-class DetailsPageRouteArgs {
-  const DetailsPageRouteArgs({
-    this.key,
-    this.cityName,
-  });
-
-  final _i4.Key? key;
-
-  final String? cityName;
-
-  @override
-  String toString() {
-    return 'DetailsPageRouteArgs{key: $key, cityName: $cityName}';
-  }
 }

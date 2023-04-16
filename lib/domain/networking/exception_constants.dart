@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/foundation.dart';
 
 @immutable
@@ -25,4 +27,8 @@ class ExceptionConstants {
   static const String BadCertificateException = 'badCertificateException';
 
   static const String ApiException = 'ApiException';
+
+  static const String UnAuthorizedException = 'UnAuthorized';
+
+  static const String notFoundRouteException = 'notFoundRouteException';
 }

@@ -4,10 +4,13 @@ import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/application/states/api_state.dart';
 import 'package:weather_app/domain/repository/base_location_repository.dart';
 
-class LocationStateNotifer extends StateNotifier<ApiRequestState<String>> {
+class LocationStateNotifer
+    extends StateNotifier<ApiRequestState<String, String>> {
   final LocationRepository locationRepository;
   LocationStateNotifer(this.locationRepository)
-      : super(const ApiRequestState.idle());
+      : super(const ApiRequestState.idle()) {
+    getMyLocation();
+  }
 
   Future<void> getMyLocation() async {
     try {
@@ -16,10 +19,7 @@ class LocationStateNotifer extends StateNotifier<ApiRequestState<String>> {
       Placemark place = await locationRepository.getLocationName(
           data.latitude, data.longitude);
       String address = "${place.locality}, ${place.country}";
-      print("#####################");
-      print(address);
-      print("#####################");
-      state = ApiRequestState<String>.data(data: address);
+      state = ApiRequestState<String, String>.data(data: address);
     } catch (e) {
       state = ApiRequestState.failed(reason: "$e");
     }

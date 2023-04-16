@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_app/domain/entity/success_detail_information.dart';
 import 'package:weather_app/domain/entity/success_information.dart';
+import 'package:weather_app/domain/helper/extensions.dart';
 import 'package:weather_app/infrastructure/Model/weather_model/weather_data.dart';
-import 'package:weather_app/presentation/constants.dart';
+import 'package:weather_app/presentation/styles.dart';
 import 'package:weather_app/presentation/widgets/success_detail_information_widget.dart';
 import 'package:weather_app/presentation/widgets/success_information_widget.dart';
 import 'package:weather_app/providers.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DetailsPage extends ConsumerWidget {
-  final String? cityName;
-  const DetailsPage({Key? key, this.cityName}) : super(key: key);
-
-  void submitCityName(WidgetRef ref, String cityName) async {
-    await ref.read(weatherProvider.notifier).getWeather(cityName);
-  }
+  const DetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    final weatherState = ref.watch(weatherProvider);
+    final cityName = ref.watch(cityNameProvider);
+    final weatherState = ref.watch(weatherProvider(cityName));
+    final isSuccessful = weatherState.maybeWhen(
+      data: (data) => true,
+      orElse: () => false,
+    );
 
     return SafeArea(
       child: Scaffold(
@@ -28,39 +27,19 @@ class DetailsPage extends ConsumerWidget {
         body: RefreshIndicator(
           onRefresh: () async {
             return await ref
-                .refresh(weatherProvider.notifier)
-                .getWeather(cityName.toString());
+                .refresh(weatherProvider(cityName).notifier)
+                .getWeather(cityName);
           },
           child: SingleChildScrollView(
             child: Stack(
               children: [
                 Container(
-                  height: height / 2,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(
-                        'assets/images/ClearNight.png',
-                      ),
-                    ),
-                  ),
+                  height: context.height / 2,
+                  decoration: detailsBgDecoration,
                 ),
                 Container(
-                  height: height,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      gradient: LinearGradient(
-                          begin: FractionalOffset.topCenter,
-                          end: FractionalOffset.bottomCenter,
-                          colors: [
-                            Colors.black54.withOpacity(0.0),
-                            Colors.black45,
-                          ],
-                          stops: [
-                            0.0,
-                            0.5
-                          ])),
+                  height: context.height,
+                  decoration: detailsBgDecorationWithGradient,
                 ),
                 Positioned(
                   top: 10,
@@ -69,13 +48,7 @@ class DetailsPage extends ConsumerWidget {
                     height: 40,
                     width: 40,
                     padding: EdgeInsets.only(left: 4),
-                    decoration: BoxDecoration(
-                      color: Color(0xffe0e0e0),
-                      boxShadow: backBtnBoxShadow,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
+                    decoration: backButtonDecoration,
                     child: IconButton(
                       onPressed: () {
                         WidgetsBinding.instance
@@ -89,22 +62,12 @@ class DetailsPage extends ConsumerWidget {
                 ),
                 Positioned(
                   child: weatherState.maybeWhen(
-                    idle: () {
-                      Future.delayed(
-                        Duration.zero,
-                        () => submitCityName(
-                          ref,
-                          cityName.toString(),
-                        ),
-                      );
-                      return Container();
-                    },
                     loading: () => Center(
                       child: CircularProgressIndicator(),
                     ),
                     data: (data) => Container(
-                      width: width,
-                      height: height / 2.0,
+                      width: context.width,
+                      height: context.height / 2.0,
                       child: BuildSuccessInformation(
                         key: GlobalObjectKey(cityName.toString()),
                         data: SuccessInformation.fromWeatherData(data),
@@ -124,57 +87,50 @@ class DetailsPage extends ConsumerWidget {
                   ),
                 ),
                 Positioned(
-                  top: height / 2,
+                  top: context.height / 2,
                   child: Container(
-                    height: height / 2,
-                    width: width,
+                    height: context.height / 2,
+                    width: context.width,
                     padding: const EdgeInsets.only(left: 45, top: 20),
                     decoration: BoxDecoration(
                       color: Color(0xff14141C),
                     ),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CircleAvatar(
-                              radius: 10,
-                              backgroundColor: Colors.white,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Weather Details",
-                              style: bigTitleStyle.copyWith(fontSize: 16),
-                            )
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        weatherState.maybeWhen(
-                          idle: () {
-                            Future.delayed(
-                              Duration.zero,
-                              () => submitCityName(
-                                ref,
-                                cityName.toString(),
+                    child: isSuccessful
+                        ? Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 10,
+                                    backgroundColor: Colors.white,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    "Weather Details",
+                                    style: bigTitleStyle.copyWith(fontSize: 16),
+                                  )
+                                ],
                               ),
-                            );
-                            return Container();
-                          },
-                          loading: () => Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                          data: (WeatherData weatherData) =>
-                              BuildSuccessDetailInformation(
-                            data: SuccessDetailInformation.fromWeatherData(
-                              weatherData,
-                            ),
-                          ),
-                          failed: (e) => Text(e.toString()),
-                          orElse: () => Container(),
-                        ),
-                      ],
-                    ),
+                              SizedBox(height: 10),
+                              weatherState.maybeWhen(
+                                loading: () => Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                data: (WeatherData weatherData) =>
+                                    BuildSuccessDetailInformation(
+                                  data:
+                                      SuccessDetailInformation.fromWeatherData(
+                                    weatherData,
+                                  ),
+                                ),
+                                failed: (e) => Text(e.toString()),
+                                orElse: () => Container(),
+                              ),
+                            ],
+                          )
+                        : const SizedBox(),
                   ),
                 ),
               ],
