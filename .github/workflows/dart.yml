@@ -26,6 +26,7 @@ jobs:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
       - run: flutter --version
       - run: flutter pub get
+      - run: flutter build apk
       - run: flutter build appbundle
       - run: flutter build apk --debug --split-per-abi
       - name: Push to Releases
