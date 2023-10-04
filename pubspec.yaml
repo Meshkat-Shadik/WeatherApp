@@ -29,7 +29,7 @@ dependencies:
   flutter_hooks: ^0.20.0
   fpdart: ^1.1.0
   freezed_annotation: ^2.4.1
-  geocoding: ^2.0.5
+  geocoding: ^2.1.0
   geolocator: ^9.0.2
   google_fonts: ^4.0.3
   hooks_riverpod: ^2.3.10
