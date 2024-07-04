@@ -69,40 +69,6 @@ mixin _$ApiRequestState<T, E> {
 }
 
 /// @nodoc
-abstract class $ApiRequestStateCopyWith<T, E, $Res> {
-  factory $ApiRequestStateCopyWith(ApiRequestState<T, E> value,
-          $Res Function(ApiRequestState<T, E>) then) =
-      _$ApiRequestStateCopyWithImpl<T, E, $Res, ApiRequestState<T, E>>;
-}
-
-/// @nodoc
-class _$ApiRequestStateCopyWithImpl<T, E, $Res,
-        $Val extends ApiRequestState<T, E>>
-    implements $ApiRequestStateCopyWith<T, E, $Res> {
-  _$ApiRequestStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$IDLECopyWith<T, E, $Res> {
-  factory _$$IDLECopyWith(
-          _$IDLE<T, E> value, $Res Function(_$IDLE<T, E>) then) =
-      __$$IDLECopyWithImpl<T, E, $Res>;
-}
-
-/// @nodoc
-class __$$IDLECopyWithImpl<T, E, $Res>
-    extends _$ApiRequestStateCopyWithImpl<T, E, $Res, _$IDLE<T, E>>
-    implements _$$IDLECopyWith<T, E, $Res> {
-  __$$IDLECopyWithImpl(_$IDLE<T, E> _value, $Res Function(_$IDLE<T, E>) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
 
 class _$IDLE<T, E> implements IDLE<T, E> {
   const _$IDLE();
@@ -198,22 +164,6 @@ class _$IDLE<T, E> implements IDLE<T, E> {
 
 abstract class IDLE<T, E> implements ApiRequestState<T, E> {
   const factory IDLE() = _$IDLE<T, E>;
-}
-
-/// @nodoc
-abstract class _$$LOADINGCopyWith<T, E, $Res> {
-  factory _$$LOADINGCopyWith(
-          _$LOADING<T, E> value, $Res Function(_$LOADING<T, E>) then) =
-      __$$LOADINGCopyWithImpl<T, E, $Res>;
-}
-
-/// @nodoc
-class __$$LOADINGCopyWithImpl<T, E, $Res>
-    extends _$ApiRequestStateCopyWithImpl<T, E, $Res, _$LOADING<T, E>>
-    implements _$$LOADINGCopyWith<T, E, $Res> {
-  __$$LOADINGCopyWithImpl(
-      _$LOADING<T, E> _value, $Res Function(_$LOADING<T, E>) _then)
-      : super(_value, _then);
 }
 
 /// @nodoc
@@ -315,36 +265,6 @@ abstract class LOADING<T, E> implements ApiRequestState<T, E> {
 }
 
 /// @nodoc
-abstract class _$$DATACopyWith<T, E, $Res> {
-  factory _$$DATACopyWith(
-          _$DATA<T, E> value, $Res Function(_$DATA<T, E>) then) =
-      __$$DATACopyWithImpl<T, E, $Res>;
-  @useResult
-  $Res call({T data});
-}
-
-/// @nodoc
-class __$$DATACopyWithImpl<T, E, $Res>
-    extends _$ApiRequestStateCopyWithImpl<T, E, $Res, _$DATA<T, E>>
-    implements _$$DATACopyWith<T, E, $Res> {
-  __$$DATACopyWithImpl(_$DATA<T, E> _value, $Res Function(_$DATA<T, E>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_$DATA<T, E>(
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
-}
-
-/// @nodoc
 
 class _$DATA<T, E> implements DATA<T, E> {
   const _$DATA({required this.data});
@@ -368,12 +288,6 @@ class _$DATA<T, E> implements DATA<T, E> {
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DATACopyWith<T, E, _$DATA<T, E>> get copyWith =>
-      __$$DATACopyWithImpl<T, E, _$DATA<T, E>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -454,40 +368,6 @@ abstract class DATA<T, E> implements ApiRequestState<T, E> {
   const factory DATA({required final T data}) = _$DATA<T, E>;
 
   T get data;
-  @JsonKey(ignore: true)
-  _$$DATACopyWith<T, E, _$DATA<T, E>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$FAILEDCopyWith<T, E, $Res> {
-  factory _$$FAILEDCopyWith(
-          _$FAILED<T, E> value, $Res Function(_$FAILED<T, E>) then) =
-      __$$FAILEDCopyWithImpl<T, E, $Res>;
-  @useResult
-  $Res call({E reason});
-}
-
-/// @nodoc
-class __$$FAILEDCopyWithImpl<T, E, $Res>
-    extends _$ApiRequestStateCopyWithImpl<T, E, $Res, _$FAILED<T, E>>
-    implements _$$FAILEDCopyWith<T, E, $Res> {
-  __$$FAILEDCopyWithImpl(
-      _$FAILED<T, E> _value, $Res Function(_$FAILED<T, E>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? reason = freezed,
-  }) {
-    return _then(_$FAILED<T, E>(
-      reason: freezed == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as E,
-    ));
-  }
 }
 
 /// @nodoc
@@ -514,12 +394,6 @@ class _$FAILED<T, E> implements FAILED<T, E> {
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(reason));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FAILEDCopyWith<T, E, _$FAILED<T, E>> get copyWith =>
-      __$$FAILEDCopyWithImpl<T, E, _$FAILED<T, E>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -600,7 +474,4 @@ abstract class FAILED<T, E> implements ApiRequestState<T, E> {
   const factory FAILED({required final E reason}) = _$FAILED<T, E>;
 
   E get reason;
-  @JsonKey(ignore: true)
-  _$$FAILEDCopyWith<T, E, _$FAILED<T, E>> get copyWith =>
-      throw _privateConstructorUsedError;
 }

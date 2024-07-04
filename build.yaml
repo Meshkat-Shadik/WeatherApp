@@ -1,0 +1,11 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          explicit_to_json: true
+          field_rename: snake
+      freezed:
+        options:
+          copy_with: false
+#This file is used to generate the toJson() inner classes as normal serializable class can't be able to generate the toJson() inner classes in a proper way.

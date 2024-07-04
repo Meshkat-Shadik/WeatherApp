@@ -22,30 +22,30 @@ _$_WeatherDTO _$$_WeatherDTOFromJson(Map<String, dynamic> json) =>
           ? null
           : Sys.fromJson(json['sys'] as Map<String, dynamic>),
       name: json['name'] as String?,
-      cod: json['cod'] as int?,
+      cod: json['cod'] as String?,
     );
 
 Map<String, dynamic> _$$_WeatherDTOToJson(_$_WeatherDTO instance) =>
     <String, dynamic>{
-      'weather': instance.weather,
-      'main': instance.main,
-      'wind': instance.wind,
+      'weather': instance.weather?.map((e) => e.toJson()).toList(),
+      'main': instance.main?.toJson(),
+      'wind': instance.wind?.toJson(),
       'dt': instance.dt,
-      'sys': instance.sys,
+      'sys': instance.sys?.toJson(),
       'name': instance.name,
       'cod': instance.cod,
     };
 
 _$_Main _$$_MainFromJson(Map<String, dynamic> json) => _$_Main(
       temp: (json['temp'] as num?)?.toDouble(),
-      feelsLike: (json['feelsLike'] as num?)?.toDouble(),
+      feelsLike: (json['feels_like'] as num?)?.toDouble(),
       pressure: json['pressure'] as int?,
       humidity: json['humidity'] as int?,
     );
 
 Map<String, dynamic> _$$_MainToJson(_$_Main instance) => <String, dynamic>{
       'temp': instance.temp,
-      'feelsLike': instance.feelsLike,
+      'feels_like': instance.feelsLike,
       'pressure': instance.pressure,
       'humidity': instance.humidity,
     };

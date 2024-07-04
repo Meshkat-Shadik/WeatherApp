@@ -17,7 +17,7 @@ sealed class WeatherFullEntity implements _$WeatherFullEntity {
     @required int? dt,
     @required SysInsideEntity? sys,
     @required String? name,
-    @required int? cod,
+    @required String? cod,
   }) = _WeatherFullEntity;
 
   const WeatherFullEntity._();

@@ -35,8 +35,8 @@ sealed class WeatherDetailEntity implements _$WeatherDetailEntity {
       humidityValue: weatherData.main?.humidity.toString(),
       gustValue: weatherData.wind?.gust.toString(),
       pressureValue: weatherData.main?.pressure.toString(),
-      sunriseValue: (weatherData.sys?.sunrise! ?? 0).toFormattedTime,
-      sunsetValue: (weatherData.sys?.sunset! ?? 0).toFormattedTime,
+      sunriseValue: weatherData.sys?.sunrise?.toFormattedTime,
+      sunsetValue: weatherData.sys?.sunset?.toFormattedTime,
     );
   }
 }

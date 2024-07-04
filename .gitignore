@@ -1,6 +1,5 @@
 lib/application/states/credentials.dart
 
-
 # Miscellaneous
 *.class
 *.log
@@ -34,10 +33,6 @@ lib/application/states/credentials.dart
 .pub/
 /build/
 
-
-
-
-
 # Web related
 lib/generated_plugin_registrant.dart
 
@@ -51,3 +46,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# FVM Version Cache
+.fvm/

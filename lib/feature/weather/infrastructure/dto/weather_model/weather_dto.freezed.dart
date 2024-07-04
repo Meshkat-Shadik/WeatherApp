@@ -26,199 +26,9 @@ mixin _$WeatherDTO {
   int? get dt => throw _privateConstructorUsedError;
   Sys? get sys => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  int? get cod => throw _privateConstructorUsedError;
+  String? get cod => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $WeatherDTOCopyWith<WeatherDTO> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WeatherDTOCopyWith<$Res> {
-  factory $WeatherDTOCopyWith(
-          WeatherDTO value, $Res Function(WeatherDTO) then) =
-      _$WeatherDTOCopyWithImpl<$Res, WeatherDTO>;
-  @useResult
-  $Res call(
-      {List<Weather>? weather,
-      Main? main,
-      Wind? wind,
-      int? dt,
-      Sys? sys,
-      String? name,
-      int? cod});
-
-  $MainCopyWith<$Res>? get main;
-  $WindCopyWith<$Res>? get wind;
-  $SysCopyWith<$Res>? get sys;
-}
-
-/// @nodoc
-class _$WeatherDTOCopyWithImpl<$Res, $Val extends WeatherDTO>
-    implements $WeatherDTOCopyWith<$Res> {
-  _$WeatherDTOCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? weather = freezed,
-    Object? main = freezed,
-    Object? wind = freezed,
-    Object? dt = freezed,
-    Object? sys = freezed,
-    Object? name = freezed,
-    Object? cod = freezed,
-  }) {
-    return _then(_value.copyWith(
-      weather: freezed == weather
-          ? _value.weather
-          : weather // ignore: cast_nullable_to_non_nullable
-              as List<Weather>?,
-      main: freezed == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as Main?,
-      wind: freezed == wind
-          ? _value.wind
-          : wind // ignore: cast_nullable_to_non_nullable
-              as Wind?,
-      dt: freezed == dt
-          ? _value.dt
-          : dt // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sys: freezed == sys
-          ? _value.sys
-          : sys // ignore: cast_nullable_to_non_nullable
-              as Sys?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cod: freezed == cod
-          ? _value.cod
-          : cod // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MainCopyWith<$Res>? get main {
-    if (_value.main == null) {
-      return null;
-    }
-
-    return $MainCopyWith<$Res>(_value.main!, (value) {
-      return _then(_value.copyWith(main: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $WindCopyWith<$Res>? get wind {
-    if (_value.wind == null) {
-      return null;
-    }
-
-    return $WindCopyWith<$Res>(_value.wind!, (value) {
-      return _then(_value.copyWith(wind: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SysCopyWith<$Res>? get sys {
-    if (_value.sys == null) {
-      return null;
-    }
-
-    return $SysCopyWith<$Res>(_value.sys!, (value) {
-      return _then(_value.copyWith(sys: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_WeatherDTOCopyWith<$Res>
-    implements $WeatherDTOCopyWith<$Res> {
-  factory _$$_WeatherDTOCopyWith(
-          _$_WeatherDTO value, $Res Function(_$_WeatherDTO) then) =
-      __$$_WeatherDTOCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<Weather>? weather,
-      Main? main,
-      Wind? wind,
-      int? dt,
-      Sys? sys,
-      String? name,
-      int? cod});
-
-  @override
-  $MainCopyWith<$Res>? get main;
-  @override
-  $WindCopyWith<$Res>? get wind;
-  @override
-  $SysCopyWith<$Res>? get sys;
-}
-
-/// @nodoc
-class __$$_WeatherDTOCopyWithImpl<$Res>
-    extends _$WeatherDTOCopyWithImpl<$Res, _$_WeatherDTO>
-    implements _$$_WeatherDTOCopyWith<$Res> {
-  __$$_WeatherDTOCopyWithImpl(
-      _$_WeatherDTO _value, $Res Function(_$_WeatherDTO) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? weather = freezed,
-    Object? main = freezed,
-    Object? wind = freezed,
-    Object? dt = freezed,
-    Object? sys = freezed,
-    Object? name = freezed,
-    Object? cod = freezed,
-  }) {
-    return _then(_$_WeatherDTO(
-      weather: freezed == weather
-          ? _value._weather
-          : weather // ignore: cast_nullable_to_non_nullable
-              as List<Weather>?,
-      main: freezed == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as Main?,
-      wind: freezed == wind
-          ? _value.wind
-          : wind // ignore: cast_nullable_to_non_nullable
-              as Wind?,
-      dt: freezed == dt
-          ? _value.dt
-          : dt // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sys: freezed == sys
-          ? _value.sys
-          : sys // ignore: cast_nullable_to_non_nullable
-              as Sys?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cod: freezed == cod
-          ? _value.cod
-          : cod // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
 }
 
 /// @nodoc
@@ -258,7 +68,7 @@ class _$_WeatherDTO implements _WeatherDTO {
   @override
   final String? name;
   @override
-  final int? cod;
+  final String? cod;
 
   @override
   String toString() {
@@ -291,12 +101,6 @@ class _$_WeatherDTO implements _WeatherDTO {
       name,
       cod);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_WeatherDTOCopyWith<_$_WeatherDTO> get copyWith =>
-      __$$_WeatherDTOCopyWithImpl<_$_WeatherDTO>(this, _$identity);
-
   @override
   Map<String, dynamic> toJson() {
     return _$$_WeatherDTOToJson(
@@ -313,7 +117,7 @@ abstract class _WeatherDTO implements WeatherDTO {
       final int? dt,
       final Sys? sys,
       final String? name,
-      final int? cod}) = _$_WeatherDTO;
+      final String? cod}) = _$_WeatherDTO;
 
   factory _WeatherDTO.fromJson(Map<String, dynamic> json) =
       _$_WeatherDTO.fromJson;
@@ -331,11 +135,7 @@ abstract class _WeatherDTO implements WeatherDTO {
   @override
   String? get name;
   @override
-  int? get cod;
-  @override
-  @JsonKey(ignore: true)
-  _$$_WeatherDTOCopyWith<_$_WeatherDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  String? get cod;
 }
 
 Main _$MainFromJson(Map<String, dynamic> json) {
@@ -350,99 +150,6 @@ mixin _$Main {
   int? get humidity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MainCopyWith<Main> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MainCopyWith<$Res> {
-  factory $MainCopyWith(Main value, $Res Function(Main) then) =
-      _$MainCopyWithImpl<$Res, Main>;
-  @useResult
-  $Res call({double? temp, double? feelsLike, int? pressure, int? humidity});
-}
-
-/// @nodoc
-class _$MainCopyWithImpl<$Res, $Val extends Main>
-    implements $MainCopyWith<$Res> {
-  _$MainCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? temp = freezed,
-    Object? feelsLike = freezed,
-    Object? pressure = freezed,
-    Object? humidity = freezed,
-  }) {
-    return _then(_value.copyWith(
-      temp: freezed == temp
-          ? _value.temp
-          : temp // ignore: cast_nullable_to_non_nullable
-              as double?,
-      feelsLike: freezed == feelsLike
-          ? _value.feelsLike
-          : feelsLike // ignore: cast_nullable_to_non_nullable
-              as double?,
-      pressure: freezed == pressure
-          ? _value.pressure
-          : pressure // ignore: cast_nullable_to_non_nullable
-              as int?,
-      humidity: freezed == humidity
-          ? _value.humidity
-          : humidity // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_MainCopyWith<$Res> implements $MainCopyWith<$Res> {
-  factory _$$_MainCopyWith(_$_Main value, $Res Function(_$_Main) then) =
-      __$$_MainCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double? temp, double? feelsLike, int? pressure, int? humidity});
-}
-
-/// @nodoc
-class __$$_MainCopyWithImpl<$Res> extends _$MainCopyWithImpl<$Res, _$_Main>
-    implements _$$_MainCopyWith<$Res> {
-  __$$_MainCopyWithImpl(_$_Main _value, $Res Function(_$_Main) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? temp = freezed,
-    Object? feelsLike = freezed,
-    Object? pressure = freezed,
-    Object? humidity = freezed,
-  }) {
-    return _then(_$_Main(
-      temp: freezed == temp
-          ? _value.temp
-          : temp // ignore: cast_nullable_to_non_nullable
-              as double?,
-      feelsLike: freezed == feelsLike
-          ? _value.feelsLike
-          : feelsLike // ignore: cast_nullable_to_non_nullable
-              as double?,
-      pressure: freezed == pressure
-          ? _value.pressure
-          : pressure // ignore: cast_nullable_to_non_nullable
-              as int?,
-      humidity: freezed == humidity
-          ? _value.humidity
-          : humidity // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
 }
 
 /// @nodoc
@@ -485,12 +192,6 @@ class _$_Main implements _Main {
   int get hashCode =>
       Object.hash(runtimeType, temp, feelsLike, pressure, humidity);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_MainCopyWith<_$_Main> get copyWith =>
-      __$$_MainCopyWithImpl<_$_Main>(this, _$identity);
-
   @override
   Map<String, dynamic> toJson() {
     return _$$_MainToJson(
@@ -516,9 +217,6 @@ abstract class _Main implements Main {
   int? get pressure;
   @override
   int? get humidity;
-  @override
-  @JsonKey(ignore: true)
-  _$$_MainCopyWith<_$_Main> get copyWith => throw _privateConstructorUsedError;
 }
 
 Sys _$SysFromJson(Map<String, dynamic> json) {
@@ -531,78 +229,6 @@ mixin _$Sys {
   int? get sunset => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SysCopyWith<Sys> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SysCopyWith<$Res> {
-  factory $SysCopyWith(Sys value, $Res Function(Sys) then) =
-      _$SysCopyWithImpl<$Res, Sys>;
-  @useResult
-  $Res call({int? sunrise, int? sunset});
-}
-
-/// @nodoc
-class _$SysCopyWithImpl<$Res, $Val extends Sys> implements $SysCopyWith<$Res> {
-  _$SysCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sunrise = freezed,
-    Object? sunset = freezed,
-  }) {
-    return _then(_value.copyWith(
-      sunrise: freezed == sunrise
-          ? _value.sunrise
-          : sunrise // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sunset: freezed == sunset
-          ? _value.sunset
-          : sunset // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_SysCopyWith<$Res> implements $SysCopyWith<$Res> {
-  factory _$$_SysCopyWith(_$_Sys value, $Res Function(_$_Sys) then) =
-      __$$_SysCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? sunrise, int? sunset});
-}
-
-/// @nodoc
-class __$$_SysCopyWithImpl<$Res> extends _$SysCopyWithImpl<$Res, _$_Sys>
-    implements _$$_SysCopyWith<$Res> {
-  __$$_SysCopyWithImpl(_$_Sys _value, $Res Function(_$_Sys) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sunrise = freezed,
-    Object? sunset = freezed,
-  }) {
-    return _then(_$_Sys(
-      sunrise: freezed == sunrise
-          ? _value.sunrise
-          : sunrise // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sunset: freezed == sunset
-          ? _value.sunset
-          : sunset // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
 }
 
 /// @nodoc
@@ -635,12 +261,6 @@ class _$_Sys implements _Sys {
   @override
   int get hashCode => Object.hash(runtimeType, sunrise, sunset);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SysCopyWith<_$_Sys> get copyWith =>
-      __$$_SysCopyWithImpl<_$_Sys>(this, _$identity);
-
   @override
   Map<String, dynamic> toJson() {
     return _$$_SysToJson(
@@ -658,9 +278,6 @@ abstract class _Sys implements Sys {
   int? get sunrise;
   @override
   int? get sunset;
-  @override
-  @JsonKey(ignore: true)
-  _$$_SysCopyWith<_$_Sys> get copyWith => throw _privateConstructorUsedError;
 }
 
 Weather _$WeatherFromJson(Map<String, dynamic> json) {
@@ -674,91 +291,6 @@ mixin _$Weather {
   String? get icon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $WeatherCopyWith<Weather> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WeatherCopyWith<$Res> {
-  factory $WeatherCopyWith(Weather value, $Res Function(Weather) then) =
-      _$WeatherCopyWithImpl<$Res, Weather>;
-  @useResult
-  $Res call({String? main, String? description, String? icon});
-}
-
-/// @nodoc
-class _$WeatherCopyWithImpl<$Res, $Val extends Weather>
-    implements $WeatherCopyWith<$Res> {
-  _$WeatherCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? main = freezed,
-    Object? description = freezed,
-    Object? icon = freezed,
-  }) {
-    return _then(_value.copyWith(
-      main: freezed == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      icon: freezed == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
-  factory _$$_WeatherCopyWith(
-          _$_Weather value, $Res Function(_$_Weather) then) =
-      __$$_WeatherCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? main, String? description, String? icon});
-}
-
-/// @nodoc
-class __$$_WeatherCopyWithImpl<$Res>
-    extends _$WeatherCopyWithImpl<$Res, _$_Weather>
-    implements _$$_WeatherCopyWith<$Res> {
-  __$$_WeatherCopyWithImpl(_$_Weather _value, $Res Function(_$_Weather) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? main = freezed,
-    Object? description = freezed,
-    Object? icon = freezed,
-  }) {
-    return _then(_$_Weather(
-      main: freezed == main
-          ? _value.main
-          : main // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      icon: freezed == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
@@ -796,12 +328,6 @@ class _$_Weather implements _Weather {
   @override
   int get hashCode => Object.hash(runtimeType, main, description, icon);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_WeatherCopyWith<_$_Weather> get copyWith =>
-      __$$_WeatherCopyWithImpl<_$_Weather>(this, _$identity);
-
   @override
   Map<String, dynamic> toJson() {
     return _$$_WeatherToJson(
@@ -824,10 +350,6 @@ abstract class _Weather implements Weather {
   String? get description;
   @override
   String? get icon;
-  @override
-  @JsonKey(ignore: true)
-  _$$_WeatherCopyWith<_$_Weather> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 Wind _$WindFromJson(Map<String, dynamic> json) {
@@ -840,79 +362,6 @@ mixin _$Wind {
   double? get gust => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $WindCopyWith<Wind> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WindCopyWith<$Res> {
-  factory $WindCopyWith(Wind value, $Res Function(Wind) then) =
-      _$WindCopyWithImpl<$Res, Wind>;
-  @useResult
-  $Res call({double? speed, double? gust});
-}
-
-/// @nodoc
-class _$WindCopyWithImpl<$Res, $Val extends Wind>
-    implements $WindCopyWith<$Res> {
-  _$WindCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? speed = freezed,
-    Object? gust = freezed,
-  }) {
-    return _then(_value.copyWith(
-      speed: freezed == speed
-          ? _value.speed
-          : speed // ignore: cast_nullable_to_non_nullable
-              as double?,
-      gust: freezed == gust
-          ? _value.gust
-          : gust // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_WindCopyWith<$Res> implements $WindCopyWith<$Res> {
-  factory _$$_WindCopyWith(_$_Wind value, $Res Function(_$_Wind) then) =
-      __$$_WindCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double? speed, double? gust});
-}
-
-/// @nodoc
-class __$$_WindCopyWithImpl<$Res> extends _$WindCopyWithImpl<$Res, _$_Wind>
-    implements _$$_WindCopyWith<$Res> {
-  __$$_WindCopyWithImpl(_$_Wind _value, $Res Function(_$_Wind) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? speed = freezed,
-    Object? gust = freezed,
-  }) {
-    return _then(_$_Wind(
-      speed: freezed == speed
-          ? _value.speed
-          : speed // ignore: cast_nullable_to_non_nullable
-              as double?,
-      gust: freezed == gust
-          ? _value.gust
-          : gust // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ));
-  }
 }
 
 /// @nodoc
@@ -945,12 +394,6 @@ class _$_Wind implements _Wind {
   @override
   int get hashCode => Object.hash(runtimeType, speed, gust);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_WindCopyWith<_$_Wind> get copyWith =>
-      __$$_WindCopyWithImpl<_$_Wind>(this, _$identity);
-
   @override
   Map<String, dynamic> toJson() {
     return _$$_WindToJson(
@@ -968,7 +411,4 @@ abstract class _Wind implements Wind {
   double? get speed;
   @override
   double? get gust;
-  @override
-  @JsonKey(ignore: true)
-  _$$_WindCopyWith<_$_Wind> get copyWith => throw _privateConstructorUsedError;
 }

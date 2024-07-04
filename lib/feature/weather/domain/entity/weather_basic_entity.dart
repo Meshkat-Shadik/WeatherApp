@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/configs/configurations.dart';
 import 'package:weather_app/feature/weather/domain/entity/weather_full_entity.dart';
 import 'package:weather_app/feature/weather/infrastructure/dto/weather_model/weather_dto.dart';
 import 'package:weather_app/helper/extensions.dart';
+import 'package:weather_app/networking/url_config.dart';
 
 part 'weather_basic_entity.freezed.dart';
 
@@ -40,7 +40,7 @@ sealed class WeatherBasicEntity implements _$WeatherBasicEntity {
       cityName: weatherData.name,
       temp: weatherData.main?.temp?.toStringAsFixed(1),
       condition: weatherData.weather?.first.main,
-      dateTime: weatherData.dt!.toFormattedTime,
+      dateTime: weatherData.dt?.toFormattedTime,
       imgUrl: '$imgBaseUrl${weatherData.weather?.first.icon}@2x.png',
       feelsLike: weatherData.main?.feelsLike?.toStringAsFixed(1),
       description: weatherData.weather?.first.description,

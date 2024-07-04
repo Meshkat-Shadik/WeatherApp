@@ -12,7 +12,7 @@ sealed class WeatherDTO with _$WeatherDTO {
     @required int? dt,
     @required Sys? sys,
     @required String? name,
-    @required int? cod,
+    @required String? cod,
   }) = _WeatherDTO;
 
   factory WeatherDTO.fromJson(Map<String, dynamic> json) =>

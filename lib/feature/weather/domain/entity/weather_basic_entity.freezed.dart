@@ -23,150 +23,6 @@ mixin _$WeatherBasicEntity {
   String? get imgUrl => throw _privateConstructorUsedError;
   String? get feelsLike => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $WeatherBasicEntityCopyWith<WeatherBasicEntity> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WeatherBasicEntityCopyWith<$Res> {
-  factory $WeatherBasicEntityCopyWith(
-          WeatherBasicEntity value, $Res Function(WeatherBasicEntity) then) =
-      _$WeatherBasicEntityCopyWithImpl<$Res, WeatherBasicEntity>;
-  @useResult
-  $Res call(
-      {String? cityName,
-      String? temp,
-      String? condition,
-      String? dateTime,
-      String? imgUrl,
-      String? feelsLike,
-      String? description});
-}
-
-/// @nodoc
-class _$WeatherBasicEntityCopyWithImpl<$Res, $Val extends WeatherBasicEntity>
-    implements $WeatherBasicEntityCopyWith<$Res> {
-  _$WeatherBasicEntityCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? cityName = freezed,
-    Object? temp = freezed,
-    Object? condition = freezed,
-    Object? dateTime = freezed,
-    Object? imgUrl = freezed,
-    Object? feelsLike = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(_value.copyWith(
-      cityName: freezed == cityName
-          ? _value.cityName
-          : cityName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      temp: freezed == temp
-          ? _value.temp
-          : temp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      condition: freezed == condition
-          ? _value.condition
-          : condition // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dateTime: freezed == dateTime
-          ? _value.dateTime
-          : dateTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imgUrl: freezed == imgUrl
-          ? _value.imgUrl
-          : imgUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      feelsLike: freezed == feelsLike
-          ? _value.feelsLike
-          : feelsLike // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_WeatherBasicEntityCopyWith<$Res>
-    implements $WeatherBasicEntityCopyWith<$Res> {
-  factory _$$_WeatherBasicEntityCopyWith(_$_WeatherBasicEntity value,
-          $Res Function(_$_WeatherBasicEntity) then) =
-      __$$_WeatherBasicEntityCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? cityName,
-      String? temp,
-      String? condition,
-      String? dateTime,
-      String? imgUrl,
-      String? feelsLike,
-      String? description});
-}
-
-/// @nodoc
-class __$$_WeatherBasicEntityCopyWithImpl<$Res>
-    extends _$WeatherBasicEntityCopyWithImpl<$Res, _$_WeatherBasicEntity>
-    implements _$$_WeatherBasicEntityCopyWith<$Res> {
-  __$$_WeatherBasicEntityCopyWithImpl(
-      _$_WeatherBasicEntity _value, $Res Function(_$_WeatherBasicEntity) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? cityName = freezed,
-    Object? temp = freezed,
-    Object? condition = freezed,
-    Object? dateTime = freezed,
-    Object? imgUrl = freezed,
-    Object? feelsLike = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(_$_WeatherBasicEntity(
-      cityName: freezed == cityName
-          ? _value.cityName
-          : cityName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      temp: freezed == temp
-          ? _value.temp
-          : temp // ignore: cast_nullable_to_non_nullable
-              as String?,
-      condition: freezed == condition
-          ? _value.condition
-          : condition // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dateTime: freezed == dateTime
-          ? _value.dateTime
-          : dateTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imgUrl: freezed == imgUrl
-          ? _value.imgUrl
-          : imgUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      feelsLike: freezed == feelsLike
-          ? _value.feelsLike
-          : feelsLike // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
@@ -224,13 +80,6 @@ class _$_WeatherBasicEntity extends _WeatherBasicEntity {
   @override
   int get hashCode => Object.hash(runtimeType, cityName, temp, condition,
       dateTime, imgUrl, feelsLike, description);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_WeatherBasicEntityCopyWith<_$_WeatherBasicEntity> get copyWith =>
-      __$$_WeatherBasicEntityCopyWithImpl<_$_WeatherBasicEntity>(
-          this, _$identity);
 }
 
 abstract class _WeatherBasicEntity extends WeatherBasicEntity {
@@ -258,8 +107,4 @@ abstract class _WeatherBasicEntity extends WeatherBasicEntity {
   String? get feelsLike;
   @override
   String? get description;
-  @override
-  @JsonKey(ignore: true)
-  _$$_WeatherBasicEntityCopyWith<_$_WeatherBasicEntity> get copyWith =>
-      throw _privateConstructorUsedError;
 }

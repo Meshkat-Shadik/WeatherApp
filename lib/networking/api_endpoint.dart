@@ -2,28 +2,22 @@
 // DO NOT USE 'dartfmt' on this file for formatting
 
 import 'package:flutter/material.dart';
-import 'package:weather_app/configs/configurations.dart';
+import 'package:weather_app/networking/url_config.dart';
 
 @immutable
 class ApiEndpoint {
   const ApiEndpoint._();
 
-  static const baseUrl = String.fromEnvironment(
-    'API_ENDPOINT',
-    defaultValue: appBaseUrl,
-  );
-
-  static String basic(WeatherEndPoint endpoint, {String? cityName}) {
-    switch (endpoint) {
-      case WeatherEndPoint.DEFAULT:
-        return appBaseUrl;
-      case WeatherEndPoint.WITH_CITY_NAME:
-        assert(cityName != null,
-            'City name is required WeatherEndPoint.WITH_CITY_NAME endpoint');
-        return appBaseUrl + cityName!;
-      default:
-        throw Exception('Invalid endpoint');
-    }
+  static String getEndpoint(
+    WeatherEndPoint endpoint, {
+    String? cityName,
+  }) {
+    return switch (endpoint) {
+      WeatherEndPoint.DEFAULT =>
+        '/weather?q=$cityName&appid=${apiKey}&units=metric',
+      WeatherEndPoint.WITH_CITY_NAME =>
+        '/weather?q=$cityName&appid=${apiKey}&units=metric',
+    };
   }
 }
 

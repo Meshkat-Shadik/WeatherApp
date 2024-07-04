@@ -29,34 +29,13 @@ class ApiInterceptor extends QueuedInterceptor {
     Response response,
     ResponseInterceptorHandler handler,
   ) async {
-    if (response.statusCode == 404 ||
-        response.statusCode == 400 ||
-        response.statusCode == 403 ||
-        response.statusCode == 500 ||
-        response.statusCode == 409) {
+    if ((response.statusCode ?? 400) >= 400 &&
+        (response.statusCode ?? 400) <= 500) {
       return handler.reject(
         DioException(
           requestOptions: response.requestOptions,
           response: response,
-          message: response.data['detail'],
-        ),
-      );
-    } else if (response.statusCode == 401) {
-      return handler.reject(
-        DioException(
-          requestOptions: response.requestOptions,
-          response: response,
-          message: response.data['detail'],
-        ),
-        true, //by force we are calling onError method to refresh token
-      );
-    } else if (response.statusCode == 422) {
-      ColoredLogger.Red.log(response.data);
-      return handler.reject(
-        DioException(
-          requestOptions: response.requestOptions,
-          response: response,
-          message: response.data['detail']['msg'],
+          message: response.data['message'],
         ),
       );
     }
