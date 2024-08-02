@@ -26,7 +26,7 @@ jobs:
           channel: "stable" # or: 'beta', 'dev' or 'master'
       - run: flutter --version
       - run: flutter pub get
-      - run: flutter build apk --debug --split-per-abi
+      - run: flutter build apk --debug --split-per-abi -t lib/main.dart
       - run: flutter build appbundle
       - name: Push to Releases
         uses: ncipollo/release-action@v1
