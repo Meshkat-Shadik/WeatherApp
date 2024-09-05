@@ -28,8 +28,9 @@ jobs:
       - run: flutter build apk --debug --split-per-abi -t lib/main.dart
       - run: flutter build appbundle
       - name: Push to Releases
-        uses: ncipollo/release-action@v1
+        uses: oberhauser-dev/flutter-release-action@v0
         with:
-          artifacts: "build/app/outputs/apk/debug/*,build/ios/iphoneos/app.ipa"
+          app-name: 'Weather App'
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
+          
