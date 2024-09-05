@@ -6,8 +6,11 @@ class LocationRepositoryImpl implements LocationRepository {
   @override
   Future<Position> getCoordinates() async {
     Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.best,
-        forceAndroidLocationManager: true);
+      locationSettings: AndroidSettings(
+        accuracy: LocationAccuracy.best,
+        distanceFilter: 10,
+      ),
+    );
     return position;
   }
 

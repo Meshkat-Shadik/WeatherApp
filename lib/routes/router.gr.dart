@@ -9,27 +9,6 @@
 
 part of 'router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    InitialLocationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const InitialLocationScreen(),
-      );
-    },
-    WeatherInformationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const WeatherInformationScreen(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [InitialLocationScreen]
 class InitialLocationRoute extends PageRouteInfo<void> {
@@ -41,7 +20,12 @@ class InitialLocationRoute extends PageRouteInfo<void> {
 
   static const String name = 'InitialLocationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const InitialLocationScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -55,5 +39,10 @@ class WeatherInformationRoute extends PageRouteInfo<void> {
 
   static const String name = 'WeatherInformationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WeatherInformationScreen();
+    },
+  );
 }

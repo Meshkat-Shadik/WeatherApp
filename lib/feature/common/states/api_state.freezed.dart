@@ -12,7 +12,7 @@ part of 'api_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ApiRequestState<T, E> {
@@ -70,8 +70,8 @@ mixin _$ApiRequestState<T, E> {
 
 /// @nodoc
 
-class _$IDLE<T, E> implements IDLE<T, E> {
-  const _$IDLE();
+class _$IDLEImpl<T, E> implements IDLE<T, E> {
+  const _$IDLEImpl();
 
   @override
   String toString() {
@@ -79,9 +79,9 @@ class _$IDLE<T, E> implements IDLE<T, E> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IDLE<T, E>);
+        (other.runtimeType == runtimeType && other is _$IDLEImpl<T, E>);
   }
 
   @override
@@ -163,13 +163,13 @@ class _$IDLE<T, E> implements IDLE<T, E> {
 }
 
 abstract class IDLE<T, E> implements ApiRequestState<T, E> {
-  const factory IDLE() = _$IDLE<T, E>;
+  const factory IDLE() = _$IDLEImpl<T, E>;
 }
 
 /// @nodoc
 
-class _$LOADING<T, E> implements LOADING<T, E> {
-  const _$LOADING();
+class _$LOADINGImpl<T, E> implements LOADING<T, E> {
+  const _$LOADINGImpl();
 
   @override
   String toString() {
@@ -177,9 +177,9 @@ class _$LOADING<T, E> implements LOADING<T, E> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LOADING<T, E>);
+        (other.runtimeType == runtimeType && other is _$LOADINGImpl<T, E>);
   }
 
   @override
@@ -261,13 +261,13 @@ class _$LOADING<T, E> implements LOADING<T, E> {
 }
 
 abstract class LOADING<T, E> implements ApiRequestState<T, E> {
-  const factory LOADING() = _$LOADING<T, E>;
+  const factory LOADING() = _$LOADINGImpl<T, E>;
 }
 
 /// @nodoc
 
-class _$DATA<T, E> implements DATA<T, E> {
-  const _$DATA({required this.data});
+class _$DATAImpl<T, E> implements DATA<T, E> {
+  const _$DATAImpl({required this.data});
 
   @override
   final T data;
@@ -278,10 +278,10 @@ class _$DATA<T, E> implements DATA<T, E> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DATA<T, E> &&
+            other is _$DATAImpl<T, E> &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -365,15 +365,15 @@ class _$DATA<T, E> implements DATA<T, E> {
 }
 
 abstract class DATA<T, E> implements ApiRequestState<T, E> {
-  const factory DATA({required final T data}) = _$DATA<T, E>;
+  const factory DATA({required final T data}) = _$DATAImpl<T, E>;
 
   T get data;
 }
 
 /// @nodoc
 
-class _$FAILED<T, E> implements FAILED<T, E> {
-  const _$FAILED({required this.reason});
+class _$FAILEDImpl<T, E> implements FAILED<T, E> {
+  const _$FAILEDImpl({required this.reason});
 
   @override
   final E reason;
@@ -384,10 +384,10 @@ class _$FAILED<T, E> implements FAILED<T, E> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FAILED<T, E> &&
+            other is _$FAILEDImpl<T, E> &&
             const DeepCollectionEquality().equals(other.reason, reason));
   }
 
@@ -471,7 +471,7 @@ class _$FAILED<T, E> implements FAILED<T, E> {
 }
 
 abstract class FAILED<T, E> implements ApiRequestState<T, E> {
-  const factory FAILED({required final E reason}) = _$FAILED<T, E>;
+  const factory FAILED({required final E reason}) = _$FAILEDImpl<T, E>;
 
   E get reason;
 }

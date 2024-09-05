@@ -12,7 +12,7 @@ part of 'weather_basic_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$WeatherBasicEntity {
@@ -27,8 +27,8 @@ mixin _$WeatherBasicEntity {
 
 /// @nodoc
 
-class _$_WeatherBasicEntity extends _WeatherBasicEntity {
-  const _$_WeatherBasicEntity(
+class _$WeatherBasicEntityImpl extends _WeatherBasicEntity {
+  const _$WeatherBasicEntityImpl(
       {required this.cityName,
       required this.temp,
       required this.condition,
@@ -59,10 +59,10 @@ class _$_WeatherBasicEntity extends _WeatherBasicEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherBasicEntity &&
+            other is _$WeatherBasicEntityImpl &&
             (identical(other.cityName, cityName) ||
                 other.cityName == cityName) &&
             (identical(other.temp, temp) || other.temp == temp) &&
@@ -90,7 +90,7 @@ abstract class _WeatherBasicEntity extends WeatherBasicEntity {
       required final String? dateTime,
       required final String? imgUrl,
       required final String? feelsLike,
-      required final String? description}) = _$_WeatherBasicEntity;
+      required final String? description}) = _$WeatherBasicEntityImpl;
   const _WeatherBasicEntity._() : super._();
 
   @override

@@ -12,7 +12,7 @@ part of 'weather_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 WeatherDTO _$WeatherDTOFromJson(Map<String, dynamic> json) {
   return _WeatherDTO.fromJson(json);
@@ -28,13 +28,14 @@ mixin _$WeatherDTO {
   String? get name => throw _privateConstructorUsedError;
   String? get cod => throw _privateConstructorUsedError;
 
+  /// Serializes this WeatherDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_WeatherDTO implements _WeatherDTO {
-  const _$_WeatherDTO(
+class _$WeatherDTOImpl implements _WeatherDTO {
+  const _$WeatherDTOImpl(
       {final List<Weather>? weather,
       this.main,
       this.wind,
@@ -44,8 +45,8 @@ class _$_WeatherDTO implements _WeatherDTO {
       this.cod})
       : _weather = weather;
 
-  factory _$_WeatherDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherDTOFromJson(json);
+  factory _$WeatherDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WeatherDTOImplFromJson(json);
 
   final List<Weather>? _weather;
   @override
@@ -76,10 +77,10 @@ class _$_WeatherDTO implements _WeatherDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherDTO &&
+            other is _$WeatherDTOImpl &&
             const DeepCollectionEquality().equals(other._weather, _weather) &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.wind, wind) || other.wind == wind) &&
@@ -89,7 +90,7 @@ class _$_WeatherDTO implements _WeatherDTO {
             (identical(other.cod, cod) || other.cod == cod));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -103,7 +104,7 @@ class _$_WeatherDTO implements _WeatherDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherDTOToJson(
+    return _$$WeatherDTOImplToJson(
       this,
     );
   }
@@ -117,10 +118,10 @@ abstract class _WeatherDTO implements WeatherDTO {
       final int? dt,
       final Sys? sys,
       final String? name,
-      final String? cod}) = _$_WeatherDTO;
+      final String? cod}) = _$WeatherDTOImpl;
 
   factory _WeatherDTO.fromJson(Map<String, dynamic> json) =
-      _$_WeatherDTO.fromJson;
+      _$WeatherDTOImpl.fromJson;
 
   @override
   List<Weather>? get weather;
@@ -149,15 +150,17 @@ mixin _$Main {
   int? get pressure => throw _privateConstructorUsedError;
   int? get humidity => throw _privateConstructorUsedError;
 
+  /// Serializes this Main to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Main implements _Main {
-  const _$_Main({this.temp, this.feelsLike, this.pressure, this.humidity});
+class _$MainImpl implements _Main {
+  const _$MainImpl({this.temp, this.feelsLike, this.pressure, this.humidity});
 
-  factory _$_Main.fromJson(Map<String, dynamic> json) => _$$_MainFromJson(json);
+  factory _$MainImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MainImplFromJson(json);
 
   @override
   final double? temp;
@@ -174,10 +177,10 @@ class _$_Main implements _Main {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Main &&
+            other is _$MainImpl &&
             (identical(other.temp, temp) || other.temp == temp) &&
             (identical(other.feelsLike, feelsLike) ||
                 other.feelsLike == feelsLike) &&
@@ -187,14 +190,14 @@ class _$_Main implements _Main {
                 other.humidity == humidity));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, temp, feelsLike, pressure, humidity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MainToJson(
+    return _$$MainImplToJson(
       this,
     );
   }
@@ -205,9 +208,9 @@ abstract class _Main implements Main {
       {final double? temp,
       final double? feelsLike,
       final int? pressure,
-      final int? humidity}) = _$_Main;
+      final int? humidity}) = _$MainImpl;
 
-  factory _Main.fromJson(Map<String, dynamic> json) = _$_Main.fromJson;
+  factory _Main.fromJson(Map<String, dynamic> json) = _$MainImpl.fromJson;
 
   @override
   double? get temp;
@@ -228,15 +231,17 @@ mixin _$Sys {
   int? get sunrise => throw _privateConstructorUsedError;
   int? get sunset => throw _privateConstructorUsedError;
 
+  /// Serializes this Sys to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Sys implements _Sys {
-  const _$_Sys({this.sunrise, this.sunset});
+class _$SysImpl implements _Sys {
+  const _$SysImpl({this.sunrise, this.sunset});
 
-  factory _$_Sys.fromJson(Map<String, dynamic> json) => _$$_SysFromJson(json);
+  factory _$SysImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SysImplFromJson(json);
 
   @override
   final int? sunrise;
@@ -249,30 +254,30 @@ class _$_Sys implements _Sys {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Sys &&
+            other is _$SysImpl &&
             (identical(other.sunrise, sunrise) || other.sunrise == sunrise) &&
             (identical(other.sunset, sunset) || other.sunset == sunset));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, sunrise, sunset);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SysToJson(
+    return _$$SysImplToJson(
       this,
     );
   }
 }
 
 abstract class _Sys implements Sys {
-  const factory _Sys({final int? sunrise, final int? sunset}) = _$_Sys;
+  const factory _Sys({final int? sunrise, final int? sunset}) = _$SysImpl;
 
-  factory _Sys.fromJson(Map<String, dynamic> json) = _$_Sys.fromJson;
+  factory _Sys.fromJson(Map<String, dynamic> json) = _$SysImpl.fromJson;
 
   @override
   int? get sunrise;
@@ -290,16 +295,17 @@ mixin _$Weather {
   String? get description => throw _privateConstructorUsedError;
   String? get icon => throw _privateConstructorUsedError;
 
+  /// Serializes this Weather to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Weather implements _Weather {
-  const _$_Weather({this.main, this.description, this.icon});
+class _$WeatherImpl implements _Weather {
+  const _$WeatherImpl({this.main, this.description, this.icon});
 
-  factory _$_Weather.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherFromJson(json);
+  factory _$WeatherImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WeatherImplFromJson(json);
 
   @override
   final String? main;
@@ -314,23 +320,23 @@ class _$_Weather implements _Weather {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Weather &&
+            other is _$WeatherImpl &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.icon, icon) || other.icon == icon));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, main, description, icon);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherToJson(
+    return _$$WeatherImplToJson(
       this,
     );
   }
@@ -340,9 +346,9 @@ abstract class _Weather implements Weather {
   const factory _Weather(
       {final String? main,
       final String? description,
-      final String? icon}) = _$_Weather;
+      final String? icon}) = _$WeatherImpl;
 
-  factory _Weather.fromJson(Map<String, dynamic> json) = _$_Weather.fromJson;
+  factory _Weather.fromJson(Map<String, dynamic> json) = _$WeatherImpl.fromJson;
 
   @override
   String? get main;
@@ -361,15 +367,17 @@ mixin _$Wind {
   double? get speed => throw _privateConstructorUsedError;
   double? get gust => throw _privateConstructorUsedError;
 
+  /// Serializes this Wind to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Wind implements _Wind {
-  const _$_Wind({this.speed, this.gust});
+class _$WindImpl implements _Wind {
+  const _$WindImpl({this.speed, this.gust});
 
-  factory _$_Wind.fromJson(Map<String, dynamic> json) => _$$_WindFromJson(json);
+  factory _$WindImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WindImplFromJson(json);
 
   @override
   final double? speed;
@@ -382,30 +390,30 @@ class _$_Wind implements _Wind {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Wind &&
+            other is _$WindImpl &&
             (identical(other.speed, speed) || other.speed == speed) &&
             (identical(other.gust, gust) || other.gust == gust));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, speed, gust);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WindToJson(
+    return _$$WindImplToJson(
       this,
     );
   }
 }
 
 abstract class _Wind implements Wind {
-  const factory _Wind({final double? speed, final double? gust}) = _$_Wind;
+  const factory _Wind({final double? speed, final double? gust}) = _$WindImpl;
 
-  factory _Wind.fromJson(Map<String, dynamic> json) = _$_Wind.fromJson;
+  factory _Wind.fromJson(Map<String, dynamic> json) = _$WindImpl.fromJson;
 
   @override
   double? get speed;

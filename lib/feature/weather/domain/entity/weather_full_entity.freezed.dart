@@ -12,7 +12,7 @@ part of 'weather_full_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$WeatherFullEntity {
@@ -27,8 +27,8 @@ mixin _$WeatherFullEntity {
 
 /// @nodoc
 
-class _$_WeatherFullEntity extends _WeatherFullEntity {
-  const _$_WeatherFullEntity(
+class _$WeatherFullEntityImpl extends _WeatherFullEntity {
+  const _$WeatherFullEntityImpl(
       {final List<WeatherInsideEntity>? weather,
       this.main,
       this.wind,
@@ -68,10 +68,10 @@ class _$_WeatherFullEntity extends _WeatherFullEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherFullEntity &&
+            other is _$WeatherFullEntityImpl &&
             const DeepCollectionEquality().equals(other._weather, _weather) &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.wind, wind) || other.wind == wind) &&
@@ -101,7 +101,7 @@ abstract class _WeatherFullEntity extends WeatherFullEntity {
       final int? dt,
       final SysInsideEntity? sys,
       final String? name,
-      final String? cod}) = _$_WeatherFullEntity;
+      final String? cod}) = _$WeatherFullEntityImpl;
   const _WeatherFullEntity._() : super._();
 
   @override
@@ -130,8 +130,8 @@ mixin _$MainInsideEntity {
 
 /// @nodoc
 
-class _$_MainInsideEntity extends _MainInsideEntity {
-  const _$_MainInsideEntity(
+class _$MainInsideEntityImpl extends _MainInsideEntity {
+  const _$MainInsideEntityImpl(
       {this.temp, this.feelsLike, this.pressure, this.humidity})
       : super._();
 
@@ -150,10 +150,10 @@ class _$_MainInsideEntity extends _MainInsideEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MainInsideEntity &&
+            other is _$MainInsideEntityImpl &&
             (identical(other.temp, temp) || other.temp == temp) &&
             (identical(other.feelsLike, feelsLike) ||
                 other.feelsLike == feelsLike) &&
@@ -173,7 +173,7 @@ abstract class _MainInsideEntity extends MainInsideEntity {
       {final double? temp,
       final double? feelsLike,
       final int? pressure,
-      final int? humidity}) = _$_MainInsideEntity;
+      final int? humidity}) = _$MainInsideEntityImpl;
   const _MainInsideEntity._() : super._();
 
   @override
@@ -194,8 +194,8 @@ mixin _$SysInsideEntity {
 
 /// @nodoc
 
-class _$_SysInsideEntity extends _SysInsideEntity {
-  const _$_SysInsideEntity({this.sunrise, this.sunset}) : super._();
+class _$SysInsideEntityImpl extends _SysInsideEntity {
+  const _$SysInsideEntityImpl({this.sunrise, this.sunset}) : super._();
 
   @override
   final int? sunrise;
@@ -208,10 +208,10 @@ class _$_SysInsideEntity extends _SysInsideEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SysInsideEntity &&
+            other is _$SysInsideEntityImpl &&
             (identical(other.sunrise, sunrise) || other.sunrise == sunrise) &&
             (identical(other.sunset, sunset) || other.sunset == sunset));
   }
@@ -222,7 +222,7 @@ class _$_SysInsideEntity extends _SysInsideEntity {
 
 abstract class _SysInsideEntity extends SysInsideEntity {
   const factory _SysInsideEntity({final int? sunrise, final int? sunset}) =
-      _$_SysInsideEntity;
+      _$SysInsideEntityImpl;
   const _SysInsideEntity._() : super._();
 
   @override
@@ -240,8 +240,8 @@ mixin _$WeatherInsideEntity {
 
 /// @nodoc
 
-class _$_WeatherInsideEntity extends _WeatherInsideEntity {
-  const _$_WeatherInsideEntity({this.main, this.description, this.icon})
+class _$WeatherInsideEntityImpl extends _WeatherInsideEntity {
+  const _$WeatherInsideEntityImpl({this.main, this.description, this.icon})
       : super._();
 
   @override
@@ -257,10 +257,10 @@ class _$_WeatherInsideEntity extends _WeatherInsideEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherInsideEntity &&
+            other is _$WeatherInsideEntityImpl &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -275,7 +275,7 @@ abstract class _WeatherInsideEntity extends WeatherInsideEntity {
   const factory _WeatherInsideEntity(
       {final String? main,
       final String? description,
-      final String? icon}) = _$_WeatherInsideEntity;
+      final String? icon}) = _$WeatherInsideEntityImpl;
   const _WeatherInsideEntity._() : super._();
 
   @override
@@ -294,8 +294,8 @@ mixin _$WindInsideEntity {
 
 /// @nodoc
 
-class _$_WindInsideEntity extends _WindInsideEntity {
-  const _$_WindInsideEntity({this.speed, this.gust}) : super._();
+class _$WindInsideEntityImpl extends _WindInsideEntity {
+  const _$WindInsideEntityImpl({this.speed, this.gust}) : super._();
 
   @override
   final double? speed;
@@ -308,10 +308,10 @@ class _$_WindInsideEntity extends _WindInsideEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WindInsideEntity &&
+            other is _$WindInsideEntityImpl &&
             (identical(other.speed, speed) || other.speed == speed) &&
             (identical(other.gust, gust) || other.gust == gust));
   }
@@ -322,7 +322,7 @@ class _$_WindInsideEntity extends _WindInsideEntity {
 
 abstract class _WindInsideEntity extends WindInsideEntity {
   const factory _WindInsideEntity({final double? speed, final double? gust}) =
-      _$_WindInsideEntity;
+      _$WindInsideEntityImpl;
   const _WindInsideEntity._() : super._();
 
   @override

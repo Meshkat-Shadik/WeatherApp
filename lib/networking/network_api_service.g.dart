@@ -12,6 +12,7 @@ class _NetworkApiService implements NetworkApiService {
   _NetworkApiService(
     this._dio, {
     this.baseUrl,
+    this.errorLogger,
   }) {
     baseUrl ??= 'https://api.openweathermap.org/data/2.5';
   }
@@ -19,6 +20,8 @@ class _NetworkApiService implements NetworkApiService {
   final Dio _dio;
 
   String? baseUrl;
+
+  final ParseErrorLogger? errorLogger;
 
   @override
   Future<WeatherDTO> getWeather(
@@ -34,24 +37,30 @@ class _NetworkApiService implements NetworkApiService {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<WeatherDTO>(Options(
+    final _options = _setStreamType<WeatherDTO>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/weather',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final _value = WeatherDTO.fromJson(_result.data!);
+        .compose(
+          _dio.options,
+          '/weather',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late WeatherDTO _value;
+    try {
+      _value = WeatherDTO.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     return _value;
   }
 

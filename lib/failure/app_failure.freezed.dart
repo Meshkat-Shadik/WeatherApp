@@ -12,7 +12,7 @@ part of 'app_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppFailure {
@@ -24,8 +24,8 @@ mixin _$AppFailure {
 
 /// @nodoc
 
-class _$_AppFailure extends _AppFailure {
-  const _$_AppFailure(
+class _$AppFailureImpl extends _AppFailure {
+  const _$AppFailureImpl(
       {required this.message,
       required this.name,
       this.uriPath,
@@ -47,10 +47,10 @@ class _$_AppFailure extends _AppFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppFailure &&
+            other is _$AppFailureImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
@@ -68,7 +68,7 @@ abstract class _AppFailure extends AppFailure {
       {required final String message,
       required final String name,
       final String? uriPath,
-      final int? statusCode}) = _$_AppFailure;
+      final int? statusCode}) = _$AppFailureImpl;
   const _AppFailure._() : super._();
 
   @override

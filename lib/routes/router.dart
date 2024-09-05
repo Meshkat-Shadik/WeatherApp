@@ -5,7 +5,7 @@ import 'package:weather_app/feature/location/presentation/screen/initial_locatio
 part 'router.gr.dart';
 
 @AutoRouterConfig()
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   @override
   RouteType get defaultRouteType =>
       const RouteType.adaptive(); //.cupertino, .adaptive ..etc

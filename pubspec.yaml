@@ -21,28 +21,28 @@ environment:
   sdk: ">=3.0.1 <4.0.0"
 
 dependencies:
-  auto_route: ^7.8.3
-  cupertino_icons: ^1.0.6
+  auto_route: ^9.2.2
+  cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.20.0
+  flutter_hooks: ^0.20.5
   fpdart: ^1.1.0
-  freezed_annotation: ^2.4.1
-  geocoding: ^2.1.0
-  geolocator: ^9.0.2
-  google_fonts: ^4.0.3
-  hooks_riverpod: ^2.3.10
-  intl: ^0.18.0
-  retrofit: ^4.1.0
+  freezed_annotation: ^2.4.4
+  geocoding: ^3.0.0
+  geolocator: ^13.0.1
+  google_fonts: ^6.2.1
+  hooks_riverpod: ^2.5.2
+  intl: ^0.19.0
+  retrofit: ^4.3.0
 
 dev_dependencies:
-  auto_route_generator: ^7.3.1
-  build_runner: ^2.4.6
+  auto_route_generator: ^9.0.0
+  build_runner: ^2.4.12
   flutter_test:
     sdk: flutter
-  freezed: ^2.4.1
-  json_serializable: ^6.7.1
-  retrofit_generator: ^8.1.0
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+  retrofit_generator: ^9.0.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.

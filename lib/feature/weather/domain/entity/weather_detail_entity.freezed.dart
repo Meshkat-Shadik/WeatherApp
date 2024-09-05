@@ -12,7 +12,7 @@ part of 'weather_detail_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$WeatherDetailEntity {
@@ -26,8 +26,8 @@ mixin _$WeatherDetailEntity {
 
 /// @nodoc
 
-class _$_WeatherDetailEntity extends _WeatherDetailEntity {
-  const _$_WeatherDetailEntity(
+class _$WeatherDetailEntityImpl extends _WeatherDetailEntity {
+  const _$WeatherDetailEntityImpl(
       {required this.windValue,
       required this.humidityValue,
       required this.gustValue,
@@ -55,10 +55,10 @@ class _$_WeatherDetailEntity extends _WeatherDetailEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherDetailEntity &&
+            other is _$WeatherDetailEntityImpl &&
             (identical(other.windValue, windValue) ||
                 other.windValue == windValue) &&
             (identical(other.humidityValue, humidityValue) ||
@@ -85,7 +85,7 @@ abstract class _WeatherDetailEntity extends WeatherDetailEntity {
       required final String? gustValue,
       required final String? pressureValue,
       required final String? sunriseValue,
-      required final String? sunsetValue}) = _$_WeatherDetailEntity;
+      required final String? sunsetValue}) = _$WeatherDetailEntityImpl;
   const _WeatherDetailEntity._() : super._();
 
   @override
