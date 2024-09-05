@@ -19,17 +19,14 @@ mixin _$LocalFailure {
   String get name => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   String? get uriPath => throw _privateConstructorUsedError;
-  int? get statusCode => throw _privateConstructorUsedError;
+  int? get code => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 
 class _$LocalFailureImpl implements _LocalFailure {
   const _$LocalFailureImpl(
-      {required this.name,
-      required this.message,
-      this.uriPath,
-      this.statusCode});
+      {required this.name, required this.message, this.uriPath, this.code});
 
   @override
   final String name;
@@ -38,11 +35,11 @@ class _$LocalFailureImpl implements _LocalFailure {
   @override
   final String? uriPath;
   @override
-  final int? statusCode;
+  final int? code;
 
   @override
   String toString() {
-    return 'LocalFailure(name: $name, message: $message, uriPath: $uriPath, statusCode: $statusCode)';
+    return 'LocalFailure(name: $name, message: $message, uriPath: $uriPath, code: $code)';
   }
 
   @override
@@ -53,13 +50,11 @@ class _$LocalFailureImpl implements _LocalFailure {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
-            (identical(other.statusCode, statusCode) ||
-                other.statusCode == statusCode));
+            (identical(other.code, code) || other.code == code));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, message, uriPath, statusCode);
+  int get hashCode => Object.hash(runtimeType, name, message, uriPath, code);
 }
 
 abstract class _LocalFailure implements LocalFailure {
@@ -67,7 +62,7 @@ abstract class _LocalFailure implements LocalFailure {
       {required final String name,
       required final String message,
       final String? uriPath,
-      final int? statusCode}) = _$LocalFailureImpl;
+      final int? code}) = _$LocalFailureImpl;
 
   @override
   String get name;
@@ -76,5 +71,5 @@ abstract class _LocalFailure implements LocalFailure {
   @override
   String? get uriPath;
   @override
-  int? get statusCode;
+  int? get code;
 }

@@ -15,13 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ApiRequestState<T, E> {
+mixin _$ApiRequestState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E reason) failed,
+    required TResult Function(AppFailure reason) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$ApiRequestState<T, E> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? data,
-    TResult? Function(E reason)? failed,
+    TResult? Function(AppFailure reason)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,32 +37,32 @@ mixin _$ApiRequestState<T, E> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E reason)? failed,
+    TResult Function(AppFailure reason)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IDLE<T, E> value) idle,
-    required TResult Function(LOADING<T, E> value) loading,
-    required TResult Function(DATA<T, E> value) data,
-    required TResult Function(FAILED<T, E> value) failed,
+    required TResult Function(IDLE<T> value) idle,
+    required TResult Function(LOADING<T> value) loading,
+    required TResult Function(DATA<T> value) data,
+    required TResult Function(FAILED<T> value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(IDLE<T, E> value)? idle,
-    TResult? Function(LOADING<T, E> value)? loading,
-    TResult? Function(DATA<T, E> value)? data,
-    TResult? Function(FAILED<T, E> value)? failed,
+    TResult? Function(IDLE<T> value)? idle,
+    TResult? Function(LOADING<T> value)? loading,
+    TResult? Function(DATA<T> value)? data,
+    TResult? Function(FAILED<T> value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IDLE<T, E> value)? idle,
-    TResult Function(LOADING<T, E> value)? loading,
-    TResult Function(DATA<T, E> value)? data,
-    TResult Function(FAILED<T, E> value)? failed,
+    TResult Function(IDLE<T> value)? idle,
+    TResult Function(LOADING<T> value)? loading,
+    TResult Function(DATA<T> value)? data,
+    TResult Function(FAILED<T> value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,18 +70,18 @@ mixin _$ApiRequestState<T, E> {
 
 /// @nodoc
 
-class _$IDLEImpl<T, E> implements IDLE<T, E> {
+class _$IDLEImpl<T> implements IDLE<T> {
   const _$IDLEImpl();
 
   @override
   String toString() {
-    return 'ApiRequestState<$T, $E>.idle()';
+    return 'ApiRequestState<$T>.idle()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IDLEImpl<T, E>);
+        (other.runtimeType == runtimeType && other is _$IDLEImpl<T>);
   }
 
   @override
@@ -93,7 +93,7 @@ class _$IDLEImpl<T, E> implements IDLE<T, E> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E reason) failed,
+    required TResult Function(AppFailure reason) failed,
   }) {
     return idle();
   }
@@ -104,7 +104,7 @@ class _$IDLEImpl<T, E> implements IDLE<T, E> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? data,
-    TResult? Function(E reason)? failed,
+    TResult? Function(AppFailure reason)? failed,
   }) {
     return idle?.call();
   }
@@ -115,7 +115,7 @@ class _$IDLEImpl<T, E> implements IDLE<T, E> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E reason)? failed,
+    TResult Function(AppFailure reason)? failed,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -127,10 +127,10 @@ class _$IDLEImpl<T, E> implements IDLE<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IDLE<T, E> value) idle,
-    required TResult Function(LOADING<T, E> value) loading,
-    required TResult Function(DATA<T, E> value) data,
-    required TResult Function(FAILED<T, E> value) failed,
+    required TResult Function(IDLE<T> value) idle,
+    required TResult Function(LOADING<T> value) loading,
+    required TResult Function(DATA<T> value) data,
+    required TResult Function(FAILED<T> value) failed,
   }) {
     return idle(this);
   }
@@ -138,10 +138,10 @@ class _$IDLEImpl<T, E> implements IDLE<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(IDLE<T, E> value)? idle,
-    TResult? Function(LOADING<T, E> value)? loading,
-    TResult? Function(DATA<T, E> value)? data,
-    TResult? Function(FAILED<T, E> value)? failed,
+    TResult? Function(IDLE<T> value)? idle,
+    TResult? Function(LOADING<T> value)? loading,
+    TResult? Function(DATA<T> value)? data,
+    TResult? Function(FAILED<T> value)? failed,
   }) {
     return idle?.call(this);
   }
@@ -149,10 +149,10 @@ class _$IDLEImpl<T, E> implements IDLE<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IDLE<T, E> value)? idle,
-    TResult Function(LOADING<T, E> value)? loading,
-    TResult Function(DATA<T, E> value)? data,
-    TResult Function(FAILED<T, E> value)? failed,
+    TResult Function(IDLE<T> value)? idle,
+    TResult Function(LOADING<T> value)? loading,
+    TResult Function(DATA<T> value)? data,
+    TResult Function(FAILED<T> value)? failed,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -162,24 +162,24 @@ class _$IDLEImpl<T, E> implements IDLE<T, E> {
   }
 }
 
-abstract class IDLE<T, E> implements ApiRequestState<T, E> {
-  const factory IDLE() = _$IDLEImpl<T, E>;
+abstract class IDLE<T> implements ApiRequestState<T> {
+  const factory IDLE() = _$IDLEImpl<T>;
 }
 
 /// @nodoc
 
-class _$LOADINGImpl<T, E> implements LOADING<T, E> {
+class _$LOADINGImpl<T> implements LOADING<T> {
   const _$LOADINGImpl();
 
   @override
   String toString() {
-    return 'ApiRequestState<$T, $E>.loading()';
+    return 'ApiRequestState<$T>.loading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LOADINGImpl<T, E>);
+        (other.runtimeType == runtimeType && other is _$LOADINGImpl<T>);
   }
 
   @override
@@ -191,7 +191,7 @@ class _$LOADINGImpl<T, E> implements LOADING<T, E> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E reason) failed,
+    required TResult Function(AppFailure reason) failed,
   }) {
     return loading();
   }
@@ -202,7 +202,7 @@ class _$LOADINGImpl<T, E> implements LOADING<T, E> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? data,
-    TResult? Function(E reason)? failed,
+    TResult? Function(AppFailure reason)? failed,
   }) {
     return loading?.call();
   }
@@ -213,7 +213,7 @@ class _$LOADINGImpl<T, E> implements LOADING<T, E> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E reason)? failed,
+    TResult Function(AppFailure reason)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -225,10 +225,10 @@ class _$LOADINGImpl<T, E> implements LOADING<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IDLE<T, E> value) idle,
-    required TResult Function(LOADING<T, E> value) loading,
-    required TResult Function(DATA<T, E> value) data,
-    required TResult Function(FAILED<T, E> value) failed,
+    required TResult Function(IDLE<T> value) idle,
+    required TResult Function(LOADING<T> value) loading,
+    required TResult Function(DATA<T> value) data,
+    required TResult Function(FAILED<T> value) failed,
   }) {
     return loading(this);
   }
@@ -236,10 +236,10 @@ class _$LOADINGImpl<T, E> implements LOADING<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(IDLE<T, E> value)? idle,
-    TResult? Function(LOADING<T, E> value)? loading,
-    TResult? Function(DATA<T, E> value)? data,
-    TResult? Function(FAILED<T, E> value)? failed,
+    TResult? Function(IDLE<T> value)? idle,
+    TResult? Function(LOADING<T> value)? loading,
+    TResult? Function(DATA<T> value)? data,
+    TResult? Function(FAILED<T> value)? failed,
   }) {
     return loading?.call(this);
   }
@@ -247,10 +247,10 @@ class _$LOADINGImpl<T, E> implements LOADING<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IDLE<T, E> value)? idle,
-    TResult Function(LOADING<T, E> value)? loading,
-    TResult Function(DATA<T, E> value)? data,
-    TResult Function(FAILED<T, E> value)? failed,
+    TResult Function(IDLE<T> value)? idle,
+    TResult Function(LOADING<T> value)? loading,
+    TResult Function(DATA<T> value)? data,
+    TResult Function(FAILED<T> value)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -260,13 +260,13 @@ class _$LOADINGImpl<T, E> implements LOADING<T, E> {
   }
 }
 
-abstract class LOADING<T, E> implements ApiRequestState<T, E> {
-  const factory LOADING() = _$LOADINGImpl<T, E>;
+abstract class LOADING<T> implements ApiRequestState<T> {
+  const factory LOADING() = _$LOADINGImpl<T>;
 }
 
 /// @nodoc
 
-class _$DATAImpl<T, E> implements DATA<T, E> {
+class _$DATAImpl<T> implements DATA<T> {
   const _$DATAImpl({required this.data});
 
   @override
@@ -274,14 +274,14 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
 
   @override
   String toString() {
-    return 'ApiRequestState<$T, $E>.data(data: $data)';
+    return 'ApiRequestState<$T>.data(data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DATAImpl<T, E> &&
+            other is _$DATAImpl<T> &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -295,7 +295,7 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E reason) failed,
+    required TResult Function(AppFailure reason) failed,
   }) {
     return data(this.data);
   }
@@ -306,7 +306,7 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? data,
-    TResult? Function(E reason)? failed,
+    TResult? Function(AppFailure reason)? failed,
   }) {
     return data?.call(this.data);
   }
@@ -317,7 +317,7 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E reason)? failed,
+    TResult Function(AppFailure reason)? failed,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -329,10 +329,10 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IDLE<T, E> value) idle,
-    required TResult Function(LOADING<T, E> value) loading,
-    required TResult Function(DATA<T, E> value) data,
-    required TResult Function(FAILED<T, E> value) failed,
+    required TResult Function(IDLE<T> value) idle,
+    required TResult Function(LOADING<T> value) loading,
+    required TResult Function(DATA<T> value) data,
+    required TResult Function(FAILED<T> value) failed,
   }) {
     return data(this);
   }
@@ -340,10 +340,10 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(IDLE<T, E> value)? idle,
-    TResult? Function(LOADING<T, E> value)? loading,
-    TResult? Function(DATA<T, E> value)? data,
-    TResult? Function(FAILED<T, E> value)? failed,
+    TResult? Function(IDLE<T> value)? idle,
+    TResult? Function(LOADING<T> value)? loading,
+    TResult? Function(DATA<T> value)? data,
+    TResult? Function(FAILED<T> value)? failed,
   }) {
     return data?.call(this);
   }
@@ -351,10 +351,10 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IDLE<T, E> value)? idle,
-    TResult Function(LOADING<T, E> value)? loading,
-    TResult Function(DATA<T, E> value)? data,
-    TResult Function(FAILED<T, E> value)? failed,
+    TResult Function(IDLE<T> value)? idle,
+    TResult Function(LOADING<T> value)? loading,
+    TResult Function(DATA<T> value)? data,
+    TResult Function(FAILED<T> value)? failed,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -364,36 +364,35 @@ class _$DATAImpl<T, E> implements DATA<T, E> {
   }
 }
 
-abstract class DATA<T, E> implements ApiRequestState<T, E> {
-  const factory DATA({required final T data}) = _$DATAImpl<T, E>;
+abstract class DATA<T> implements ApiRequestState<T> {
+  const factory DATA({required final T data}) = _$DATAImpl<T>;
 
   T get data;
 }
 
 /// @nodoc
 
-class _$FAILEDImpl<T, E> implements FAILED<T, E> {
+class _$FAILEDImpl<T> implements FAILED<T> {
   const _$FAILEDImpl({required this.reason});
 
   @override
-  final E reason;
+  final AppFailure reason;
 
   @override
   String toString() {
-    return 'ApiRequestState<$T, $E>.failed(reason: $reason)';
+    return 'ApiRequestState<$T>.failed(reason: $reason)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FAILEDImpl<T, E> &&
-            const DeepCollectionEquality().equals(other.reason, reason));
+            other is _$FAILEDImpl<T> &&
+            (identical(other.reason, reason) || other.reason == reason));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(reason));
+  int get hashCode => Object.hash(runtimeType, reason);
 
   @override
   @optionalTypeArgs
@@ -401,7 +400,7 @@ class _$FAILEDImpl<T, E> implements FAILED<T, E> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) data,
-    required TResult Function(E reason) failed,
+    required TResult Function(AppFailure reason) failed,
   }) {
     return failed(reason);
   }
@@ -412,7 +411,7 @@ class _$FAILEDImpl<T, E> implements FAILED<T, E> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? data,
-    TResult? Function(E reason)? failed,
+    TResult? Function(AppFailure reason)? failed,
   }) {
     return failed?.call(reason);
   }
@@ -423,7 +422,7 @@ class _$FAILEDImpl<T, E> implements FAILED<T, E> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? data,
-    TResult Function(E reason)? failed,
+    TResult Function(AppFailure reason)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -435,10 +434,10 @@ class _$FAILEDImpl<T, E> implements FAILED<T, E> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IDLE<T, E> value) idle,
-    required TResult Function(LOADING<T, E> value) loading,
-    required TResult Function(DATA<T, E> value) data,
-    required TResult Function(FAILED<T, E> value) failed,
+    required TResult Function(IDLE<T> value) idle,
+    required TResult Function(LOADING<T> value) loading,
+    required TResult Function(DATA<T> value) data,
+    required TResult Function(FAILED<T> value) failed,
   }) {
     return failed(this);
   }
@@ -446,10 +445,10 @@ class _$FAILEDImpl<T, E> implements FAILED<T, E> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(IDLE<T, E> value)? idle,
-    TResult? Function(LOADING<T, E> value)? loading,
-    TResult? Function(DATA<T, E> value)? data,
-    TResult? Function(FAILED<T, E> value)? failed,
+    TResult? Function(IDLE<T> value)? idle,
+    TResult? Function(LOADING<T> value)? loading,
+    TResult? Function(DATA<T> value)? data,
+    TResult? Function(FAILED<T> value)? failed,
   }) {
     return failed?.call(this);
   }
@@ -457,10 +456,10 @@ class _$FAILEDImpl<T, E> implements FAILED<T, E> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IDLE<T, E> value)? idle,
-    TResult Function(LOADING<T, E> value)? loading,
-    TResult Function(DATA<T, E> value)? data,
-    TResult Function(FAILED<T, E> value)? failed,
+    TResult Function(IDLE<T> value)? idle,
+    TResult Function(LOADING<T> value)? loading,
+    TResult Function(DATA<T> value)? data,
+    TResult Function(FAILED<T> value)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -470,8 +469,8 @@ class _$FAILEDImpl<T, E> implements FAILED<T, E> {
   }
 }
 
-abstract class FAILED<T, E> implements ApiRequestState<T, E> {
-  const factory FAILED({required final E reason}) = _$FAILEDImpl<T, E>;
+abstract class FAILED<T> implements ApiRequestState<T> {
+  const factory FAILED({required final AppFailure reason}) = _$FAILEDImpl<T>;
 
-  E get reason;
+  AppFailure get reason;
 }

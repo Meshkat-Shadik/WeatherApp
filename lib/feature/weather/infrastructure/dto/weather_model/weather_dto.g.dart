@@ -22,7 +22,7 @@ _$WeatherDTOImpl _$$WeatherDTOImplFromJson(Map<String, dynamic> json) =>
           ? null
           : Sys.fromJson(json['sys'] as Map<String, dynamic>),
       name: json['name'] as String?,
-      cod: json['cod'] as String?,
+      cod: const StringConverter().fromJson(json['cod']),
     );
 
 Map<String, dynamic> _$$WeatherDTOImplToJson(_$WeatherDTOImpl instance) =>
@@ -33,8 +33,15 @@ Map<String, dynamic> _$$WeatherDTOImplToJson(_$WeatherDTOImpl instance) =>
       'dt': instance.dt,
       'sys': instance.sys?.toJson(),
       'name': instance.name,
-      'cod': instance.cod,
+      'cod': _$JsonConverterToJson<dynamic, String>(
+          instance.cod, const StringConverter().toJson),
     };
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
 
 _$MainImpl _$$MainImplFromJson(Map<String, dynamic> json) => _$MainImpl(
       temp: (json['temp'] as num?)?.toDouble(),

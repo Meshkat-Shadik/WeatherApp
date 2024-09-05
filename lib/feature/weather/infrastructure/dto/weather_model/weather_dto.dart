@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weather_app/networking/freezed_string_converter.dart';
 
 part 'weather_dto.freezed.dart';
 part 'weather_dto.g.dart';
 
 @freezed
-sealed class WeatherDTO with _$WeatherDTO {
+abstract class WeatherDTO with _$WeatherDTO {
   const factory WeatherDTO({
     @required List<Weather>? weather,
     @required Main? main,
@@ -12,7 +13,7 @@ sealed class WeatherDTO with _$WeatherDTO {
     @required int? dt,
     @required Sys? sys,
     @required String? name,
-    @required String? cod,
+    @StringConverter() @required String? cod,
   }) = _WeatherDTO;
 
   factory WeatherDTO.fromJson(Map<String, dynamic> json) =>
@@ -20,7 +21,7 @@ sealed class WeatherDTO with _$WeatherDTO {
 }
 
 @freezed
-sealed class Main with _$Main {
+abstract class Main with _$Main {
   const factory Main({
     @required double? temp,
     @required double? feelsLike,
@@ -32,7 +33,7 @@ sealed class Main with _$Main {
 }
 
 @freezed
-sealed class Sys with _$Sys {
+abstract class Sys with _$Sys {
   const factory Sys({
     @required int? sunrise,
     @required int? sunset,
@@ -42,7 +43,7 @@ sealed class Sys with _$Sys {
 }
 
 @freezed
-sealed class Weather with _$Weather {
+abstract class Weather with _$Weather {
   const factory Weather({
     @required String? main,
     @required String? description,
@@ -54,7 +55,7 @@ sealed class Weather with _$Weather {
 }
 
 @freezed
-sealed class Wind with _$Wind {
+abstract class Wind with _$Wind {
   const factory Wind({
     @required double? speed,
     @required double? gust,

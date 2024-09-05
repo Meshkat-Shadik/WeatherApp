@@ -1,13 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weather_app/failure/app_failure.dart';
 part 'api_state.freezed.dart';
 
 @freezed
-class ApiRequestState<T, E> with _$ApiRequestState<T, E> {
+sealed class ApiRequestState<T> with _$ApiRequestState<T> {
   const factory ApiRequestState.idle() = IDLE;
 
   const factory ApiRequestState.loading() = LOADING;
 
-  const factory ApiRequestState.data({required T data}) = DATA<T, E>;
+  const factory ApiRequestState.data({required T data}) = DATA<T>;
 
-  const factory ApiRequestState.failed({required E reason}) = FAILED<T, E>;
+  const factory ApiRequestState.failed({required AppFailure reason}) = FAILED;
 }

@@ -18,18 +18,15 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppFailure {
   String get message => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  int? get code => throw _privateConstructorUsedError;
   String? get uriPath => throw _privateConstructorUsedError;
-  int? get statusCode => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 
 class _$AppFailureImpl extends _AppFailure {
   const _$AppFailureImpl(
-      {required this.message,
-      required this.name,
-      this.uriPath,
-      this.statusCode})
+      {required this.message, required this.name, this.code, this.uriPath})
       : super._();
 
   @override
@@ -37,13 +34,13 @@ class _$AppFailureImpl extends _AppFailure {
   @override
   final String name;
   @override
-  final String? uriPath;
+  final int? code;
   @override
-  final int? statusCode;
+  final String? uriPath;
 
   @override
   String toString() {
-    return 'AppFailure(message: $message, name: $name, uriPath: $uriPath, statusCode: $statusCode)';
+    return 'AppFailure(message: $message, name: $name, code: $code, uriPath: $uriPath)';
   }
 
   @override
@@ -53,22 +50,20 @@ class _$AppFailureImpl extends _AppFailure {
             other is _$AppFailureImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.uriPath, uriPath) || other.uriPath == uriPath) &&
-            (identical(other.statusCode, statusCode) ||
-                other.statusCode == statusCode));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.uriPath, uriPath) || other.uriPath == uriPath));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, message, name, uriPath, statusCode);
+  int get hashCode => Object.hash(runtimeType, message, name, code, uriPath);
 }
 
 abstract class _AppFailure extends AppFailure {
   const factory _AppFailure(
       {required final String message,
       required final String name,
-      final String? uriPath,
-      final int? statusCode}) = _$AppFailureImpl;
+      final int? code,
+      final String? uriPath}) = _$AppFailureImpl;
   const _AppFailure._() : super._();
 
   @override
@@ -76,7 +71,7 @@ abstract class _AppFailure extends AppFailure {
   @override
   String get name;
   @override
-  String? get uriPath;
+  int? get code;
   @override
-  int? get statusCode;
+  String? get uriPath;
 }

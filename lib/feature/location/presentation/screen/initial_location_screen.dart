@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:weather_app/feature/location/application/providers.dart';
+import 'package:weather_app/feature/location/application/notifiers/location_notifier.dart';
 import 'package:weather_app/feature/weather/application/providers.dart';
 import 'package:weather_app/feature/weather/presentation/styles.dart';
 import 'package:weather_app/feature/location/presentation/widgets/success_location_widget.dart';
@@ -16,11 +16,24 @@ class InitialLocationScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //calling the location provider at init
+    //so that we can get the current location
+    useEffect(
+      () {
+        //widgetBinding
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          await ref.read(locationNotifierProvider.notifier).getMyLocation();
+        });
+        return null;
+      },
+      [],
+    );
+
     //we are listening to the location provider
     //so that we can get the current location
     //it will call as soon as the app is opened
     //as we are using the location provider in the initial page
-    final locationState = ref.watch(locationProvider);
+    final locationState = ref.watch(locationNotifierProvider);
     final cityNameController = useTextEditingController();
 
     return Stack(
@@ -50,7 +63,7 @@ class InitialLocationScreen extends HookConsumerWidget {
           body: RefreshIndicator(
             onRefresh: () async {
               //this will refresh the location api
-              ref.invalidate(locationProvider);
+              ref.invalidate(locationNotifierProvider);
             },
             child: ListView(
               physics: const BouncingScrollPhysics(
@@ -82,8 +95,11 @@ class InitialLocationScreen extends HookConsumerWidget {
                           suffixIcon: IconButton(
                             onPressed: () {
                               if (cityNameController.text.isEmpty) return;
-                              ref.watch(cityNameProvider.notifier).state =
-                                  cityNameController.text;
+                              ref
+                                  .watch(getCityNameProvider.notifier)
+                                  .setCityName(
+                                    cityNameController.text,
+                                  );
                               WidgetsBinding.instance.addPostFrameCallback((_) {
                                 context.router.push(
                                   WeatherInformationRoute(),

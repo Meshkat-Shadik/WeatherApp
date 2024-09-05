@@ -7,9 +7,9 @@ class LocationRepositoryImpl implements LocationRepository {
   Future<Position> getCoordinates() async {
     Position position = await Geolocator.getCurrentPosition(
       locationSettings: AndroidSettings(
-        accuracy: LocationAccuracy.best,
-        distanceFilter: 10,
-      ),
+          accuracy: LocationAccuracy.best,
+          distanceFilter: 10,
+          timeLimit: Duration(seconds: 4)),
     );
     return position;
   }

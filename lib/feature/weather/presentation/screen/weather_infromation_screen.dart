@@ -1,37 +1,60 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:weather_app/failure/failure_handler.dart';
+import 'package:weather_app/feature/weather/application/notifiers/weather_notifier.dart';
 import 'package:weather_app/feature/weather/application/providers.dart';
 import 'package:weather_app/feature/weather/domain/entity/weather_basic_entity.dart';
 import 'package:weather_app/feature/weather/domain/entity/weather_detail_entity.dart';
-import 'package:weather_app/feature/weather/domain/entity/weather_full_entity.dart';
 import 'package:weather_app/feature/weather/presentation/styles.dart';
 import 'package:weather_app/feature/weather/presentation/widgets/details_weather_information.dart';
 import 'package:weather_app/feature/weather/presentation/widgets/basic_weather_information.dart';
 import 'package:weather_app/helper/extensions.dart';
 
 @RoutePage()
-class WeatherInformationScreen extends ConsumerWidget {
+class WeatherInformationScreen extends HookConsumerWidget {
   const WeatherInformationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //we are reading the city name from the provider
-    final cityName = ref.watch(cityNameProvider);
-    //as soon as the page is opened we are calling the weather api with the city name that is mutated from the previous page
-    final weatherState = ref.watch(weatherProvider(cityName));
+    final cityName = ref.watch(getCityNameProvider);
+
+    //calling the location provider at init
+    //so that we can get the current location
+    useEffect(
+      () {
+        //widgetBinding
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          await ref.read(weatherNotifierProvider.notifier).getWeather(cityName);
+        });
+        return null;
+      },
+      [],
+    );
+
+    final weatherState = ref.watch(weatherNotifierProvider);
     final isSuccessful = weatherState.maybeWhen(
       data: (data) => true,
       orElse: () => false,
     );
 
+    FailureHandler.listenForErrors(
+      ref,
+      weatherNotifierProvider,
+      context,
+      () async {
+        await ref.read(weatherNotifierProvider.notifier).getWeather(cityName);
+      },
+    );
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
         body: RefreshIndicator(
           onRefresh: () async {
             return await ref
-                .refresh(weatherProvider(cityName).notifier)
+                .refresh(weatherNotifierProvider.notifier)
                 .getWeather(cityName);
           },
           child: SingleChildScrollView(
@@ -124,13 +147,15 @@ class WeatherInformationScreen extends ConsumerWidget {
                                 loading: () => Center(
                                   child: CircularProgressIndicator(),
                                 ),
-                                data: (WeatherFullEntity weatherData) =>
-                                    DetailsWeatherInformation(
-                                  data: WeatherDetailEntity.fromFullEntity(
+                                data: (weatherData) {
+                                  final weatherDetail =
+                                      WeatherDetailEntity.fromFullEntity(
                                     weatherData,
-                                  ),
-                                ),
-                                failed: (e) => Text(e.toString()),
+                                  );
+                                  return DetailsWeatherInformation(
+                                      data: weatherDetail);
+                                },
+                                failed: (e) => Text('${e.code} : ${e.message}'),
                                 orElse: () => Container(),
                               ),
                             ],

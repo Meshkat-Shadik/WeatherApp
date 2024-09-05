@@ -10,9 +10,9 @@ import 'package:weather_app/routes/router.dart';
 final dioProvider = Provider<Dio>((ref) {
   return Dio(BaseOptions(
     baseUrl: appBaseUrl,
-    connectTimeout: const Duration(seconds: 120),
-    receiveTimeout: const Duration(seconds: 120),
-    sendTimeout: const Duration(seconds: 120),
+    connectTimeout: const Duration(seconds: 10),
+    receiveTimeout: const Duration(seconds: 10),
+    sendTimeout: const Duration(seconds: 10),
     validateStatus: (status) => true,
     receiveDataWhenStatusError: true,
   ))

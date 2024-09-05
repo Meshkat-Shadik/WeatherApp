@@ -1,3 +1,5 @@
+typedef JSON = Map<String, dynamic>;
+
 enum StatusCode {
   badRequest(code: 400, name: 'Bad Request'),
   unauthorized(code: 401, name: 'Unauthorized'),
@@ -30,5 +32,16 @@ StatusCode? getStatusCode(int? code) {
     500 => StatusCode.internalServerError,
     null => null,
     _ => StatusCode.unrecognized,
+  };
+}
+
+class NetworkMisc {
+  const NetworkMisc._();
+
+  static const tokenField = 'requiresAuthToken';
+
+  static const needAuthToken = {
+    'Content-Type': 'application/json',
+    tokenField: true
   };
 }

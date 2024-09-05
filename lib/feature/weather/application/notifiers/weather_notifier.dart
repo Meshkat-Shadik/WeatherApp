@@ -1,35 +1,34 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:weather_app/feature/common/states/api_state.dart';
-import 'package:weather_app/feature/weather/domain/base_repositories/base_weather_repository.dart';
+import 'package:weather_app/feature/weather/application/providers.dart';
 import 'package:weather_app/feature/weather/domain/entity/weather_full_entity.dart';
+import 'package:weather_app/helper/colored_logger.dart';
 
-class WeatherStateNotifer
-    extends StateNotifier<ApiRequestState<WeatherFullEntity, String>> {
-  final WeatherRepository weatherRepository;
-  final String cityName;
+part 'weather_notifier.g.dart';
 
-  WeatherStateNotifer(
-    this.weatherRepository,
-    this.cityName,
-  ) : super(ApiRequestState.idle()) {
-    getWeather(cityName);
-  }
+@Riverpod(keepAlive: true)
+class WeatherNotifier extends _$WeatherNotifier {
+  //build
+  @override
+  ApiRequestState<WeatherFullEntity> build() => ApiRequestState.idle();
 
+  //getWeather
   Future<void> getWeather(String cityName) async {
     state = ApiRequestState.loading();
-    var data = await weatherRepository.getWeather(cityName);
-
+    ColoredLogger.Green.log('Getting weather for $cityName');
+    final repo = ref.read(getWeatherRepositoryProvider);
+    var data = await repo.getWeather(cityName);
+    ColoredLogger.Green.log('Got weather for $cityName');
     data.fold(
       (l) {
+        ColoredLogger.Red.log('Failed to get weather for $cityName');
         //we can handle error here
-        state = ApiRequestState.failed(
-          reason: "${l.message}",
-        );
+        state = ApiRequestState.failed(reason: l);
       },
       (r) {
         //we can handle success here
         //convert the dto to entity as we don't want dto to be exposed to the presentation layer
-        state = ApiRequestState<WeatherFullEntity, String>.data(
+        state = ApiRequestState<WeatherFullEntity>.data(
           data: WeatherFullEntity.fromDTO(r),
         );
       },

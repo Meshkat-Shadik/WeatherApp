@@ -27,7 +27,7 @@ class BuildSucessLocation extends ConsumerWidget {
           onPressed: () {
             //we are setting the city name in the provider and then pushing the route
             //later we will use this city name to fetch the weather data
-            ref.read(cityNameProvider.notifier).state = cityName;
+            ref.read(getCityNameProvider.notifier).setCityName(cityName);
             WidgetsBinding.instance.addPostFrameCallback((_) {
               context.router.push(WeatherInformationRoute());
             });

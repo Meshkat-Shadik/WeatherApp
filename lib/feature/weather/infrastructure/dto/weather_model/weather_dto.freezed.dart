@@ -26,6 +26,7 @@ mixin _$WeatherDTO {
   int? get dt => throw _privateConstructorUsedError;
   Sys? get sys => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  @StringConverter()
   String? get cod => throw _privateConstructorUsedError;
 
   /// Serializes this WeatherDTO to a JSON map.
@@ -42,7 +43,7 @@ class _$WeatherDTOImpl implements _WeatherDTO {
       this.dt,
       this.sys,
       this.name,
-      this.cod})
+      @StringConverter() this.cod})
       : _weather = weather;
 
   factory _$WeatherDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -69,6 +70,7 @@ class _$WeatherDTOImpl implements _WeatherDTO {
   @override
   final String? name;
   @override
+  @StringConverter()
   final String? cod;
 
   @override
@@ -118,7 +120,7 @@ abstract class _WeatherDTO implements WeatherDTO {
       final int? dt,
       final Sys? sys,
       final String? name,
-      final String? cod}) = _$WeatherDTOImpl;
+      @StringConverter() final String? cod}) = _$WeatherDTOImpl;
 
   factory _WeatherDTO.fromJson(Map<String, dynamic> json) =
       _$WeatherDTOImpl.fromJson;
@@ -136,6 +138,7 @@ abstract class _WeatherDTO implements WeatherDTO {
   @override
   String? get name;
   @override
+  @StringConverter()
   String? get cod;
 }
 
