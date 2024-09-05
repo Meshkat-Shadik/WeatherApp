@@ -2,15 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:weather_app/failure/failure_handler.dart';
-import 'package:weather_app/feature/weather/application/notifiers/weather_notifier.dart';
-import 'package:weather_app/feature/weather/application/providers.dart';
-import 'package:weather_app/feature/weather/domain/entity/weather_basic_entity.dart';
-import 'package:weather_app/feature/weather/domain/entity/weather_detail_entity.dart';
-import 'package:weather_app/feature/weather/presentation/styles.dart';
-import 'package:weather_app/feature/weather/presentation/widgets/details_weather_information.dart';
-import 'package:weather_app/feature/weather/presentation/widgets/basic_weather_information.dart';
-import 'package:weather_app/helper/extensions.dart';
+
+import 'package:weather_app/src/core/failure/failure_handler.dart';
+import 'package:weather_app/src/core/helper/extensions.dart';
+import 'package:weather_app/src/feature/weather/application/notifiers/weather_notifier.dart';
+import 'package:weather_app/src/feature/weather/application/providers.dart';
+import 'package:weather_app/src/feature/weather/domain/entity/weather_basic_entity.dart';
+import 'package:weather_app/src/feature/weather/domain/entity/weather_detail_entity.dart';
+import 'package:weather_app/src/feature/weather/presentation/styles.dart';
+import 'package:weather_app/src/feature/weather/presentation/widgets/basic_weather_information.dart';
+import 'package:weather_app/src/feature/weather/presentation/widgets/details_weather_information.dart';
 
 @RoutePage()
 class WeatherInformationScreen extends HookConsumerWidget {

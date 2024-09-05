@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/failure/app_failure.dart';
+import 'package:weather_app/src/core/failure/app_failure.dart';
 
 part 'local_failure.freezed.dart';
 

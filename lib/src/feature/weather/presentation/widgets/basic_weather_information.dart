@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/feature/weather/domain/entity/weather_basic_entity.dart';
-import 'package:weather_app/feature/weather/presentation/styles.dart';
+import 'package:weather_app/src/feature/weather/domain/entity/weather_basic_entity.dart';
+import 'package:weather_app/src/feature/weather/presentation/styles.dart';
 
 class BasicWeatherInformation extends StatelessWidget {
   const BasicWeatherInformation({

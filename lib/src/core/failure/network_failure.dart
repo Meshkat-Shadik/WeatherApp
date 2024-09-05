@@ -2,8 +2,8 @@
 
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/failure/app_failure.dart';
-import 'package:weather_app/networking/network_misc.dart';
+import 'package:weather_app/src/core/failure/app_failure.dart';
+import 'package:weather_app/src/core/networking/network_misc.dart';
 
 part 'network_failure.freezed.dart';
 

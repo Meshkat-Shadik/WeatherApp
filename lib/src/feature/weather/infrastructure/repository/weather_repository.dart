@@ -1,11 +1,11 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:weather_app/failure/app_failure.dart';
-import 'package:weather_app/failure/failure_mapper.dart';
-import 'package:weather_app/feature/weather/domain/base_repositories/base_weather_repository.dart';
-import 'package:weather_app/feature/weather/infrastructure/dto/weather_model/weather_dto.dart';
-import 'package:weather_app/helper/colored_logger.dart';
-import 'package:weather_app/networking/network_api_service.dart';
-import 'package:weather_app/networking/url_config.dart';
+import 'package:weather_app/src/core/failure/app_failure.dart';
+import 'package:weather_app/src/core/failure/failure_mapper.dart';
+import 'package:weather_app/src/core/helper/colored_logger.dart';
+import 'package:weather_app/src/core/networking/network_api_service.dart';
+import 'package:weather_app/src/core/networking/url_config.dart';
+import 'package:weather_app/src/feature/weather/domain/base_repositories/base_weather_repository.dart';
+import 'package:weather_app/src/feature/weather/infrastructure/dto/weather_model/weather_dto.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final NetworkApiService _apiService;

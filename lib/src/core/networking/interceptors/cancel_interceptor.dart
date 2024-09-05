@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:weather_app/helper/colored_logger.dart';
+import 'package:weather_app/src/core/helper/colored_logger.dart';
 
 class CancelInterceptor extends Interceptor {
   final List<String> _ignoredEndpoints;

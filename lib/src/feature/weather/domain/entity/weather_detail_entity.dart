@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/feature/weather/domain/entity/weather_full_entity.dart';
-import 'package:weather_app/feature/weather/infrastructure/dto/weather_model/weather_dto.dart';
-import 'package:weather_app/helper/extensions.dart';
+import 'package:weather_app/src/core/helper/extensions.dart';
+import 'package:weather_app/src/feature/weather/domain/entity/weather_full_entity.dart';
+import 'package:weather_app/src/feature/weather/infrastructure/dto/weather_model/weather_dto.dart';
 
 part 'weather_detail_entity.freezed.dart';
 

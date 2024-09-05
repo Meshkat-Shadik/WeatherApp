@@ -1,8 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:weather_app/feature/common/states/api_state.dart';
-import 'package:weather_app/feature/weather/application/providers.dart';
-import 'package:weather_app/feature/weather/domain/entity/weather_full_entity.dart';
-import 'package:weather_app/helper/colored_logger.dart';
+import 'package:weather_app/src/core/helper/colored_logger.dart';
+import 'package:weather_app/src/feature/common/states/api_state.dart';
+import 'package:weather_app/src/feature/weather/application/providers.dart';
+import 'package:weather_app/src/feature/weather/domain/entity/weather_full_entity.dart';
 
 part 'weather_notifier.g.dart';
 

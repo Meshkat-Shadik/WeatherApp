@@ -4,7 +4,7 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
-import 'package:weather_app/helper/colored_logger.dart';
+import 'package:weather_app/src/core/helper/colored_logger.dart';
 
 enum Type {
   white,

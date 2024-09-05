@@ -10,12 +10,12 @@ import 'package:flutter/material.dart'
         TextButton,
         showDialog;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:weather_app/failure/app_failure.dart';
-import 'package:weather_app/failure/local_failure.dart';
-import 'package:weather_app/failure/network_failure.dart';
-import 'package:weather_app/feature/common/states/api_state.dart';
-import 'package:weather_app/helper/colored_logger.dart';
-import 'package:weather_app/helper/extensions.dart';
+import 'package:weather_app/src/core/failure/app_failure.dart';
+import 'package:weather_app/src/core/failure/local_failure.dart';
+import 'package:weather_app/src/core/failure/network_failure.dart';
+import 'package:weather_app/src/core/helper/colored_logger.dart';
+import 'package:weather_app/src/core/helper/extensions.dart';
+import 'package:weather_app/src/feature/common/states/api_state.dart';
 
 class FailureHandler {
   static void defaultToastShowingHandler(
@@ -75,7 +75,9 @@ class FailureHandler {
                     TextButton(
                       onPressed: () async {
                         await onRetry();
-                        Navigator.of(context).pop();
+                        if (context.mounted) {
+                          Navigator.of(context).pop();
+                        }
                       },
                       child: const Text('Retry'),
                     ),

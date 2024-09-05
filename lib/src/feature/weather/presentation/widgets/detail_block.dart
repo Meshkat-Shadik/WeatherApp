@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/feature/weather/presentation/styles.dart';
+import 'package:weather_app/src/feature/weather/presentation/styles.dart';
 
 class DetailBlock extends StatelessWidget {
   const DetailBlock({

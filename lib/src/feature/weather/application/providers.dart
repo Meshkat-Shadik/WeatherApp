@@ -1,9 +1,9 @@
 //independent sources
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:weather_app/feature/common/providers.dart';
-import 'package:weather_app/feature/location/application/notifiers/location_notifier.dart';
-import 'package:weather_app/feature/weather/domain/base_repositories/base_weather_repository.dart';
-import 'package:weather_app/feature/weather/infrastructure/repository/weather_repository.dart';
+import 'package:weather_app/src/feature/common/providers.dart';
+import 'package:weather_app/src/feature/location/application/notifiers/location_notifier.dart';
+import 'package:weather_app/src/feature/weather/domain/base_repositories/base_weather_repository.dart';
+import 'package:weather_app/src/feature/weather/infrastructure/repository/weather_repository.dart';
 
 part 'providers.g.dart';
 

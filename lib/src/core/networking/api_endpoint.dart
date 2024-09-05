@@ -2,7 +2,7 @@
 // DO NOT USE 'dartfmt' on this file for formatting
 
 import 'package:flutter/material.dart';
-import 'package:weather_app/networking/url_config.dart';
+import 'package:weather_app/src/core/networking/url_config.dart';
 
 @immutable
 class ApiEndpoint {

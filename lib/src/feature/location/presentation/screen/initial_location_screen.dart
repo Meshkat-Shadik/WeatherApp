@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:weather_app/feature/location/application/notifiers/location_notifier.dart';
-import 'package:weather_app/feature/weather/application/providers.dart';
-import 'package:weather_app/feature/weather/presentation/styles.dart';
-import 'package:weather_app/feature/location/presentation/widgets/success_location_widget.dart';
-import 'package:weather_app/helper/extensions.dart';
-import 'package:weather_app/routes/router.dart';
+import 'package:weather_app/src/core/helper/extensions.dart';
+import 'package:weather_app/src/feature/location/application/notifiers/location_notifier.dart';
+import 'package:weather_app/src/feature/location/presentation/widgets/success_location_widget.dart';
+import 'package:weather_app/src/feature/weather/application/providers.dart';
+import 'package:weather_app/src/feature/weather/presentation/styles.dart';
+import 'package:weather_app/src/routes/router.dart';
 
 @RoutePage()
 class InitialLocationScreen extends HookConsumerWidget {

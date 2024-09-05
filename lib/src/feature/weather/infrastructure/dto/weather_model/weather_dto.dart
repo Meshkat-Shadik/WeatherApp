@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/networking/freezed_string_converter.dart';
+import 'package:weather_app/src/core/networking/freezed_string_converter.dart';
 
 part 'weather_dto.freezed.dart';
 part 'weather_dto.g.dart';

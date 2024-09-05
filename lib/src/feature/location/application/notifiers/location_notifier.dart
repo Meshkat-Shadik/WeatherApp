@@ -2,11 +2,11 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:weather_app/failure/failure_mapper.dart';
-import 'package:weather_app/feature/common/states/api_state.dart';
-import 'package:weather_app/feature/location/application/providers.dart';
-import 'package:weather_app/helper/colored_logger.dart';
-import 'package:weather_app/utils/permission_manager.dart';
+import 'package:weather_app/src/core/failure/failure_mapper.dart';
+import 'package:weather_app/src/core/helper/colored_logger.dart';
+import 'package:weather_app/src/core/utils/permission_manager.dart';
+import 'package:weather_app/src/feature/common/states/api_state.dart';
+import 'package:weather_app/src/feature/location/application/providers.dart';
 
 part 'location_notifier.g.dart';
 

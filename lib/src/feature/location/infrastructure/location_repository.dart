@@ -1,6 +1,6 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weather_app/feature/location/domain/base_repositories/base_location_repository.dart';
+import 'package:weather_app/src/feature/location/domain/base_repositories/base_location_repository.dart';
 
 class LocationRepositoryImpl implements LocationRepository {
   @override
