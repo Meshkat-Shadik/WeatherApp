@@ -33,17 +33,7 @@ jobs:
 
       # Build APK for debugging
       - run: flutter build apk --debug --split-per-abi -t lib/main.dart
-
-      # Build release APK and AAB for production
-      - run: flutter build apk --release --split-per-abi -t lib/main.dart
       - run: flutter build appbundle
-
-      # Optional: Upload artifact
-      - name: Upload APK
-        uses: actions/upload-artifact@v3
-        with:
-          name: app-debug.apk
-          path: build/app/outputs/flutter-apk/app-debug.apk
 
       # Push the release
       - name: Push to Releases
