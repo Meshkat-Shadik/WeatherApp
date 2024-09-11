@@ -37,8 +37,8 @@ jobs:
 
       # Push the release
       - name: Push to Releases
-        uses: oberhauser-dev/flutter-release-action@v0
+        uses: ncipollo/release-action@v1
         with:
-          app-name: "Weather App"
+          artifacts: "build/app/outputs/apk/debug/*,build/ios/iphoneos/app.ipa"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
