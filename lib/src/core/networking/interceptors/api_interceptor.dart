@@ -59,7 +59,49 @@ class ApiInterceptor extends Interceptor {
         true,
       );
     }
-    return handler.next(response);
+
+    //sometimes the response is not in the expected format
+    //like, it may return 200 but the response is showing error
+    //so, we need to handle this case
+
+    //ex: {"code": 400, "message": "Bad Request", "success": false} with status code 200
+
+    //we can check the response data and status code, for validating the response
+    //we can use dart's Pattern matching to check the response data
+
+    if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
+      final data = response.data as Map<String, dynamic>;
+
+      //pattern matching
+      final (bool? sucess, String? message, int? code) = (
+        data['success'] as bool?,
+        data['message'] as String?,
+        data['code'] as int?,
+      );
+
+      final isSuccess = sucess;
+
+      if (isSuccess == false) {
+        return handler.reject(
+          DioException(
+            requestOptions: response.requestOptions,
+            response: Response(
+              requestOptions: response.requestOptions,
+              statusCode: (code is int) ? code : 503,
+            ),
+            message: message ?? 'Unknown error',
+          ),
+          true,
+        );
+      } else {
+        //here the response is successful either the success is true or null
+        //null means the respnose format is not as ours so we suppose it as success
+        //so, we can return the response as it is
+        return handler.next(response);
+      }
+    } else {
+      return handler.next(response);
+    }
   }
 
   @override
