@@ -1,5 +1,11 @@
 # Study of Network Flow
 
+Figma design of flow chart - https://www.figma.com/board/oyPZGn7pFEZciS5zQR3bzv/Untitled?node-id=0-1&t=hCvKgekUWtBBRIiK-1
+
+![alt text](readme_images/figma_image.png)
+
+
+
 ### **Overall Network Data Flow in Your Flutter App**
 
 1. **UI Layer Initiates a Request**:
