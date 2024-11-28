@@ -1,5 +1,4 @@
-// ignore_for_file: , depend_on_referenced_packages
-
+// ignore_for_file:  depend_on_referenced_packages, no_leading_underscores_for_local_identifiers
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weather_app/src/core/failure/app_failure.dart';
@@ -31,7 +30,7 @@ class NetworkFailure with _$NetworkFailure implements AppFailure {
       );
     }
     //we can't be here because we checked before calling this method
-    throw Exception('Terminating: We can\'t be here!');
+    throw Exception(ErrorMessage.nonProducable.name);
   }
 
   // Helper method to handle different types of Dio exceptions
@@ -40,42 +39,45 @@ class NetworkFailure with _$NetworkFailure implements AppFailure {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return "Timeout occurred while sending or receiving";
+        return ErrorMessage.timeOut.name;
       case DioExceptionType.badResponse:
-        return error.message ?? 'Bad response';
+        return error.message ?? ErrorMessage.badResponse.name;
       case DioExceptionType.cancel:
         break;
       case DioExceptionType.unknown:
         return _getErrorResponseBodyFromServer(error);
       case DioExceptionType.badCertificate:
-        return "Internal Server Error";
+        return ErrorMessage.internalServerError.name;
       case DioExceptionType.connectionError:
-        return error.message ?? 'Connection Error';
+        return error.message ?? ErrorMessage.connectionError.name;
       default:
-        return "Unknown Error";
+        return ErrorMessage.unknownError.name;
     }
-    return "Unknown Error";
+    return ErrorMessage.unknownError.name;
   }
 
   static String _getErrorResponseBodyFromServer(DioException error) {
     assert(error.type == DioExceptionType.unknown);
+    if (error.response?.data is String) {
+      return error.response?.data ?? 'Redirected to login page';
+    }
     // Here Map<String, dynamic> is the type of the response body
     // You can use a proper Model class to parse the response body
     final responseBody = error.response?.data as Map<String, dynamic>?;
-    String? msg = responseBody?['detail'] ?? error.message;
+    String? msg = responseBody?['message'] ?? error.message;
     if (msg == null || msg.isEmpty || msg == 'null') {
-      msg = 'Data is not available from server';
+      msg = ErrorMessage.dataUnavailable.name;
     }
     return msg;
   }
 
   static String _getErrorName(DioException error) {
-    String _name = 'Unrecognized error';
+    String _name = ErrorMessage.unrecognizedError.name;
     if (error.type == DioExceptionType.connectionError ||
         error.type == DioExceptionType.sendTimeout ||
         error.type == DioExceptionType.receiveTimeout ||
         error.type == DioExceptionType.connectionTimeout) {
-      _name = 'No internet connection';
+      _name = ErrorMessage.noInternetConnection.name;
     }
 
     final code = error.response?.statusCode;

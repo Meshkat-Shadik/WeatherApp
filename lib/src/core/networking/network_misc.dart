@@ -1,6 +1,7 @@
 typedef JSON = Map<String, dynamic>;
 
 enum StatusCode {
+  redirectResponse(code: 302, name: 'Redirect Response'),
   badRequest(code: 400, name: 'Bad Request'),
   unauthorized(code: 401, name: 'Unauthorized'),
   forbidden(code: 403, name: 'Forbidden'),
@@ -26,11 +27,11 @@ enum StatusCode {
 
 StatusCode? getStatusCode(int? code) {
   return switch (code) {
+    302 => StatusCode.redirectResponse,
     400 => StatusCode.badRequest,
     401 => StatusCode.unauthorized,
     403 => StatusCode.forbidden,
     404 => StatusCode.notFound,
-    408 => StatusCode.requestTimeout,
     409 => StatusCode.conflict,
     419 => StatusCode.tokenExpired,
     422 => StatusCode.unprocessableEntity,
@@ -52,4 +53,17 @@ class NetworkMisc {
     'Content-Type': 'application/json',
     tokenField: true
   };
+}
+
+enum ErrorMessage {
+  nonProducable,
+  timeOut,
+  badResponse,
+  internalServerError,
+  connectionError,
+  unknownError,
+  dataUnavailable,
+  unrecognizedError,
+  noInternetConnection,
+  somethingWentWrong,
 }

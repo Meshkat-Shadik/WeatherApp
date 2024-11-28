@@ -108,7 +108,7 @@ class WeatherInformationScreen extends HookConsumerWidget {
                         margin: EdgeInsets.only(top: 140),
                         alignment: Alignment.center,
                         child: Text(
-                          e.toString(),
+                          e.message,
                           style: bigTitleStyle,
                         ),
                       );
