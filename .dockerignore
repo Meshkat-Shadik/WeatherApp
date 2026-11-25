@@ -1,0 +1,8 @@
+.git
+**/build
+**/.dart_tool
+**/.fvm
+android
+ios
+macos
+widgetbook/macos
