@@ -1,5 +1,5 @@
 name: weather_app
-description: A new Flutter project.
+description: Weather by city or current location (OpenWeather).
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -18,41 +18,42 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.5.0-259.0.dev <4.0.0"
+  sdk: ^3.14.0
 
 dependencies:
-  auto_route: ^9.2.2
-  cupertino_icons: ^1.0.8
-  device_info_plus: ^11.1.1
+  cupertino_icons: ^2.0.0
+  dio: ^5.11.1
+  equatable: ^3.0.0
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.20.5
-  fluttertoast: ^8.2.8
+  flutter_hooks: ^0.21.4
   fpdart: ^2.0.0-dev.3
-  freezed_annotation: ^2.4.4
-  geocoding: ^3.0.0
-  geolocator: ^13.0.2
-  google_fonts: ^6.2.1
-  hooks_riverpod: ^2.6.1
+  geocoding: ^5.0.1
+  geolocator: ^14.1.2
+  go_router: ^18.1.4
+  google_fonts: ^9.0.0
+  hooks_riverpod: ^3.5.0
   intl: ^0.20.1
-  permission_handler: ^11.3.1
+  material_ui: ^1.11.1
+  permission_handler: ^13.0.2
   retrofit: ^4.4.1
-  riverpod_annotation: ^2.6.1
+  riverpod_annotation: ^4.0.8
 
 dev_dependencies:
-  auto_route_generator: ^9.0.0
   build_runner: ^2.4.13
   flutter_test:
     sdk: flutter
-  freezed: ^2.5.7
-  json_serializable: ^6.9.0
-  retrofit_generator: ^9.1.5
-  riverpod_generator: ^2.6.3
-  riverpod_lint: ^2.6.3
+  retrofit_generator: ^10.3.3
+  riverpod_generator: ^4.0.10
+  riverpod_lint: ^3.2.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter:
+  # CocoaPods trunk goes read-only Dec 2026; plugins resolve via SwiftPM.
+  config:
+    enable-swift-package-manager: true
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
