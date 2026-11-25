@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # create the release + tag
 
     steps:
       - name: Clone repository
@@ -44,4 +46,5 @@ jobs:
         with:
           artifacts: "build/app/outputs/apk/debug/*"
           tag: v1.0.${{ github.run_number }}
-          token: ${{ secrets.TOKEN }}
+          # Built-in per-run token; never expires (the old TOKEN PAT did).
+          token: ${{ secrets.GITHUB_TOKEN }}
