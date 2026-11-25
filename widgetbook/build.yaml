@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      widgetbook_generator:use_case_builder:
+        options:
+          # Sidebar follows widgetbook/lib/ folders: design_system/ and app/.
+          nav_path_mode: use-case
