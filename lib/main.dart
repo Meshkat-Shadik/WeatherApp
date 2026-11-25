@@ -1,26 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_app/src/feature/common/providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:weather_app/core/router/app_router.dart';
+import 'package:weather_app/design_system/design_system.dart';
 
-void main() {
-  runApp(
-    ProviderScope(
-      child: MyApp(),
-    ),
-  );
-}
+void main() => runApp(const ProviderScope(child: WeatherApp()));
 
-class MyApp extends StatelessWidget {
+class const WeatherApp({super.key}) extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Consumer(builder: (context, ref, _) {
-      return MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.blue),
-        routerDelegate: ref.watch(appRouterProvider).delegate(),
-        routeInformationParser:
-            ref.watch(appRouterProvider).defaultRouteParser(),
-      );
-    });
-  }
+  Widget build(BuildContext context) => MaterialApp.router(
+    title: 'Weather',
+    debugShowCheckedModeBanner: false,
+    theme: AppTheme.light(),
+    darkTheme: AppTheme.dark(),
+    routerConfig: AppRouter.router,
+  );
 }

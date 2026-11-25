@@ -1,30 +1,38 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:weather_app/core/common/state/api_result.dart';
+import 'package:weather_app/core/failure/app_failure.dart';
+import 'package:weather_app/core/failure/local_failure.dart';
 
-import 'package:weather_app/main.dart';
+String describe(ApiResult<String> state) => switch (state) {
+  ApiInitial() => 'initial',
+  ApiLoading() => 'loading',
+  ApiSuccess(:final data) => 'data:$data',
+  ApiError(:final failure) => 'failed:${failure.name}',
+};
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  test('ApiResult is exhaustively pattern-matchable', () {
+    expect(describe(const ApiInitial()), 'initial');
+    expect(describe(const ApiLoading()), 'loading');
+    expect(describe(const ApiSuccess('Dhaka')), 'data:Dhaka');
+    expect(
+      describe(const ApiError(AppFailure(message: 'm', name: 'Timeout'))),
+      'failed:Timeout',
+    );
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('Equatable value equality and typed copyWith', () {
+    const a = LocalFailure(name: 'X', message: 'm');
+    expect(a, const LocalFailure(name: 'X', message: 'm'));
+    expect(a == const AppFailure(name: 'X', message: 'm'), isFalse);
+    final b = a.copyWith(message: 'n');
+    expect(b, isA<LocalFailure>());
+    expect(b.message, 'n');
+    expect(const ApiSuccess(1), const ApiSuccess(1));
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('LocalFailure maps Errors as well as Exceptions', () {
+    expect(LocalFailure.fromException(StateError('bad')).message, 'bad');
+    expect(LocalFailure.fromException(Exception('boom')).name, 'Exception');
   });
 }
