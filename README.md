@@ -1,5 +1,21 @@
 # Study of Network Flow
 
+## Running
+
+```bash
+fvm flutter pub get && fvm dart run build_runner build
+fvm flutter run
+```
+
+UI lives in `lib/design_system/` (tokens → theme → primitives → components → templates), a folder that imports nothing from the app and can be copied into another project unchanged. Feature composites and screens build on it.
+
+Component catalog (Widgetbook). The sidebar has two roots: `design_system/` (tokens, theme, primitives, components, templates, feedback) and `app/` (`full_app`, `screens/<feature>`, `widgets/<feature>`). Every widget has knobs, plus light/dark themes and device viewports:
+
+```bash
+cd widgetbook && fvm flutter pub get && fvm dart run build_runner build && fvm flutter run -d chrome
+```
+
+
 Figma design of flow chart - https://www.figma.com/board/oyPZGn7pFEZciS5zQR3bzv/Untitled?node-id=0-1&t=hCvKgekUWtBBRIiK-1
 
 ![alt text](readme_images/figma_image.png)
@@ -37,20 +53,18 @@ Figma design of flow chart - https://www.figma.com/board/oyPZGn7pFEZciS5zQR3bzv/
 6. **Handling Responses and Errors in Repository**:
    - The repository receives the response or catches an exception.
    - In the `try` block:
-     - If the response is successful, it logs the response and returns a `Right(response)` wrapped in an `Either` type, indicating success.
+     - If the response is successful, it maps the `WeatherDto` to a `WeatherEntity` and returns `Right(entity)`, indicating success.
    - In the `catch` block:
      - If an exception occurs, it uses `FailureMapper.getFailures(e)` to convert the exception into a well-defined `AppFailure`.
      - Returns a `Left(failure)` indicating an error.
 
 7. **Notifier Updates State Based on Repository Result**:
-   - The notifier receives the `Either<AppFailure, WeatherDTO>` result from the repository.
-   - It uses pattern matching (`fold`) to handle both cases:
+   - The notifier receives the `Either<AppFailure, WeatherEntity>` result from the repository.
+   - It uses a `switch` expression over `Left`/`Right` to handle both cases:
      - On **Success** (`Right`):
-       - Converts the `WeatherDTO` into a domain entity (`WeatherFullEntity`) using a factory constructor or mapper.
-       - Updates the state to `ApiRequestState.data(data: weatherEntity)`.
+       - Updates the state to `ApiSuccess(weatherEntity)`.
      - On **Failure** (`Left`):
-       - Updates the state to `ApiRequestState.failed(reason: failure)`.
-       - Logs the failure for debugging purposes.
+       - Updates the state to `ApiError(failure)`.
 
 8. **UI Reacts to State Changes**:
    - The UI listens to changes in the notifier's state using Riverpod's `ref.watch`.
@@ -60,7 +74,7 @@ Figma design of flow chart - https://www.figma.com/board/oyPZGn7pFEZciS5zQR3bzv/
      - **Failed**: Shows an error message, possibly with options to retry.
 
 9. **Error Handling and User Feedback**:
-   - When a failure occurs, the UI can use the `FailureHandler` to display error dialogs or messages.
+   - When a failure occurs, the screen's `ref.listen` calls `AppFeedback.retry`, a dialog with Close/Retry.
    - The error messages are user-friendly and can be specific based on the type of failure (network error, server error, etc.).
 
 ### **Understanding Each Layer's Responsibility**
@@ -136,13 +150,13 @@ Let's walk through a real-life example using your app:
    - The user enters a city name and taps a button to fetch the weather.
 
 2. **UI Calls Notifier**:
-   - The UI calls `getWeather(cityName)` on the `WeatherNotifier`.
+   - The UI navigates with `AppRouter.pushWeather(city)`; the screen watches `weatherProvider(city)`, whose notifier fetches on first build.
 
 3. **Notifier Updates State to Loading**:
-   - The `WeatherNotifier` sets the state to `ApiRequestState.loading()` to show a loading indicator.
+   - The `WeatherNotifier` sets the state to `const ApiLoading()` to show a loading indicator.
 
 4. **Notifier Requests Data from Repository**:
-   - The notifier calls `getWeather(cityName)` on the `WeatherRepositoryImpl`.
+   - The notifier's `fetch()` calls `getWeather(city)` on the `WeatherRepositoryImpl`.
 
 5. **Repository Fetches Data from API**:
    - The repository uses `NetworkApiService` to make an API call via Retrofit and Dio.
@@ -159,8 +173,8 @@ Let's walk through a real-life example using your app:
    - The repository catches exceptions and uses `FailureMapper` to convert them into `AppFailure` instances.
 
 9. **Notifier Updates State Based on Result**:
-   - If data is received, the notifier updates the state to `ApiRequestState.data()` with the weather entity.
-   - If an error occurs, the notifier updates the state to `ApiRequestState.failed()` with the failure reason.
+   - If data is received, the notifier updates the state to `ApiSuccess(…)` with the weather entity.
+   - If an error occurs, the notifier updates the state to `ApiError(…)` with the failure reason.
 
 10. **UI Reacts to State Change**:
     - The UI observes the notifier's state and updates accordingly:
